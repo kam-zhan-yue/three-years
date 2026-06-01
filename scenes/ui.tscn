@@ -23,12 +23,7 @@ script = ExtResource("1_nt7q6")
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Server" type="Button" parent="CenterContainer/VBoxContainer" unique_id=768424861]
+[node name="Connect" type="Button" parent="CenterContainer/VBoxContainer" unique_id=768424861]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Server"
-
-[node name="Client" type="Button" parent="CenterContainer/VBoxContainer" unique_id=984178187]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Client"
+text = "Connect"
