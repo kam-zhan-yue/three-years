@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://d6w68osi1iul"]
+
+[ext_resource type="Script" uid="uid://dm45vfaqj6puc" path="res://scripts/ui/connection_popup.gd" id="1_nt7q6"]
+
+[node name="UI" type="Control" unique_id=1811158779]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=510035794]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nt7q6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1554713948]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Server" type="Button" parent="CenterContainer/VBoxContainer" unique_id=768424861]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Server"
+
+[node name="Client" type="Button" parent="CenterContainer/VBoxContainer" unique_id=984178187]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Client"
