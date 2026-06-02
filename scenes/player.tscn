@@ -1,21 +1,41 @@
 [gd_scene format=3 uid="uid://ci7yeyteds4rj"]
 
 [ext_resource type="Script" uid="uid://dp6s87k67imvo" path="res://scripts/networking/player.gd" id="1_3vyb7"]
+[ext_resource type="Material" uid="uid://ctbm7id207vxy" path="res://materials/player.tres" id="2_g2els"]
+[ext_resource type="Material" uid="uid://yv7kr2cf808i" path="res://materials/eyes.tres" id="3_qhqgy"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_u8vuu"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qhqgy"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dqkch"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_3vyb7"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
+[sub_resource type="SphereMesh" id="SphereMesh_dqkch"]
+radius = 0.2
+height = 0.4
+
 [node name="Player" type="CharacterBody3D" unique_id=1164720771]
 script = ExtResource("1_3vyb7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=508933110]
-shape = SubResource("SphereShape3D_u8vuu")
+shape = SubResource("CapsuleShape3D_qhqgy")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=604346794]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=863936321]
+mesh = SubResource("CapsuleMesh_dqkch")
+surface_material_override/0 = ExtResource("2_g2els")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=767194144]
 replication_config = SubResource("SceneReplicationConfig_3vyb7")
+
+[node name="Eye1" type="MeshInstance3D" parent="." unique_id=205867685]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2313641, 0.6025959, 0.33151907)
+mesh = SubResource("SphereMesh_dqkch")
+surface_material_override/0 = ExtResource("3_qhqgy")
+
+[node name="Eye2" type="MeshInstance3D" parent="." unique_id=209486917]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20841369, 0.6025959, 0.33151907)
+mesh = SubResource("SphereMesh_dqkch")
+surface_material_override/0 = ExtResource("3_qhqgy")

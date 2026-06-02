@@ -1,5 +1,10 @@
 extends Node
 
+func print(text: String) ->  void:
+	var authority := "SERVER" if multiplayer.is_server() else "CLIENT"
+	print("%s-%s | %s" % [authority, multiplayer.get_unique_id(), text])
+
+
 func set_active(node: Node) -> void:
 	_active(node, true)
 	
