@@ -6,6 +6,9 @@ var game: GameServer
 signal started
 signal player_joined(id: int)
 
+func _ready() -> void:
+	multiplayer.peer_connected.connect(_on_connected)
+
 func start() -> void:
 	peer = ENetMultiplayerPeer.new()
 	peer.create_server(Global.PORT)
@@ -15,6 +18,13 @@ func start() -> void:
 
 func init_game(g: GameServer) -> void:
 	game = g
+
+# When a peer connects, send them a game update to let them know how it is going
+func _on_connected(_id: int) -> void:
+	if !multiplayer.is_server(): return
+	if !game: return
+	game.send_update()
+
 
 # Broadcasts a message to all clients
 func broadcast(message: String) -> void:
