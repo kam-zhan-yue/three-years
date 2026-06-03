@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://hw0mwfldckje"]
+
+[ext_resource type="Script" uid="uid://dm45vfaqj6puc" path="res://scripts/ui/connection_popup.gd" id="1_ctbni"]
+
+[node name="ConnectionPopup" type="CenterContainer" unique_id=482162628]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ctbni")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1761150376]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Connect" type="Button" parent="VBoxContainer" unique_id=649269367]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Connect"

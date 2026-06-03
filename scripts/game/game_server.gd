@@ -1,9 +1,9 @@
 class_name GameServer
 extends Node
 
-var players: Dictionary[int, String] = {}
+var players: Dictionary[int, Game.Character] = {}
 
-func register_player(id: int, player: String) -> void:
-	players[id] = player
+func add_player(id: int, character: Game.Character) -> void:
+	players[id] = character
 	if len(players) == 2:
 		Client.start_game()

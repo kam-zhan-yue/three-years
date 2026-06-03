@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d6w68osi1iul"]
 
-[ext_resource type="Script" uid="uid://dm45vfaqj6puc" path="res://scripts/ui/connection_popup.gd" id="1_nt7q6"]
+[ext_resource type="Script" uid="uid://2f3smna3y2t2" path="res://scripts/ui/character_selection_popup.gd" id="1_nt7q6"]
 
 [node name="UI" type="Control" unique_id=1811158779]
 layout_mode = 3
@@ -10,20 +10,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=510035794]
-layout_mode = 1
-anchors_preset = 15
+[node name="CharacterSelectionPopup" type="CenterContainer" parent="." unique_id=482162628]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nt7q6")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1554713948]
+[node name="VBoxContainer" type="VBoxContainer" parent="CharacterSelectionPopup" unique_id=1761150376]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Connect" type="Button" parent="CenterContainer/VBoxContainer" unique_id=768424861]
+[node name="Alex" type="Button" parent="CharacterSelectionPopup/VBoxContainer" unique_id=649269367]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Connect"
+text = "Alex"
+
+[node name="Wato" type="Button" parent="CharacterSelectionPopup/VBoxContainer" unique_id=926618756]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Wato"

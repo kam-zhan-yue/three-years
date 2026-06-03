@@ -56,4 +56,12 @@ spawn_path = NodePath("../..")
 script = ExtResource("2_0wfyh")
 network_player = ExtResource("3_sugp2")
 
+[node name="AlexSpawn" type="Marker3D" parent="GameManager" unique_id=1564376686]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6872962, 0, 0)
+
+[node name="WatoSpawn" type="Marker3D" parent="GameManager" unique_id=1493195581]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.393928, 0, 0)
+
 [node name="UI" parent="." unique_id=1811158779 instance=ExtResource("1_o5qli")]

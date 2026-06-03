@@ -22,6 +22,11 @@ func print(message: String) -> void:
 @rpc("authority", "call_remote", "reliable")
 func _print_message(text: String) -> void:
 	Global.print(text)
+	
+# Selects the character
+func select_character(character: Game.Character) -> void:
+	game.set_character(character)
+	Server.select_character(character)
 
 # Starts the game
 func start_game() -> void:

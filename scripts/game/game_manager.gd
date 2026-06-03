@@ -8,13 +8,15 @@ var game_client: GameClient
 var game_server: GameServer
 
 @onready var spawner := %Spawner as Spawner
+@onready var alex_spawn := %AlexSpawn as Marker3D
+@onready var wato_spawn := %WatoSpawn as Marker3D
 
 func _ready() -> void:
 	Client.started.connect(_init_client)
 	Server.started.connect(_init_server)
-	multiplayer.connected_to_server.connect(_on_connected)
-	multiplayer.peer_connected.connect(spawn_player)
 	spawner.spawned.connect(_spawned)
+	# multiplayer.peer_connected.connect(spawn_player)
+	Server.player_joined.connect(spawn_player)
 
 func _init_client() -> void:
 	game_client = GameClient.new()
@@ -23,9 +25,6 @@ func _init_client() -> void:
 func _init_server() -> void:
 	game_server = GameServer.new()
 	Server.init_game(game_server)
-
-func _on_connected() -> void:
-	Server.register(Global.id(), "oh yeah!")
 
 # Spawns players server-side
 func spawn_player(id: int) -> void:
@@ -38,4 +37,10 @@ func _spawned(node: Node) -> void:
 	var player := node as Player
 	Global.print("Spawned %s" % player.name)
 	if player.name == str(Global.id()):
-		game_client.add_player(player)
+		var spawn_pos := (
+			alex_spawn.global_position 
+			if game_client.character == Game.Character.Alex 
+			else wato_spawn.global_position
+		)
+		player.global_position = spawn_pos
+		game_client.set_player(player)

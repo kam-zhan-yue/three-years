@@ -4,6 +4,7 @@ var peer: ENetMultiplayerPeer
 var game: GameServer
 
 signal started
+signal player_joined(id: int)
 
 func start() -> void:
 	peer = ENetMultiplayerPeer.new()
@@ -24,11 +25,12 @@ func _broadcast_message(message: String) -> void:
 	if !multiplayer.is_server(): return
 	Client.print(message)
 
-# Registers a player
-func register(id: int, player: String) -> void:
-	_register.rpc_id(1, id, player)
+# Selects a character
+func select_character(character: Game.Character) -> void:
+	_select_character.rpc_id(1, Global.id(), character)
 
 @rpc("any_peer", "call_remote", "reliable")
-func _register(id: int, player: String) -> void:
+func _select_character(id: int, character: Game.Character) -> void:
 	if !multiplayer.is_server(): return
-	game.register_player(id, player)
+	player_joined.emit(id)
+	game.add_player(id, character)
