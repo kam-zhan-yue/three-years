@@ -5,11 +5,17 @@ extends CharacterBody3D
 
 var GRAVITY = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+var activated := false
+
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 
+func activate() -> void:
+	activated = true
+
 func _physics_process(delta: float) -> void:
 	if !is_multiplayer_authority(): return
+	if !activated: return
 
 	if not is_on_floor():
 		velocity.y -= GRAVITY * delta

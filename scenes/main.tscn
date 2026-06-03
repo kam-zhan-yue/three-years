@@ -23,6 +23,7 @@ glow_enabled = true
 size = Vector3(10, 1, 10)
 
 [node name="Main" type="Node3D" unique_id=1814151517]
+script = ExtResource("1_jyhfs")
 
 [node name="Environment" type="Node3D" parent="." unique_id=1914465089]
 
@@ -45,16 +46,14 @@ size = Vector3(10, 1, 10)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/CSGBox3D/StaticBody3D" unique_id=1554779668]
 shape = SubResource("BoxShape3D_sugp2")
 
-[node name="Server" type="Node3D" parent="." unique_id=252017715]
-script = ExtResource("1_jyhfs")
+[node name="GameManager" type="Node3D" parent="." unique_id=1404272880]
+script = ExtResource("5_tbgi4")
 
-[node name="UI" parent="." unique_id=1811158779 instance=ExtResource("1_o5qli")]
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1386750837]
+[node name="Spawner" type="MultiplayerSpawner" parent="GameManager" unique_id=1386750837]
+unique_name_in_owner = true
 _spawnable_scenes = PackedStringArray("uid://ci7yeyteds4rj")
-spawn_path = NodePath("..")
+spawn_path = NodePath("../..")
 script = ExtResource("2_0wfyh")
 network_player = ExtResource("3_sugp2")
 
-[node name="Node3D" type="Node3D" parent="." unique_id=1404272880]
-script = ExtResource("5_tbgi4")
+[node name="UI" parent="." unique_id=1811158779 instance=ExtResource("1_o5qli")]

@@ -8,4 +8,4 @@ func _ready() -> void:
 
 func _on_connect_clicked() -> void:
 	Global.set_inactive(self)
-	Server.start_client()
+	Client.start()
