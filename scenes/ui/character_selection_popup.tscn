@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dtaafxtc3bx6o"]
+
+[ext_resource type="Script" uid="uid://2f3smna3y2t2" path="res://scripts/ui/character_selection_popup.gd" id="1_kmxxh"]
+
+[node name="CharacterSelectionPopup" type="Control" unique_id=582069835]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kmxxh")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=506793811]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1550054808]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Alex" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2138826765]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Alex"
+
+[node name="Wato" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2096207293]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Wato"

@@ -44,3 +44,19 @@ func _select_character(id: int, character: Game.Character) -> void:
 	if !multiplayer.is_server(): return
 	player_joined.emit(id)
 	game.add_player(id, character)
+
+
+func continue_dialogue(line: Dialogue.Line) -> void:
+	_continue_dialogue.rpc_id(1, Global.id(), inst_to_dict(line))
+
+@rpc("any_peer", "call_remote", "reliable")
+func _continue_dialogue(client_id: int, line: Dictionary) -> void:
+	if !multiplayer.is_server(): return
+	Global.debug("Progressing dialogue...")
+	
+	# Validate that the player can request to continue this dialogue
+	var l := dict_to_inst(line) as Dialogue.Line
+	var character := game.game.players[client_id]
+	if character != l.speaker: return
+
+	game.continue_dialogue(l)

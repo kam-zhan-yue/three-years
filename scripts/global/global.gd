@@ -3,6 +3,8 @@ extends Node
 const IP_ADDRESS: String = "localhost"
 const PORT: int = 42069
 
+var _debug = false
+
 func id_str() -> String:
 	return str(id())
 
@@ -10,10 +12,13 @@ func id_str() -> String:
 func id() -> int:
 	return multiplayer.get_unique_id()
 
-func print(text: String) ->  void:
+func debug(text: String) ->  void:
+	if !_debug: return
+	print(text)
+
+func print(text: String) -> void:
 	var authority := "SERVER" if multiplayer.is_server() else "CLIENT"
 	print("%s-%s | %s" % [authority, multiplayer.get_unique_id(), text])
-
 
 func set_active(node: Node) -> void:
 	_active(node, true)

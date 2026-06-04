@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://d6w68osi1iul"]
 
-[ext_resource type="Script" uid="uid://2f3smna3y2t2" path="res://scripts/ui/character_selection_popup.gd" id="1_nt7q6"]
+[ext_resource type="PackedScene" uid="uid://dtaafxtc3bx6o" path="res://scenes/ui/character_selection_popup.tscn" id="1_nt7q6"]
+[ext_resource type="Script" uid="uid://w8pw0m7628h0" path="res://scripts/ui/dialogue_popup.gd" id="2_x4jx1"]
+[ext_resource type="Script" uid="uid://8cw6liuay0db" path="res://scripts/ui/debug_popup.gd" id="3_yev5y"]
 
 [node name="UI" type="Control" unique_id=1811158779]
 layout_mode = 3
@@ -10,24 +12,105 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CharacterSelectionPopup" type="CenterContainer" parent="." unique_id=482162628]
-layout_mode = 0
+[node name="CharacterSelectionPopup" parent="." unique_id=1002664778 instance=ExtResource("1_nt7q6")]
+layout_mode = 1
+
+[node name="DialoguePopup" type="Control" parent="." unique_id=2093584728]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -210.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0, 1)
+script = ExtResource("2_x4jx1")
+
+[node name="MarginContainer" type="MarginContainer" parent="DialoguePopup" unique_id=1648778322]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_nt7q6")
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CharacterSelectionPopup" unique_id=1761150376]
+[node name="Panel" type="Panel" parent="DialoguePopup/MarginContainer" unique_id=314771036]
 layout_mode = 2
-theme_override_constants/separation = 10
 
-[node name="Alex" type="Button" parent="CharacterSelectionPopup/VBoxContainer" unique_id=649269367]
+[node name="MarginContainer" type="MarginContainer" parent="DialoguePopup/MarginContainer/Panel" unique_id=694835560]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialoguePopup/MarginContainer/Panel/MarginContainer" unique_id=455799951]
+layout_mode = 2
+
+[node name="Speaker" type="RichTextLabel" parent="DialoguePopup/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=286507049]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Speaker"
+fit_content = true
+
+[node name="Dialogue" type="RichTextLabel" parent="DialoguePopup/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=2111990833]
+unique_name_in_owner = true
+layout_mode = 2
+text = "This is some dialogue"
+fit_content = true
+
+[node name="DebugPopup" type="Control" parent="." unique_id=1802740079]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 160.0
+offset_bottom = 110.0
+script = ExtResource("3_yev5y")
+
+[node name="Panel" type="Panel" parent="DebugPopup" unique_id=1177424520]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DebugPopup/Panel" unique_id=687494140]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugPopup/Panel/MarginContainer" unique_id=236237903]
+layout_mode = 2
+
+[node name="Name" type="RichTextLabel" parent="DebugPopup/Panel/MarginContainer/VBoxContainer" unique_id=1725592449]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Alex"
+fit_content = true
 
-[node name="Wato" type="Button" parent="CharacterSelectionPopup/VBoxContainer" unique_id=926618756]
+[node name="ID" type="RichTextLabel" parent="DebugPopup/Panel/MarginContainer/VBoxContainer" unique_id=739752352]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Wato"
+text = "12355"
+fit_content = true

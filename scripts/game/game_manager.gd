@@ -30,12 +30,12 @@ func _init_server() -> void:
 func spawn_player(id: int) -> void:
 	if !multiplayer.is_server(): return
 	var player := spawner.spawn_player(id)
-	Global.print("Server spawning %s" % player.name)
+	Global.debug("Server spawning %s" % player.name)
 
 # Called clent-side
 func _spawned(node: Node) -> void:
 	var player := node as Player
-	Global.print("Spawned %s" % player.name)
+	Global.debug("Spawned %s" % player.name)
 	if player.name == str(Global.id()):
 		var spawn_pos := (
 			alex_spawn.global_position 

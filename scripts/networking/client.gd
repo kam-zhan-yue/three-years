@@ -4,7 +4,10 @@ var peer: ENetMultiplayerPeer
 var game: GameClient
 
 signal started
-signal game_updated(GameState)
+signal game_updated(state: Game.GameState)
+signal dialogue_started(line: Dialogue.Line)
+signal dialogue_continued(line: Dialogue.Line)
+signal dialogue_ended()
 
 func start() -> void:
 	peer = ENetMultiplayerPeer.new()
@@ -16,7 +19,7 @@ func start() -> void:
 func init_game(g: GameClient) -> void:
 	game = g
 
-# Prints a message to the console
+#==================Debugging====================
 func print(message: String) -> void:
 	_print_message.rpc(message)
 
@@ -24,16 +27,44 @@ func print(message: String) -> void:
 func _print_message(text: String) -> void:
 	Global.print(text)
 
-# Update the game state
-func update_game(state: GameState) -> void:
+#==================Dialogue====================
+func start_dialogue(line: Dialogue.Line) -> void:
+	_start_dialogue.rpc(inst_to_dict(line))
+
+@rpc("authority", "call_remote", "reliable")
+func _start_dialogue(line: Dictionary) -> void:
+	var l := dict_to_inst(line) as Dialogue.Line
+	Global.debug("Starting Dialogue: %s" % l.body)
+	dialogue_started.emit(l)
+
+func continue_dialogue(line: Dialogue.Line) -> void:
+	_continue_dialogue.rpc(inst_to_dict(line))
+
+@rpc("authority", "call_remote", "reliable")
+func _continue_dialogue(line: Dictionary) -> void:
+	var l := dict_to_inst(line) as Dialogue.Line
+	Global.debug("Continuing Dialogue: %s" % l.body)
+	dialogue_continued.emit(l)
+
+func end_dialogue() -> void:
+	_end_dialogue.rpc()
+
+@rpc("authority", "call_remote", "reliable")
+func _end_dialogue() -> void:
+	dialogue_ended.emit()
+
+
+#==================Game State====================
+func update_game(state: Game.GameState) -> void:
 	_update_game.rpc(inst_to_dict(state))
 
 @rpc("authority", "call_remote", "reliable")
 func _update_game(state: Dictionary) -> void:
-	var game_state = dict_to_inst(state) as GameState
+	var game_state = dict_to_inst(state) as Game.GameState
 	game_updated.emit(game_state)
 	
-# Selects the character
+
+#==================Character Select====================
 func select_character(character: Game.Character) -> void:
 	game.set_character(character)
 	Server.select_character(character)
