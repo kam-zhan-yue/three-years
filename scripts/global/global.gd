@@ -5,9 +5,23 @@ const PORT: int = 42069
 
 var _debug = false
 
+func get_event_type(node: String) -> Game.EventType:
+	if node[0] == "D":
+		return Game.EventType.Dialogue
+	return Game.EventType.Game
+
+func get_event(node: String) -> int:
+	var splits := node.split('-')
+	return int(splits[1])
+
+func dialogue_event(node: int) -> String:
+	return "D-" + str(node)
+
+func game_event(node: int) -> String:
+	return "G-" + str(node)
+
 func id_str() -> String:
 	return str(id())
-
 
 func id() -> int:
 	return multiplayer.get_unique_id()

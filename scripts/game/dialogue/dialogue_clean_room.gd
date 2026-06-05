@@ -1,4 +1,4 @@
-class_name ScriptCleanRoom extends DialogueScript
+class_name DialogueCleanRoom extends DialogueScript
 
 func get_dialogue() -> Array[Dialogue.Line]:
 	return [

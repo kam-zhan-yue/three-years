@@ -1,4 +1,4 @@
-class_name ScriptCookLunch extends DialogueScript
+class_name DialogueCookLunch extends DialogueScript
 
 func get_dialogue() -> Array[Dialogue.Line]:
 	return [

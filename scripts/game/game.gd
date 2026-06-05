@@ -9,34 +9,84 @@ enum Character {
 	Wato,
 }
 
-enum State {
-	INTRO,
-	CLEAN_ROOM,
-	COOK_LUNCH,
-	EAT_LUNCH,
+enum EventType {
+	Dialogue,
+	Game
+}
+
+enum Event {
+	Clean,
+	Cook,
+	Eat,
 }
 
 var players: Dictionary[int, Game.Character] = {}
-var dialogue_script: DialogueScript
-var current_line := 0
 
 var DIALOGUES: Dictionary[Dialogue.Event, DialogueScript] = {
-	Dialogue.Event.Clean: ScriptCleanRoom.new(),
-	Dialogue.Event.Cook: ScriptCookLunch.new(),
-	Dialogue.Event.Eat: ScriptEatLunch.new(),
+	Dialogue.Event.Clean: DialogueCleanRoom.new(),
+	Dialogue.Event.Cook: DialogueCookLunch.new(),
+	Dialogue.Event.Eat: DialogueEatLunch.new(),
 }
 
+var current_script: DialogueScript
+var current_line := 0
+
+var EVENTS: Dictionary[Event, GameEvent] = {
+	Event.Clean: GameEventClean.new(),
+	Event.Cook: GameEventCook.new(),
+	Event.Eat: GameEventEat.new(),
+}
+
+var current_event: GameEvent
+
+var FLOW := [
+	Global.dialogue_event(Dialogue.Event.Clean),
+	Global.game_event(Event.Clean),
+	Global.dialogue_event(Dialogue.Event.Cook),
+	Global.game_event(Event.Cook),
+	Global.dialogue_event(Dialogue.Event.Eat),
+	Global.game_event(Event.Eat),
+]
+
+var flow := 0
+
 func start() -> void:
-	start_dialogue_event(Dialogue.Event.Clean)
+	enter_flow(0)
 
 func get_state() -> GameState:
 	var state := GameState.new()
 	state.players = players
 	return state
 
+# ============FLOW HANDLING=================
+func enter_flow(index: int) -> void:
+	flow = index
+	if flow >= len(FLOW):
+		return # end flow here
+	var event_type := Global.get_event_type(FLOW[index])
+	var event := Global.get_event(FLOW[index])
+	Global.print("Entering %s" % FLOW[index])
+	if event_type == EventType.Dialogue:
+		start_dialogue_event(event)
+	elif event_type == EventType.Game:
+		start_game_event(event)
+
+func next_flow() -> void:
+	enter_flow(flow + 1)
+
+# ============EVENT HANDLING=================
+func start_game_event(event: Game.Event) -> void:
+	if event not in EVENTS: return
+	current_event = EVENTS[event]
+	start_event()
+
+func start_event() -> void:
+	pass
+
+# ============DIALOGUE HANDLING=================
 func start_dialogue_event(event: Dialogue.Event) -> void:
 	if event not in DIALOGUES: return
-	dialogue_script = DIALOGUES[event]
+	current_script = DIALOGUES[event]
 	start_dialogue()
 
 func start_dialogue() -> void:
@@ -61,10 +111,11 @@ func continue_dialogue(line: Dialogue.Line) -> void:
 func end_dialogue() -> void:
 	Global.debug("Ending Dialogue.")
 	Client.end_dialogue()
+	next_flow()
 
 
 
 # Private Functions
 func _get_current_line() -> Dialogue.Line:
-	if current_line >= len(dialogue_script.get_dialogue()): return 
-	return dialogue_script.get_dialogue().get(current_line) as Dialogue.Line
+	if current_line >= len(current_script.get_dialogue()): return 
+	return current_script.get_dialogue().get(current_line) as Dialogue.Line
