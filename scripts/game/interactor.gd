@@ -13,34 +13,23 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is not Interactable: return
-
 	var interactable := body as Interactable
 	current = interactable
-
-	if interactable.interacting: return
-	Global.print("Show Interactable UI")
+	if interactable.can_interact():
+		interactable.hover()
+		Global.print("Show Interactable UI")
 
 func _on_body_exited(body: Node3D) -> void:
 	if body is Interactable:
 		var interactable := body as Interactable
 		if interactable == current:
+			Server.stop_interacting(current.id())
 			current = null
-
-# func _process(delta: float) -> void:
-# 	if current == null: return
-# 	current.progress += delta
-# 	Global.print("what the %s" % current.progress)
 
 func _input(event: InputEvent) -> void:
 	if current == null: return
-	if event.is_action_pressed("interact"):
-		if !current.interacting:
-			Server.start_interacting(current.id())
-		else:
-			Global.print("Cannot interact with %s as it is busy" % current.name)
+	if event.is_action_pressed("interact") and current.can_interact():
+		Server.start_interacting(current.id())
 
-	if event.is_action_released("interact"):
-		if current.interacting:
-			Server.stop_interacting(current.id())
-		else:
-			Global.print("Cannot stop with %s as it hasn't started" % current.name)
+	if event.is_action_released("interact") and current.interacting:
+		Server.stop_interacting(current.id())

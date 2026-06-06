@@ -1,20 +1,34 @@
 [gd_scene format=3 uid="uid://cag3hb86gdnhf"]
 
 [ext_resource type="Script" uid="uid://dw142mpdp1u7b" path="res://scripts/game/interactable.gd" id="1_56v82"]
+[ext_resource type="Shader" uid="uid://bfslv155la26y" path="res://shaders/interactable.gdshader" id="2_8o6w2"]
 [ext_resource type="Script" uid="uid://ds7q35xd3j4e5" path="res://scripts/ui/interactable_popup.gd" id="2_ij5l6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3aalw"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w4xns"]
+render_priority = 0
+shader = ExtResource("2_8o6w2")
+shader_parameter/normal_color = Color(1, 1, 1, 1)
+shader_parameter/completed_color = Color(0, 1, 0, 1)
+shader_parameter/completed = false
+
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ij5l6"]
 properties/0/path = NodePath(".:progress")
-properties/0/spawn = true
-properties/0/replication_mode = 1
+properties/0/spawn = false
+properties/0/replication_mode = 2
 properties/1/path = NodePath(".:interacting")
-properties/1/spawn = true
-properties/1/replication_mode = 1
+properties/1/spawn = false
+properties/1/replication_mode = 2
+properties/2/path = NodePath(".:completed")
+properties/2/spawn = false
+properties/2/replication_mode = 2
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_56v82"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8o6w2"]
+bg_color = Color(1, 0.30545545, 0.48939055, 1)
 
 [node name="Interactable" type="StaticBody3D" unique_id=1312227999]
 script = ExtResource("1_56v82")
@@ -23,6 +37,8 @@ script = ExtResource("1_56v82")
 shape = SubResource("BoxShape3D_3aalw")
 
 [node name="Model" type="CSGBox3D" parent="." unique_id=211024313]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_w4xns")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1853410800]
 unique_name_in_owner = true
@@ -49,3 +65,4 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 27.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_8o6w2")

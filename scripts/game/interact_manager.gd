@@ -12,12 +12,17 @@ func _ready() -> void:
 			var interactable := child as Interactable
 			interactables[interactable.id()] = interactable
 
-func interact_start(interact_id: String) -> void:
+func server_interact_start(interact_id: String) -> void:
 	if interact_id not in interactables: return
 	var interactable = interactables[interact_id]
-	interactable.interact()
+	interactable.server_interact()
 	
-func interact_stop(interact_id: String) -> void:
+func server_interact_stop(interact_id: String) -> void:
 	if interact_id not in interactables: return
 	var interactable = interactables[interact_id]
-	interactable.stop()
+	interactable.server_stop()
+
+func client_interact_complete(interact_id: String) -> void:
+	if interact_id not in interactables: return
+	var interactable = interactables[interact_id]
+	interactable.client_completed()

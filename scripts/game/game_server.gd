@@ -89,7 +89,7 @@ func _get_current_line() -> Dialogue.Line:
 
 # ============INTERACT HANDLING=================
 func start_interacting(interact_id: String) -> void:
-	interact_manager.interact_start(interact_id)
+	interact_manager.server_interact_start(interact_id)
 
 func stop_interacting(interact_id: String) -> void:
-	interact_manager.interact_stop(interact_id)
+	interact_manager.server_interact_stop(interact_id)

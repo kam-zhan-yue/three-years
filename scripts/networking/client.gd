@@ -85,3 +85,11 @@ func start_game() -> void:
 @rpc("authority", "call_remote", "reliable")
 func _start_game() -> void:
 	game.start_game()
+		
+#==================Interactions====================
+func complete_interaction(interact_id: String) -> void:
+	_complete_interaction.rpc(interact_id)
+
+@rpc("authority", "call_remote", "reliable")
+func _complete_interaction(interact_id: String) -> void:
+	game.complete_interaction(interact_id)

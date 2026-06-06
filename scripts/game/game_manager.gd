@@ -21,7 +21,7 @@ func _ready() -> void:
 	Server.player_joined.connect(spawn_player)
 
 func _init_client() -> void:
-	game_client = GameClient.new()
+	game_client = GameClient.new(interact_manager)
 	Client.init_game(game_client)
 
 func _init_server() -> void:
