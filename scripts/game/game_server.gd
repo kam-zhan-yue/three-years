@@ -12,7 +12,9 @@ var current_line := 0
 
 func _init(im: InteractManager) -> void:
 	interact_manager = im
-
+	game.EVENTS[Game.Event.Clean].interact_manager = im
+	for event in game.EVENTS.values():
+		event.ended.connect(_end_event)
 
 func add_player(id: int, character: Game.Character) -> void:
 	players[id] = character
@@ -54,7 +56,12 @@ func next_flow() -> void:
 func start_event(event: Game.Event) -> void:
 	if event not in game.EVENTS: return
 	current_event = game.EVENTS[event]
+	current_event.start()
 	Client.start_game_event(event)
+
+func _end_event() -> void:
+	Global.debug("Ending Event.")
+	next_flow()
 
 # ============DIALOGUE HANDLING=================
 func start_dialogue_event(event: Dialogue.Event) -> void:

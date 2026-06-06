@@ -6,11 +6,18 @@ extends Node3D
 
 var interactables: Dictionary[String, Interactable]
 
+signal on_completed
+
 func _ready() -> void:
 	for child in interactable_holder.get_children():
 		if child is Interactable:
 			var interactable := child as Interactable
+			interactable.on_completed.connect(_on_completed)
 			interactables[interactable.id()] = interactable
+
+func server_activate() -> void:
+	for interactable in interactables.values():
+		interactable.server_activate()
 
 func server_interact_start(interact_id: String) -> void:
 	if interact_id not in interactables: return
@@ -26,3 +33,9 @@ func client_interact_complete(interact_id: String) -> void:
 	if interact_id not in interactables: return
 	var interactable = interactables[interact_id]
 	interactable.client_completed()
+
+func _on_completed() -> void:
+	# Check if all the interactables are completed
+	for interactable in interactables.values():
+		if !interactable.completed: return
+	on_completed.emit()

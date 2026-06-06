@@ -77,14 +77,6 @@ func _update_game(state: Dictionary) -> void:
 func select_character(character: Game.Character) -> void:
 	game.set_character(character)
 	Server.select_character(character)
-
-# Starts the game
-func start_game() -> void:
-	_start_game.rpc()
-
-@rpc("authority", "call_remote", "reliable")
-func _start_game() -> void:
-	game.start_game()
 		
 #==================Interactions====================
 func complete_interaction(interact_id: String) -> void:
