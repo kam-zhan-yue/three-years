@@ -45,7 +45,22 @@ func _select_character(id: int, character: Game.Character) -> void:
 	player_joined.emit(id)
 	game.add_player(id, character)
 
+#==================Interactions====================
+func start_interacting(interact_id: String) -> void:
+	_start_interacting.rpc_id(1, interact_id)
 
+@rpc("any_peer", "call_remote", "reliable")
+func _start_interacting(interact_id: String) -> void:
+	game.start_interacting(interact_id)
+
+func stop_interacting(interact_id: String) -> void:
+	_stop_interacting.rpc_id(1, interact_id)
+
+@rpc("any_peer", "call_remote", "reliable")
+func _stop_interacting(interact_id: String) -> void:
+	game.stop_interacting(interact_id)
+
+#==================Dialogue====================
 func continue_dialogue(line: Dialogue.Line) -> void:
 	_continue_dialogue.rpc_id(1, Global.id(), inst_to_dict(line))
 
@@ -56,7 +71,7 @@ func _continue_dialogue(client_id: int, line: Dictionary) -> void:
 	
 	# Validate that the player can request to continue this dialogue
 	var l := dict_to_inst(line) as Dialogue.Line
-	var character := game.game.players[client_id]
+	var character := game.players[client_id]
 	if character != l.speaker: return
 
 	game.continue_dialogue(l)

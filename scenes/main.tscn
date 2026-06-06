@@ -4,7 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://d6w68osi1iul" path="res://scenes/ui.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://pqdksl1d3rrh" path="res://scripts/networking/spawner.gd" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://ci7yeyteds4rj" path="res://scenes/player.tscn" id="3_sugp2"]
+[ext_resource type="Script" uid="uid://be4m3qov8whtv" path="res://scripts/game/interact_manager.gd" id="5_o6xl0"]
 [ext_resource type="Script" uid="uid://bfgb2sskms4j8" path="res://scripts/game/game_manager.gd" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://cag3hb86gdnhf" path="res://scenes/interactable.tscn" id="6_tefeu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0wfyh"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -64,4 +66,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6872962, 0, 0)
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.393928, 0, 0)
 
+[node name="InteractManager" type="Node3D" parent="GameManager" unique_id=1726704203]
+unique_name_in_owner = true
+script = ExtResource("5_o6xl0")
+
 [node name="UI" parent="." unique_id=1811158779 instance=ExtResource("1_o5qli")]
+
+[node name="Interactables" type="Node3D" parent="." unique_id=245774459]
+unique_name_in_owner = true
+
+[node name="Interactable" parent="Interactables" unique_id=211024313 instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1530821, -0.3753929, -2.448494)

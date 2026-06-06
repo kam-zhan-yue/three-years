@@ -18,3 +18,6 @@ func set_player(p: Player) -> void:
 	player = p
 	if started:
 		player.activate()
+
+func start_event(_event: Game.Event) -> void:
+	player.activate()

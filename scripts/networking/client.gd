@@ -27,6 +27,15 @@ func print(message: String) -> void:
 func _print_message(text: String) -> void:
 	Global.print(text)
 
+#==================Game Events====================
+func start_game_event(event: Game.Event) -> void:
+	_start_game_event.rpc(event)
+
+@rpc("authority", "call_remote", "reliable")
+func _start_game_event(event: Game.Event) -> void:
+	Global.debug("Starting Game Event: %s" % Global.EVENT_NAME[event])
+	game.start_event(event)
+
 #==================Dialogue====================
 func start_dialogue(line: Dialogue.Line) -> void:
 	_start_dialogue.rpc(inst_to_dict(line))
@@ -76,5 +85,3 @@ func start_game() -> void:
 @rpc("authority", "call_remote", "reliable")
 func _start_game() -> void:
 	game.start_game()
-
-

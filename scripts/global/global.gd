@@ -3,7 +3,14 @@ extends Node
 const IP_ADDRESS: String = "localhost"
 const PORT: int = 42069
 
+
 var _debug = false
+
+const EVENT_NAME: Dictionary[Game.Event, String] = {
+	Game.Event.Clean: "Cleaning",
+	Game.Event.Cook: "Cooking",
+	Game.Event.Eat: "Eating",
+}
 
 func get_event_type(node: String) -> Game.EventType:
 	if node[0] == "D":
@@ -31,8 +38,11 @@ func debug(text: String) ->  void:
 	print(text)
 
 func print(text: String) -> void:
-	var authority := "SERVER" if multiplayer.is_server() else "CLIENT"
-	print("%s-%s | %s" % [authority, multiplayer.get_unique_id(), text])
+	if multiplayer.is_server():
+		print("SERVER | %s" % text)
+	else:
+		print("CLIENT %s | %s" % [id(), text])
+
 
 func set_active(node: Node) -> void:
 	_active(node, true)
