@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b2dcecag3oyvq"]
+
+[ext_resource type="Script" uid="uid://6bo3rbawkvjv" path="res://scripts/game/ingredient.gd" id="1_yfppv"]
+[ext_resource type="Material" uid="uid://c5x2x47qvw5lw" path="res://materials/prototype_red.tres" id="2_v75bt"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_trceg"]
+radius = 0.2
+
+[node name="Mirin" type="StaticBody3D" unique_id=736880595]
+script = ExtResource("1_yfppv")
+type = 1
+
+[node name="Model" type="CSGSphere3D" parent="." unique_id=1239571324]
+radius = 0.2
+material = ExtResource("2_v75bt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1392274281]
+shape = SubResource("SphereShape3D_trceg")

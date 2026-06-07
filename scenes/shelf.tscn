@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://c6hnu3e567lrx"]
+
+[ext_resource type="PackedScene" uid="uid://ddpiknbi24k6j" path="res://scenes/ingredients/sake.tscn" id="1_00mi8"]
+[ext_resource type="Script" uid="uid://cdqr6axtduifh" path="res://scripts/game/shelf_manager.gd" id="1_7q781"]
+[ext_resource type="PackedScene" uid="uid://b2dcecag3oyvq" path="res://scenes/ingredients/mirin.tscn" id="1_viw0s"]
+[ext_resource type="PackedScene" uid="uid://cwos48rvtrdv7" path="res://scenes/ingredients/soy_sauce.tscn" id="3_7q781"]
+
+[node name="ShelfManager" type="Node3D" unique_id=346781641]
+script = ExtResource("1_7q781")
+
+[node name="Ingredients" type="Node3D" parent="." unique_id=1308658431]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46449, -0.08415067, -0.5665158)
+
+[node name="Mirin" parent="Ingredients" unique_id=736880595 instance=ExtResource("1_viw0s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09229231, 0.21820995, -0.24514806)
+
+[node name="Sake" parent="Ingredients" unique_id=710074819 instance=ExtResource("1_00mi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014313221, 0.28069633, 0.34281933)
+
+[node name="SoySauce" parent="Ingredients" unique_id=152051225 instance=ExtResource("3_7q781")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11938667, 0.15786044, 0.060354948)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=214097341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46449, -0.08415067, -0.5665158)
+size = Vector3(1, 1.5, 1)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D" unique_id=262392247]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.081917286, -0.34048137, 0)
+operation = 2
+size = Vector3(0.9, 0.7, 0.9)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" unique_id=724038209]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.081917286, 0.38725665, 0)
+operation = 2
+size = Vector3(0.9, 0.7, 0.9)

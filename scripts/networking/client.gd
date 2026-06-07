@@ -84,5 +84,9 @@ func _complete_interaction(interact_id: String) -> void:
 #==================Cameras====================
 @rpc("authority", "call_remote", "reliable")
 func switch_camera(camera: CameraManager.Camera) -> void:
-	Global.print("Switcing Camera")
 	Services.camera.client_switch_camera(camera)
+
+#==================Shelf====================
+@rpc("authority", "call_remote", "reliable")
+func activate_shelf() -> void:
+	Services.shelf.client_activate()

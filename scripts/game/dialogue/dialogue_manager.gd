@@ -29,18 +29,35 @@ func server_start(dialogue: DialogueScript) -> void:
 
 func server_continue(line: Dialogue.Line) -> void:
 	var current := _get_current_line()
-	# If we are not at the current line, then don't progress
-	if current.speaker != line.speaker or current.body != line.body: return
+	if current.speaker != line.speaker or current.body != line.body: 
+		Global.error("Line expecting %s, got %s" % [Global.SPEAKERS[current.speaker], Global.SPEAKERS[line.speaker]])
+		return
+	if line.response != null: 
+		Global.error("Line Expecting a response")
+		return
 
-	# If the line needs a reponse, then don't progress
-	if line.response != null: return
+	_continue()
 
+func server_respond(character: Game.Character, respond_id: String) -> void:
+	var current := _get_current_line()
+	if current.response == null:
+		Global.error("Attempting to respond to a line with no response")
+		return
+	if current.response.from != character: 
+		Global.error("Response expecting %s, got %s" % [Global.SPEAKERS[current.response.from], Global.SPEAKERS[character]])
+		return
+	if respond_id not in current.response.ids:
+		Global.error("%s not in response ids: %s" % [respond_id, current.response.ids])
+		return
+	_continue()
+
+func _continue() -> void:
 	current_line += 1
 	var next_line := _get_current_line()
 	if !next_line:
 		server_end_dialogue()
 	else:
-		server_trigger_event(line)
+		server_trigger_event(next_line)
 		Client.continue_dialogue(next_line)
 
 func server_trigger_event(line: Dialogue.Line) -> void:

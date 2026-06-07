@@ -79,5 +79,16 @@ func _continue_dialogue(client_id: int, line: Dictionary) -> void:
 #==================Camera====================
 func switch_camera(character: Game.Character, camera: CameraManager.Camera) -> void:
 	var id := game.get_player_id(character)
-	Global.print("RPC to %s" % id)
 	Client.switch_camera.rpc_id(id, camera)
+
+#==================Camera====================
+func activate_shelf(character: Game.Character) -> void:
+	var id := game.get_player_id(character)
+	Client.activate_shelf.rpc_id(id)
+
+func select_ingredient(type: String) -> void:
+	_select_ingredient.rpc_id(1, type)
+
+@rpc("any_peer", "call_remote", "reliable")
+func _select_ingredient(type: String) -> void:
+	game.select_ingredient(type)

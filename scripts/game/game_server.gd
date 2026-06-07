@@ -70,3 +70,7 @@ func start_interacting(interact_id: String) -> void:
 
 func stop_interacting(interact_id: String) -> void:
 	Services.interact.server_interact_stop(interact_id)
+
+# ============SHELF HANDLING=================
+func select_ingredient(type: String) -> void:
+	Services.shelf.server_select(type)

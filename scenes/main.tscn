@@ -3,10 +3,8 @@
 [ext_resource type="Script" uid="uid://tfha1p81v724" path="res://scripts/networking/entry_point.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://d6w68osi1iul" path="res://scenes/ui.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://pqdksl1d3rrh" path="res://scripts/networking/spawner.gd" id="2_0wfyh"]
-[ext_resource type="Material" uid="uid://bgvd2hap6671m" path="res://materials/prototype_blue.tres" id="2_ya4ey"]
-[ext_resource type="Material" uid="uid://c5x2x47qvw5lw" path="res://materials/prototype_red.tres" id="3_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://c6hnu3e567lrx" path="res://scenes/shelf.tscn" id="2_choun"]
 [ext_resource type="PackedScene" uid="uid://ci7yeyteds4rj" path="res://scenes/player.tscn" id="3_sugp2"]
-[ext_resource type="Material" uid="uid://bxh0jchwx8guk" path="res://materials/prototype_green.tres" id="4_trceg"]
 [ext_resource type="Script" uid="uid://be4m3qov8whtv" path="res://scripts/game/interact_manager.gd" id="5_o6xl0"]
 [ext_resource type="Script" uid="uid://bfgb2sskms4j8" path="res://scripts/game/game_manager.gd" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://cag3hb86gdnhf" path="res://scenes/interactable.tscn" id="6_tefeu"]
@@ -50,40 +48,6 @@ size = Vector3(10, 1, 10)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/CSGBox3D/StaticBody3D" unique_id=1554779668]
 shape = SubResource("BoxShape3D_sugp2")
 
-[node name="Shelf" type="Node3D" parent="Environment" unique_id=766243114]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Shelf" unique_id=1215788427]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46449, -0.08415067, -0.5665158)
-size = Vector3(1, 1.5, 1)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Shelf/CSGBox3D" unique_id=283640833]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.081917286, -0.34048137, 0)
-operation = 2
-size = Vector3(0.9, 0.7, 0.9)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Environment/Shelf/CSGBox3D" unique_id=1993568400]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.081917286, 0.38725665, 0)
-operation = 2
-size = Vector3(0.9, 0.7, 0.9)
-
-[node name="Node3D" type="Node3D" parent="Environment/Shelf/CSGBox3D" unique_id=1503742261]
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Shelf/CSGBox3D/Node3D" unique_id=1973777881]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014313221, 0.28069633, 0.34281933)
-radius = 0.092
-height = 0.467
-material = ExtResource("2_ya4ey")
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Environment/Shelf/CSGBox3D/Node3D" unique_id=1911970915]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09229231, 0.21820995, -0.24514806)
-radius = 0.2
-material = ExtResource("3_eb6dy")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Shelf/CSGBox3D/Node3D" unique_id=235686544]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11938667, 0.15786044, 0.060354948)
-size = Vector3(0.24, 0.24, 0.24)
-material = ExtResource("4_trceg")
-
 [node name="GameManager" type="Node3D" parent="." unique_id=1404272880]
 script = ExtResource("5_tbgi4")
 
@@ -114,6 +78,9 @@ metadata/_custom_type_script = "uid://n46uht8c54bg"
 [node name="CameraManager" type="Node3D" parent="GameManager" unique_id=2023782113]
 unique_name_in_owner = true
 script = ExtResource("10_eb6dy")
+
+[node name="ShelfManager" parent="GameManager" unique_id=346781641 instance=ExtResource("2_choun")]
+unique_name_in_owner = true
 
 [node name="UI" parent="." unique_id=1811158779 instance=ExtResource("1_o5qli")]
 unique_name_in_owner = true

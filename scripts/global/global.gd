@@ -37,11 +37,18 @@ func debug(text: String) ->  void:
 	if !_debug: return
 	print(text)
 
-func print(text: String) -> void:
+func error(text: String) -> void:
+	printerr(_format(text))
+
+func _format(text: String) -> String:
 	if multiplayer.is_server():
-		print("SERVER | %s" % text)
+		return "SERVER | %s" % text
 	else:
-		print("CLIENT %s | %s" % [id(), text])
+		return "CLIENT %s | %s" % [id(), text]
+
+# Not recursive? lmao
+func print(text: String) -> void:
+	print(_format(text))
 
 
 func set_active(node: Node) -> void:

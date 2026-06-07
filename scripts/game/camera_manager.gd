@@ -18,6 +18,9 @@ func _ready() -> void:
 	CAMERAS[Camera.Shelf] = shelf_camera
 	client_switch_camera(Camera.Main)
 
+func server_switch_camera(character: Game.Character, camera: Camera) -> void:
+	Server.switch_camera(character, camera)
+
 func client_switch_camera(next: Camera) -> void:
 	if next not in CAMERAS: return
 	current = next

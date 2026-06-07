@@ -1,4 +1,14 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://bxh0jchwx8guk"]
 
+[ext_resource type="Shader" uid="uid://civo5gj48jmp0" path="res://shaders/outline.gdshader" id="1_jmwbn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jmwbn"]
+render_priority = 0
+shader = ExtResource("1_jmwbn")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/size = 1.1
+shader_parameter/active = false
+
 [resource]
+next_pass = SubResource("ShaderMaterial_jmwbn")
 albedo_color = Color(0.30849507, 0.79, 0.2449, 1)

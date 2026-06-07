@@ -13,6 +13,7 @@ var game_server: GameServer
 @onready var interact_manager = %InteractManager as InteractManager
 @onready var dialogue_manager = %DialogueManager as DialogueManager
 @onready var camera_manager = %CameraManager as CameraManager
+@onready var shelf_manager = %ShelfManager as ShelfManager
 @onready var ui = %UI as UI
 
 
@@ -21,6 +22,7 @@ func _ready() -> void:
 	Services.interact = interact_manager
 	Services.dialogue = dialogue_manager
 	Services.camera = camera_manager
+	Services.shelf = shelf_manager
 
 	Client.started.connect(_init_client)
 	Server.started.connect(_init_server)

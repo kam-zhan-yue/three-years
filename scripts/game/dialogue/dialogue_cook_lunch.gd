@@ -5,6 +5,6 @@ func get_dialogue() -> Array[Dialogue.Line]:
 		Dialogue.Line
 			.new(Game.Character.Alex, "Could you pass me the salt?")
 			.with_event(Dialogue.Event.Ingredients)
-			.with_response(Dialogue.Response.new(Game.Character.Wato, ["SALT", "PEPPER"])),
+			.with_response(Dialogue.Response.new(Game.Character.Wato, ["SoySauce", "Mirin", "Sake"])),
 		Dialogue.Line.new(Game.Character.Wato, "Here you go!")
 	]

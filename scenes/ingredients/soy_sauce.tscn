@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cwos48rvtrdv7"]
+
+[ext_resource type="Script" uid="uid://6bo3rbawkvjv" path="res://scripts/game/ingredient.gd" id="1_lgvmv"]
+[ext_resource type="Material" uid="uid://bxh0jchwx8guk" path="res://materials/prototype_green.tres" id="2_jc60g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a8y0u"]
+size = Vector3(0.24, 0.24, 0.24)
+
+[node name="SoySauce" type="StaticBody3D" unique_id=152051225]
+script = ExtResource("1_lgvmv")
+
+[node name="Model" type="CSGBox3D" parent="." unique_id=1196556580]
+size = Vector3(0.24, 0.24, 0.24)
+material = ExtResource("2_jc60g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=354772734]
+shape = SubResource("BoxShape3D_a8y0u")
