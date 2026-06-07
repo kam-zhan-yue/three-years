@@ -5,9 +5,6 @@ var game: GameClient
 
 signal started
 signal game_updated(state: Game.GameState)
-signal dialogue_started(line: Dialogue.Line)
-signal dialogue_continued(line: Dialogue.Line)
-signal dialogue_ended()
 
 func start() -> void:
 	peer = ENetMultiplayerPeer.new()
@@ -41,26 +38,24 @@ func start_dialogue(line: Dialogue.Line) -> void:
 	_start_dialogue.rpc(inst_to_dict(line))
 
 @rpc("authority", "call_remote", "reliable")
-func _start_dialogue(line: Dictionary) -> void:
-	var l := dict_to_inst(line) as Dialogue.Line
-	Global.debug("Starting Dialogue: %s" % l.body)
-	dialogue_started.emit(l)
+func _start_dialogue(line_dict: Dictionary) -> void:
+	var line := dict_to_inst(line_dict) as Dialogue.Line
+	game.start_dialogue(line)
 
 func continue_dialogue(line: Dialogue.Line) -> void:
 	_continue_dialogue.rpc(inst_to_dict(line))
 
 @rpc("authority", "call_remote", "reliable")
-func _continue_dialogue(line: Dictionary) -> void:
-	var l := dict_to_inst(line) as Dialogue.Line
-	Global.debug("Continuing Dialogue: %s" % l.body)
-	dialogue_continued.emit(l)
+func _continue_dialogue(line_dict: Dictionary) -> void:
+	var line := dict_to_inst(line_dict) as Dialogue.Line
+	game.continue_dialogue(line)
 
 func end_dialogue() -> void:
 	_end_dialogue.rpc()
 
 @rpc("authority", "call_remote", "reliable")
 func _end_dialogue() -> void:
-	dialogue_ended.emit()
+	game.end_dialogue()
 
 
 #==================Game State====================

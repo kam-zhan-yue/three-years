@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://d6w68osi1iul"]
 
+[ext_resource type="Script" uid="uid://b5fy643hu5s05" path="res://scripts/ui/ui.gd" id="1_gdt2y"]
 [ext_resource type="PackedScene" uid="uid://dtaafxtc3bx6o" path="res://scenes/ui/character_selection_popup.tscn" id="1_nt7q6"]
 [ext_resource type="Script" uid="uid://w8pw0m7628h0" path="res://scripts/ui/dialogue_popup.gd" id="2_x4jx1"]
 [ext_resource type="Script" uid="uid://8cw6liuay0db" path="res://scripts/ui/debug_popup.gd" id="3_yev5y"]
@@ -11,11 +12,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_gdt2y")
 
 [node name="CharacterSelectionPopup" parent="." unique_id=1002664778 instance=ExtResource("1_nt7q6")]
 layout_mode = 1
 
 [node name="DialoguePopup" type="Control" parent="." unique_id=2093584728]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -72,6 +75,7 @@ text = "This is some dialogue"
 fit_content = true
 
 [node name="DebugPopup" type="Control" parent="." unique_id=1802740079]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 0
 offset_left = 10.0

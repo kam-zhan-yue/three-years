@@ -28,3 +28,12 @@ func _activate_player() -> void:
 
 func complete_interaction(interact_id: String) -> void:
 	interact_manager.client_interact_complete(interact_id)
+
+func start_dialogue(line: Dialogue.Line) -> void:
+	dialogue_manager.client_start(line)
+
+func continue_dialogue(line: Dialogue.Line) -> void:
+	dialogue_manager.client_continue(line)
+
+func end_dialogue() -> void:
+	dialogue_manager.client_end()
