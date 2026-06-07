@@ -80,3 +80,9 @@ func complete_interaction(interact_id: String) -> void:
 @rpc("authority", "call_remote", "reliable")
 func _complete_interaction(interact_id: String) -> void:
 	game.complete_interaction(interact_id)
+
+#==================Cameras====================
+@rpc("authority", "call_remote", "reliable")
+func switch_camera(camera: CameraManager.Camera) -> void:
+	Global.print("Switcing Camera")
+	Services.camera.client_switch_camera(camera)

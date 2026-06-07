@@ -5,6 +5,7 @@ class GameState:
 	var players: Dictionary[int, Game.Character]
 
 enum Character {
+	None,
 	Alex,
 	Wato,
 }
@@ -27,7 +28,7 @@ var EVENTS: Dictionary[Event, GameEvent] = {
 }
 
 var FLOW: Array[Event] = [
-	Event.Clean,
 	Event.Cook,
+	Event.Clean,
 	Event.Eat,
 ]

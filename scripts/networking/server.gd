@@ -75,3 +75,9 @@ func _continue_dialogue(client_id: int, line: Dictionary) -> void:
 	if character != l.speaker: return
 
 	game.continue_dialogue(l)
+
+#==================Camera====================
+func switch_camera(character: Game.Character, camera: CameraManager.Camera) -> void:
+	var id := game.get_player_id(character)
+	Global.print("RPC to %s" % id)
+	Client.switch_camera.rpc_id(id, camera)

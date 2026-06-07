@@ -1,15 +1,15 @@
 class_name GameEventCook extends GameEvent
 
 func start() -> void:
+	Services.dialogue.dialogue_ended.connect(_end)
+	Services.dialogue.event_triggered.connect(_event_triggered)
 	Services.dialogue.server_start(DialogueCookLunch.new())
-	Services.dialogue.dialogue_ended.connect(_start_interact)
 
-func _start_interact() -> void:
-	Services.dialogue.dialogue_ended.disconnect(_start_interact)
-	Services.interact.server_activate()
-	Services.interact.on_completed.connect(_end)
+func _event_triggered(event: Dialogue.Event) -> void:
+	if event == Dialogue.Event.Ingredients:
+		Server.switch_camera(Game.Character.Wato, CameraManager.Camera.Shelf)
 
 func _end() -> void:
-	Services.interact.on_completed.disconnect(_end)
+	Services.dialogue.dialogue_ended.disconnect(_end)
+	Services.dialogue.event_triggered.disconnect(_event_triggered)
 	end()
-	pass

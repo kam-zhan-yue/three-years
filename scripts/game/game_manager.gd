@@ -12,6 +12,7 @@ var game_server: GameServer
 @onready var wato_spawn := %WatoSpawn as Marker3D
 @onready var interact_manager = %InteractManager as InteractManager
 @onready var dialogue_manager = %DialogueManager as DialogueManager
+@onready var camera_manager = %CameraManager as CameraManager
 @onready var ui = %UI as UI
 
 
@@ -19,10 +20,11 @@ func _ready() -> void:
 	Services.ui = ui
 	Services.interact = interact_manager
 	Services.dialogue = dialogue_manager
+	Services.camera = camera_manager
+
 	Client.started.connect(_init_client)
 	Server.started.connect(_init_server)
 	spawner.spawned.connect(_spawned)
-	# multiplayer.peer_connected.connect(spawn_player)
 	Server.player_joined.connect(spawn_player)
 
 func _init_client() -> void:

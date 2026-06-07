@@ -18,6 +18,12 @@ func add_player(id: int, character: Game.Character) -> void:
 	if len(players) == 2:
 		start()
 
+func get_player_id(character: Game.Character) -> int:
+	for id in players:
+		if players[id] == character:
+			return id
+	return 1
+
 func send_update() -> void:
 	Client.update_game(get_state())
 
