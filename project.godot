@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Server="*uid://y2r8ilyncqgp"
 Global="*uid://pe1ge6ds82bo"
 Client="*uid://bsdor8nn2r36m"
+Services="*uid://cebervofjvl5n"
 
 [input]
 

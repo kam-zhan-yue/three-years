@@ -2,18 +2,12 @@ class_name GameServer
 extends Node
 
 var game := Game.new()
-var interact_manager: InteractManager
-var dialogue_manager: DialogueManager
 
 # Synced Values
 var players: Dictionary[int, Game.Character] = {}
 var current_event: GameEvent
 
-func _init(im: InteractManager, dm: DialogueManager) -> void:
-	interact_manager = im
-	dialogue_manager = dm
-	dialogue_manager.dialogue_ended.connect(_on_dialogue_ended)
-	game.EVENTS[Game.Event.Clean].interact_manager = im
+func _init() -> void:
 	for event in game.EVENTS.values():
 		event.ended.connect(_end_event)
 
@@ -42,13 +36,9 @@ func enter_flow(index: int) -> void:
 	flow = index
 	if flow >= len(game.FLOW):
 		return # end flow here
-	var event_type := Global.get_event_type(game.FLOW[index])
-	var event := Global.get_event(game.FLOW[index])
-	Global.print("Entering %s" % game.FLOW[index])
-	if event_type == Game.EventType.Dialogue:
-		start_dialogue_event(event)
-	elif event_type == Game.EventType.Game:
-		start_event(event)
+	var event := game.FLOW[index]
+	Global.print("Entering %s" % Global.EVENT_NAME[event])
+	start_event(event)
 
 func next_flow() -> void:
 	enter_flow(flow + 1)
@@ -65,18 +55,12 @@ func _end_event() -> void:
 	next_flow()
 
 # ============DIALOGUE HANDLING=================
-func start_dialogue_event(event: Dialogue.Event) -> void:
-	dialogue_manager.server_start(event)
-
 func continue_dialogue(line: Dialogue.Line) -> void:
-	dialogue_manager.server_continue(line)
-
-func _on_dialogue_ended(_event: Dialogue.Event) -> void:
-	next_flow()
+	Services.dialogue.server_continue(line)
 
 # ============INTERACT HANDLING=================
 func start_interacting(interact_id: String) -> void:
-	interact_manager.server_interact_start(interact_id)
+	Services.interact.server_interact_start(interact_id)
 
 func stop_interacting(interact_id: String) -> void:
-	interact_manager.server_interact_stop(interact_id)
+	Services.interact.server_interact_stop(interact_id)

@@ -3,29 +3,23 @@ extends Node3D
 
 var game := Game.new()
 
-# Client Side Stuffs
-@onready var ui := %UI as UI
-
 # Server Side Stuffs
-var current_event: Dialogue.Event
 var current_script: DialogueScript
 var current_line := 0
 
-signal dialogue_ended(event: Dialogue.Event)
+signal dialogue_ended()
 
 func client_start(line: Dialogue.Line) -> void:
-	ui.dialogue_popup.start_dialogue(line)
+	Services.ui.dialogue_popup.start_dialogue(line)
 
 func client_continue(line: Dialogue.Line) -> void:
-	ui.dialogue_popup.continue_dialogue(line)
+	Services.ui.dialogue_popup.continue_dialogue(line)
 
 func client_end() -> void:
-	ui.dialogue_popup.end_dialogue()
+	Services.ui.dialogue_popup.end_dialogue()
 
-func server_start(event: Dialogue.Event) -> void:
-	if event not in game.DIALOGUES: return
-	current_event = event
-	current_script = game.DIALOGUES[event]
+func server_start(dialogue: DialogueScript) -> void:
+	current_script = dialogue
 	current_line = 0
 	var line := _get_current_line()
 	if !line: return
@@ -47,8 +41,7 @@ func server_continue(line: Dialogue.Line) -> void:
 func server_end_dialogue() -> void:
 	Global.debug("Ending Dialogue.")
 	Client.end_dialogue()
-	dialogue_ended.emit(current_event)
-	# next_flow()
+	dialogue_ended.emit()
 
 func _get_current_line() -> Dialogue.Line:
 	if current_line >= len(current_script.get_dialogue()): return 

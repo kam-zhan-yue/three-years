@@ -4,12 +4,6 @@ extends Node
 var character: Game.Character
 var player: Player
 var player_activated: bool
-var interact_manager: InteractManager
-var dialogue_manager: DialogueManager
-
-func _init(im: InteractManager, dm: DialogueManager) -> void:
-	interact_manager = im
-	dialogue_manager = dm
 
 func set_character(c: Game.Character) -> void:
 	character = c
@@ -27,13 +21,13 @@ func _activate_player() -> void:
 		player.activate()
 
 func complete_interaction(interact_id: String) -> void:
-	interact_manager.client_interact_complete(interact_id)
+	Services.interact.client_interact_complete(interact_id)
 
 func start_dialogue(line: Dialogue.Line) -> void:
-	dialogue_manager.client_start(line)
+	Services.dialogue.client_start(line)
 
 func continue_dialogue(line: Dialogue.Line) -> void:
-	dialogue_manager.client_continue(line)
+	Services.dialogue.client_continue(line)
 
 func end_dialogue() -> void:
-	dialogue_manager.client_end()
+	Services.dialogue.client_end()

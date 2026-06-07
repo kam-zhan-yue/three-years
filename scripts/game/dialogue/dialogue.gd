@@ -1,11 +1,5 @@
 class_name Dialogue
 
-enum Event {
-	Clean,
-	Cook,
-	Eat,
-}
-
 const SPEAKERS: Dictionary[Game.Character, String] = {
 	Game.Character.Alex: "Alex",
 	Game.Character.Wato: "Wato",
