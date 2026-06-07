@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://be4m3qov8whtv" path="res://scripts/game/interact_manager.gd" id="5_o6xl0"]
 [ext_resource type="Script" uid="uid://bfgb2sskms4j8" path="res://scripts/game/game_manager.gd" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://cag3hb86gdnhf" path="res://scenes/interactable.tscn" id="6_tefeu"]
+[ext_resource type="Script" uid="uid://n46uht8c54bg" path="res://scripts/game/dialogue/dialogue_manager.gd" id="6_tipki"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0wfyh"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -69,6 +70,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.393928, 0, 0)
 [node name="InteractManager" type="Node3D" parent="GameManager" unique_id=1726704203]
 unique_name_in_owner = true
 script = ExtResource("5_o6xl0")
+
+[node name="DialogueManager" type="Node3D" parent="GameManager" unique_id=1564006887]
+unique_name_in_owner = true
+script = ExtResource("6_tipki")
+metadata/_custom_type_script = "uid://n46uht8c54bg"
 
 [node name="UI" parent="." unique_id=1811158779 instance=ExtResource("1_o5qli")]
 

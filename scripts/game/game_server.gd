@@ -3,15 +3,16 @@ extends Node
 
 var game := Game.new()
 var interact_manager: InteractManager
+var dialogue_manager: DialogueManager
 
 # Synced Values
 var players: Dictionary[int, Game.Character] = {}
 var current_event: GameEvent
-var current_script: DialogueScript
-var current_line := 0
 
-func _init(im: InteractManager) -> void:
+func _init(im: InteractManager, dm: DialogueManager) -> void:
 	interact_manager = im
+	dialogue_manager = dm
+	dialogue_manager.dialogue_ended.connect(_on_dialogue_ended)
 	game.EVENTS[Game.Event.Clean].interact_manager = im
 	for event in game.EVENTS.values():
 		event.ended.connect(_end_event)
@@ -65,34 +66,13 @@ func _end_event() -> void:
 
 # ============DIALOGUE HANDLING=================
 func start_dialogue_event(event: Dialogue.Event) -> void:
-	if event not in game.DIALOGUES: return
-	current_script = game.DIALOGUES[event]
-	current_line = 0
-	var line := _get_current_line()
-	if !line: return
-	Client.start_dialogue(line)
+	dialogue_manager.server_start(event)
 
 func continue_dialogue(line: Dialogue.Line) -> void:
-	var current := _get_current_line()
-	# If we are not at the current line, then don't progress
-	if current.speaker != line.speaker or current.body != line.body: return
+	dialogue_manager.server_continue(line)
 
-	current_line += 1
-	var next_line := _get_current_line()
-	if !next_line:
-		end_dialogue()
-	else:
-		Global.debug("Next line is: %s" % next_line.body)
-		Client.continue_dialogue(next_line)
-
-func end_dialogue() -> void:
-	Global.debug("Ending Dialogue.")
-	Client.end_dialogue()
+func _on_dialogue_ended(_event: Dialogue.Event) -> void:
 	next_flow()
-
-func _get_current_line() -> Dialogue.Line:
-	if current_line >= len(current_script.get_dialogue()): return 
-	return current_script.get_dialogue().get(current_line) as Dialogue.Line
 
 # ============INTERACT HANDLING=================
 func start_interacting(interact_id: String) -> void:

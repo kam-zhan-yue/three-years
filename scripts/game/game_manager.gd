@@ -11,6 +11,7 @@ var game_server: GameServer
 @onready var alex_spawn := %AlexSpawn as Marker3D
 @onready var wato_spawn := %WatoSpawn as Marker3D
 @onready var interact_manager = %InteractManager as InteractManager
+@onready var dialogue_manager = %DialogueManager as DialogueManager
 
 
 func _ready() -> void:
@@ -21,11 +22,11 @@ func _ready() -> void:
 	Server.player_joined.connect(spawn_player)
 
 func _init_client() -> void:
-	game_client = GameClient.new(interact_manager)
+	game_client = GameClient.new(interact_manager, dialogue_manager)
 	Client.init_game(game_client)
 
 func _init_server() -> void:
-	game_server = GameServer.new(interact_manager)
+	game_server = GameServer.new(interact_manager, dialogue_manager)
 	Server.init_game(game_server)
 
 # Spawns players server-side

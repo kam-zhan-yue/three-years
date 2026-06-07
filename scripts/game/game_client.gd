@@ -5,9 +5,11 @@ var character: Game.Character
 var player: Player
 var player_activated: bool
 var interact_manager: InteractManager
+var dialogue_manager: DialogueManager
 
-func _init(im: InteractManager) -> void:
+func _init(im: InteractManager, dm: DialogueManager) -> void:
 	interact_manager = im
+	dialogue_manager = dm
 
 func set_character(c: Game.Character) -> void:
 	character = c
