@@ -1,10 +1,12 @@
 class_name GameEventCook extends GameEvent
 
 func start() -> void:
+	# Connect Signals
 	Services.dialogue.dialogue_ended.connect(_end)
 	Services.dialogue.event_triggered.connect(_event_triggered)
-	Services.dialogue.server_start(DialogueCookLunch.new())
 	Services.shelf.server_ingredient_selected.connect(_ingredient_selected)
+
+	Services.dialogue.server_start(DialogueCookLunch.new())
 
 func _event_triggered(event: Dialogue.Event) -> void:
 	if event == Dialogue.Event.Ingredients:
@@ -17,6 +19,8 @@ func _ingredient_selected(type: String) -> void:
 	Global.print("Ingredient Selected: %s" % type)
 
 func _end() -> void:
+	# Disconnect Signals
 	Services.dialogue.dialogue_ended.disconnect(_end)
 	Services.dialogue.event_triggered.disconnect(_event_triggered)
+	Services.shelf.server_ingredient_selected.disconnect(_ingredient_selected)
 	end()

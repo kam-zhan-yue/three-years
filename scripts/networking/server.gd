@@ -86,6 +86,10 @@ func activate_shelf(character: Game.Character) -> void:
 	var id := game.get_player_id(character)
 	Client.activate_shelf.rpc_id(id)
 
+func deactivate_shelf(character: Game.Character) -> void:
+	var id := game.get_player_id(character)
+	Client.deactivate_shelf.rpc_id(id)
+
 func select_ingredient(type: String) -> void:
 	_select_ingredient.rpc_id(1, type)
 

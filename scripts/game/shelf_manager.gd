@@ -15,15 +15,19 @@ func _ready() -> void:
 		if child is Ingredient:
 			var ingredient := child as Ingredient
 			ingredients.append(ingredient)
+			ingredient.selected.connect(client_select)
 
 func server_activate(character: Game.Character) -> void:
 	Server.activate_shelf(character)
 
+func server_deactivate(character: Game.Character) -> void:
+	Server.deactivate_shelf(character)
+
 func client_activate() -> void:
 	activated = true
-	for ingredient in ingredients:
-		ingredient.activate()
-		ingredient.selected.connect(client_select)
+
+func client_deactivate() -> void:
+	activated = false
 
 func _input(event: InputEvent) -> void:
 	if !activated: return

@@ -90,3 +90,7 @@ func switch_camera(camera: CameraManager.Camera) -> void:
 @rpc("authority", "call_remote", "reliable")
 func activate_shelf() -> void:
 	Services.shelf.client_activate()
+
+@rpc("authority", "call_remote", "reliable")
+func deactivate_shelf() -> void:
+	Services.shelf.client_deactivate()

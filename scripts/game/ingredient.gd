@@ -5,11 +5,6 @@ extends StaticBody3D
 
 signal selected(type: String)
 
-var activated := false
-
-func activate() -> void:
-	activated = true
-
 func select() -> void:
 	selected.emit(name) # Fuck it, we ball
 
