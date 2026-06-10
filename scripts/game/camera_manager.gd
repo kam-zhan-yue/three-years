@@ -2,7 +2,7 @@ class_name CameraManager
 extends Node3D
 
 @onready var shelf_camera := %ShelfCamera as Camera3D
-@onready var main_camera := %MainCamera as Camera3D
+@onready var main_zone := %MainZone as CameraZone
 
 enum Camera {
 	Main,
@@ -14,7 +14,7 @@ var CAMERAS: Dictionary[Camera, Camera3D] = {}
 var current := Camera.Main
 
 func _ready() -> void:
-	CAMERAS[Camera.Main] = main_camera
+	CAMERAS[Camera.Main] = main_zone
 	CAMERAS[Camera.Shelf] = shelf_camera
 	client_switch_camera(Camera.Main)
 
