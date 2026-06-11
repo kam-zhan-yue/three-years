@@ -13,6 +13,7 @@ extends Node3D
 signal on_completed
 
 func _ready() -> void:
+	model.material = model.material.duplicate()
 	popup.init(self)
 
 func server_activate() -> void:

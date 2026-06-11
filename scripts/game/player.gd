@@ -14,18 +14,18 @@ var activated := false
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 
-# func _ready() -> void:
-# 	interactor.set_multiplayer_authority(name.to_int())
-
 func activate() -> void:
 	activated = true
 
+func _can_move() -> bool:
+	return activated && !interactor.interacting
+
 func _physics_process(delta: float) -> void:
 	if !is_multiplayer_authority(): return
-	if !activated: return
-
 	if not is_on_floor():
 		velocity.y -= GRAVITY * delta
+
+	if not _can_move(): return
 
 	var cam_basis := Services.camera.current.global_transform.basis
 
@@ -46,3 +46,9 @@ func _physics_process(delta: float) -> void:
 	var velocity_2d := direction_2d * speed
 	velocity = Vector3(velocity_2d.x, velocity.y, velocity_2d.y)
 	move_and_slide()
+
+func _interact_started() -> void:
+	self.activated = false
+
+func _interact_stopped() -> void:
+	self.activated = true
