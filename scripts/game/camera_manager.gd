@@ -16,7 +16,7 @@ var CAMERAS: Dictionary[Camera, Camera3D] = {}
 var current: Camera3D
 
 func _ready() -> void:
-	CAMERAS[Camera.Main] = main_zone
+	CAMERAS[Camera.Main] = main_zone.camera
 	CAMERAS[Camera.Shelf] = shelf_camera
 	client_switch_camera(Camera.Main)
 	for child in cameras.get_children():
