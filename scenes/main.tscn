@@ -150,11 +150,11 @@ network_player = ExtResource("3_sugp2")
 
 [node name="AlexSpawn" type="Marker3D" parent="GameManager" unique_id=1564376686]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6872962, 0, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.31270385, -0.38865566, 2)
 
 [node name="WatoSpawn" type="Marker3D" parent="GameManager" unique_id=1493195581]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.393928, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7135705, -0.20611632, -0.3210473)
 
 [node name="InteractManager" type="Node3D" parent="GameManager" unique_id=1726704203]
 unique_name_in_owner = true
@@ -180,9 +180,25 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="Interactable" parent="Interactables" unique_id=211024313 instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2572725, -0.3753929, 3.2648182)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7427275, -0.86821425, 3.2648182)
+
+[node name="Interactable2" parent="Interactables" unique_id=1312227999 instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2572727, -0.86821425, 0.2648182)
+
+[node name="Interactable3" parent="Interactables" unique_id=1386759130 instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7427273, -0.86821425, -0.7351818)
+
+[node name="Interactable4" parent="Interactables" unique_id=134619347 instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2572727, -0.86821425, 5.264818)
+
+[node name="Interactable5" parent="Interactables" unique_id=912050683 instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2572727, -0.86821425, 6.264818)
+
+[node name="Interactable6" parent="Interactables" unique_id=1121106628 instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2572727, -0.86821425, 3.2648182)
 
 [node name="Cameras" type="Node3D" parent="." unique_id=594748807]
+unique_name_in_owner = true
 
 [node name="DiningZone" type="Camera3D" parent="Cameras" unique_id=615017300]
 unique_name_in_owner = true

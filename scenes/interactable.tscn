@@ -5,13 +5,11 @@
 [ext_resource type="Script" uid="uid://ds7q35xd3j4e5" path="res://scripts/ui/interactable_popup.gd" id="2_ij5l6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3aalw"]
+size = Vector3(0.5, 0.3, 0.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w4xns"]
 render_priority = 0
 shader = ExtResource("2_8o6w2")
-shader_parameter/normal_color = Color(1, 1, 1, 1)
-shader_parameter/completed_color = Color(0, 1, 0, 1)
-shader_parameter/completed = false
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ij5l6"]
 properties/0/path = NodePath(".:progress")
@@ -41,6 +39,7 @@ shape = SubResource("BoxShape3D_3aalw")
 
 [node name="Model" type="CSGBox3D" parent="." unique_id=211024313]
 unique_name_in_owner = true
+size = Vector3(0.5, 0.3, 0.5)
 material = SubResource("ShaderMaterial_w4xns")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1853410800]

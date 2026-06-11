@@ -48,10 +48,7 @@ func _spawned(node: Node) -> void:
 	var player := node as Player
 	Global.debug("Spawned %s" % player.name)
 	if player.name == str(Global.id()):
-		var spawn_pos := (
-			alex_spawn.global_position 
-			if game_client.character == Game.Character.Alex 
-			else wato_spawn.global_position
-		)
-		player.global_position = spawn_pos
+		var spawn := alex_spawn if game_client.character == Game.Character.Alex else wato_spawn
+		player.global_position = spawn.global_position
+		player.global_rotation = spawn.global_rotation
 		game_client.set_player(player)
