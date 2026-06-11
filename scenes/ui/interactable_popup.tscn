@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cfwway387imsv"]
+
+[ext_resource type="Script" uid="uid://ds7q35xd3j4e5" path="res://scripts/ui/interactable_popup.gd" id="1_8ujlq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8o6w2"]
+bg_color = Color(1, 0.30545545, 0.48939055, 1)
+
+[node name="InteractablePopup" type="Control" unique_id=123828460]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 27.0
+script = ExtResource("1_8ujlq")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=487954039]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_8o6w2")
+
+[node name="Tooltip" type="Control" parent="." unique_id=295356486]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Tooltip" unique_id=594140287]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Tooltip/Panel" unique_id=442572893]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1

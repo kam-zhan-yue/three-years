@@ -17,13 +17,14 @@ func _on_body_entered(body: Node3D) -> void:
 	var interactable := body as Interactable
 	current = interactable
 	if interactable.can_interact():
-		interactable.hover()
+		interactable.hover_start()
 
 func _on_body_exited(body: Node3D) -> void:
 	if body is Interactable:
 		var interactable := body as Interactable
-		if interactable == current:
+		if interactable and interactable == current:
 			Server.stop_interacting(current.id())
+			current.hover_stop()
 			current = null
 
 func _input(event: InputEvent) -> void:

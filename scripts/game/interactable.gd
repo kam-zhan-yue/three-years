@@ -22,9 +22,11 @@ func server_activate() -> void:
 func id() -> String:
 	return str(get_path())
 
-func hover() -> void:
-	# Show the E popup here
-	pass
+func hover_start() -> void:
+	popup.hover_start()
+
+func hover_stop() -> void:
+	popup.hover_stop()
 
 func can_interact() -> bool:
 	return activated && !completed && !interacting
