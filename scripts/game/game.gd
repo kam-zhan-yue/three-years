@@ -19,16 +19,19 @@ enum Event {
 	Clean,
 	Cook,
 	Eat,
+	Prep,
 }
 
 var EVENTS: Dictionary[Event, GameEvent] = {
 	Event.Clean: GameEventClean.new(),
+	Event.Prep: GameEventPrep.new(),
 	Event.Cook: GameEventCook.new(),
 	Event.Eat: GameEventEat.new(),
 }
 
 var FLOW: Array[Event] = [
 	Event.Clean,
+	Event.Prep,
 	Event.Cook,
 	Event.Eat,
 ]

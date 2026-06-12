@@ -10,6 +10,7 @@ const EVENT_NAME: Dictionary[Game.Event, String] = {
 	Game.Event.Clean: "Cleaning",
 	Game.Event.Cook: "Cooking",
 	Game.Event.Eat: "Eating",
+	Game.Event.Prep: "Prepping",
 }
 
 func get_event_type(node: String) -> Game.EventType:

@@ -57,7 +57,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6984034, 0.7861328, 1.1801
 shape = SubResource("BoxShape3D_eb6dy")
 
 [node name="Camera" type="Camera3D" parent="Cameras/DiningZone" unique_id=615017300]
-transform = Transform3D(-4.371139e-08, -0.5, 0.8660254, 0, 0.8660254, 0.5, -1, 2.1855694e-08, -3.7855173e-08, 8.604815, 2.3040814, 0.7449837)
+transform = Transform3D(-0.5033367, -0.4320452, 0.7483242, 0, 0.8660254, 0.5, -0.8640904, 0.25166836, -0.4359024, 8.604815, 1.6789436, -0.7943001)
 fov = 50.0
 
 [node name="KitchenZone" type="Node3D" parent="Cameras" unique_id=844251554]
@@ -72,7 +72,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.030869007, 0.7861328, 0.69
 shape = SubResource("BoxShape3D_choun")
 
 [node name="Camera" type="Camera3D" parent="Cameras/KitchenZone" unique_id=723894283]
-transform = Transform3D(-0.7301622, -0.29738203, 0.61516434, 0, 0.9003188, 0.4352311, -0.68327385, 0.3177893, -0.6573788, 5.840977, 2.3040814, -3.3836884)
+transform = Transform3D(-0.7734089, -0.17149304, 0.61026955, 0, 0.96271056, 0.27053317, -0.6339074, 0.20923278, -0.74456894, 5.840977, 1.2605138, -3.3836884)
 fov = 50.0
 
 [node name="MainZone" type="Node3D" parent="Cameras" unique_id=832290993]
@@ -87,7 +87,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6984034, 0.7861328, 1.1801
 shape = SubResource("BoxShape3D_ya4ey")
 
 [node name="Camera" type="Camera3D" parent="Cameras/MainZone" unique_id=1237677062]
-transform = Transform3D(-4.371139e-08, -0.5, 0.8660254, 0, 0.8660254, 0.5, -1, 2.1855694e-08, -3.7855173e-08, 5.97951, 2.3040814, 4.9082108)
+transform = Transform3D(-4.0330423e-08, -0.12735891, 0.9918567, 1.6856523e-08, 0.9918567, 0.12735891, -1, 2.1855694e-08, -3.7855173e-08, 5.97951, 0.73871803, 5.750219)
 fov = 50.0
 
 [node name="Environment" type="Node3D" parent="." unique_id=1914465089]
