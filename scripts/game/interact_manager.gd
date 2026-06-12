@@ -10,6 +10,7 @@ signal on_completed
 
 func _ready() -> void:
 	for child in interactable_holder.get_children():
+		if !child.visible: continue
 		if child is Interactable:
 			var interactable := child as Interactable
 			interactable.on_completed.connect(_on_completed)

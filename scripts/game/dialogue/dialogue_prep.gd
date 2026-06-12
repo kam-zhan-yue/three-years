@@ -1,4 +1,4 @@
-class_name DialogueCleanPrep extends DialogueScript
+class_name DialoguePrep extends DialogueScript
 
 func get_dialogue() -> Array[Dialogue.Line]:
 	return [

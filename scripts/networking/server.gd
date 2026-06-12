@@ -81,7 +81,6 @@ func switch_camera(character: Game.Character, camera: CameraManager.Camera) -> v
 	var id := game.get_player_id(character)
 	Client.switch_camera.rpc_id(id, camera)
 
-#==================Camera====================
 func activate_shelf(character: Game.Character) -> void:
 	var id := game.get_player_id(character)
 	Client.activate_shelf.rpc_id(id)
@@ -96,3 +95,8 @@ func select_ingredient(type: String) -> void:
 @rpc("any_peer", "call_remote", "reliable")
 func _select_ingredient(type: String) -> void:
 	game.select_ingredient(type)
+
+#==================Placement====================
+func set_placement(character: Game.Character, placement: Placement.Type) -> void:
+	var id := game.get_player_id(character)
+	Client.set_placement.rpc_id(id, placement)

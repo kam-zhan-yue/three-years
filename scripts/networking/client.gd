@@ -94,3 +94,8 @@ func activate_shelf() -> void:
 @rpc("authority", "call_remote", "reliable")
 func deactivate_shelf() -> void:
 	Services.shelf.client_deactivate()
+
+#==================Cameras====================
+@rpc("authority", "call_remote", "reliable")
+func set_placement(placement: Placement.Type) -> void:
+	Services.placement.client_set(placement)
