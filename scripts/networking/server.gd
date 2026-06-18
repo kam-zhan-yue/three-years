@@ -100,3 +100,10 @@ func _select_ingredient(type: String) -> void:
 func set_placement(character: Game.Character, placement: Placement.Type) -> void:
 	var id := game.get_player_id(character)
 	Client.set_placement.rpc_id(id, placement)
+
+func confirm_placement(type: Placement.Type) -> void:
+	_confirm_placement.rpc_id(1, type)
+
+@rpc("any_peer", "call_remote", "reliable")
+func _confirm_placement(type: Placement.Type) -> void:
+	game.confirm_placement(type)

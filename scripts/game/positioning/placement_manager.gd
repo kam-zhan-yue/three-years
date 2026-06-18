@@ -6,7 +6,7 @@ extends Node3D
 var placements: Dictionary[Placement.Type, Placement] = {}
 var current: Placement
 
-signal server_placement_completed
+signal server_placement_completed(type: Placement.Type)
 
 func _ready() -> void:
 	for child in placements_node.get_children():
@@ -26,13 +26,13 @@ func client_set(placement: Placement.Type) -> void:
 	current.completed.connect(_completed)
 	current.activate()
 
-func _completed() -> void:
+func _completed(type: Placement.Type) -> void:
 	current.completed.disconnect(_completed)
 	current = null
-	client_confirm()
+	client_confirm(type)
 
-func client_confirm() -> void:
-	Server.confirm_placement()
+func client_confirm(type: Placement.Type) -> void:
+	Server.confirm_placement(type)
 
-func server_confirm() -> void:
-	server_placement_completed.emit()
+func server_confirm(type: Placement.Type) -> void:
+	server_placement_completed.emit(type)

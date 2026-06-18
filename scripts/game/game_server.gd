@@ -74,3 +74,7 @@ func stop_interacting(interact_id: String) -> void:
 # ============SHELF HANDLING=================
 func select_ingredient(type: String) -> void:
 	Services.shelf.server_select(type)
+
+# ============PLACEMENT HANDLING=================
+func confirm_placement(type: Placement.Type) -> void:
+	Services.placement.server_confirm(type)

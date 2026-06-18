@@ -17,6 +17,9 @@ func _enter_tree() -> void:
 func activate() -> void:
 	activated = true
 
+func deactivate() -> void:
+	activated = false
+
 func _can_move() -> bool:
 	return activated && !interactor.interacting
 
