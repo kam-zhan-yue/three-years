@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c2yktrqnlcsl5"]
+
+[ext_resource type="PackedScene" uid="uid://bo2chhhxhr7xt" path="res://scenes/ui/placement_popup.tscn" id="1_kstv7"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jkv2x"]
+viewport_path = NodePath("Placements/Kitchen/WorldPlacementPopup/SubViewport")
+
+[node name="WorldPlacementPopup" type="Sprite3D" unique_id=2008634461]
+billboard = 1
+texture = SubResource("ViewportTexture_jkv2x")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1210707897]
+size = Vector2i(50, 50)
+
+[node name="PlacementPopup" parent="SubViewport" unique_id=632567265 instance=ExtResource("1_kstv7")]

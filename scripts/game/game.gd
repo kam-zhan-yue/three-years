@@ -30,8 +30,8 @@ var EVENTS: Dictionary[Event, GameEvent] = {
 }
 
 var FLOW: Array[Event] = [
-	Event.Clean,
 	Event.Prep,
+	Event.Clean,
 	Event.Cook,
 	Event.Eat,
 ]

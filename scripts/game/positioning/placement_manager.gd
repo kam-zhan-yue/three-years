@@ -1,13 +1,15 @@
 class_name PlacementManager
 extends Node3D
 
+@onready var placements_node := %Placements as Node3D
+
 var placements: Dictionary[Placement.Type, Placement] = {}
 var current: Placement
 
 signal server_placement_completed
 
 func _ready() -> void:
-	for child in get_children():
+	for child in placements_node.get_children():
 		if child is not Placement: continue
 		var placement := child as Placement
 		placements[placement.type] = placement

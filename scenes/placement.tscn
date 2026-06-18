@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dsd0c05ehsa32"]
+
+[ext_resource type="Script" uid="uid://cjpt42j7pjbbn" path="res://scripts/game/positioning/placement.gd" id="1_pn1mm"]
+[ext_resource type="PackedScene" uid="uid://bo2chhhxhr7xt" path="res://scenes/ui/placement_popup.tscn" id="2_8iydn"]
+[ext_resource type="Script" uid="uid://nosdys0hhrs7" path="res://scripts/ui/placement_popup.gd" id="3_8iydn"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pn1mm"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pn1mm"]
+radius = 1.0
+
+[node name="Shelf" type="Marker3D" unique_id=2039868235]
+gizmo_extents = 0.75
+script = ExtResource("1_pn1mm")
+
+[node name="WorldPlacementPopup" type="Sprite3D" parent="." unique_id=198807948]
+billboard = 1
+no_depth_test = true
+texture = SubResource("ViewportTexture_pn1mm")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=403365933]
+transparent_bg = true
+size = Vector2i(25, 25)
+
+[node name="PlacementPopup" parent="SubViewport" unique_id=632567265 instance=ExtResource("2_8iydn")]
+unique_name_in_owner = true
+script = ExtResource("3_8iydn")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=815024640]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1768397403]
+shape = SubResource("SphereShape3D_pn1mm")

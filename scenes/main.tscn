@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://b4pyo4tdbh760" path="res://scripts/game/camera_manager.gd" id="10_eb6dy"]
 [ext_resource type="Script" uid="uid://cbw48dagig15d" path="res://scripts/game/positioning/placement_manager.gd" id="10_trceg"]
 [ext_resource type="Script" uid="uid://cc8h2p22u7gpn" path="res://scripts/game/camera_zone.gd" id="11_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://dsd0c05ehsa32" path="res://scenes/placement.tscn" id="13_trceg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eb6dy"]
 size = Vector3(8.93544, 2.5722656, 4.5850244)
@@ -260,3 +261,13 @@ visible = false
 [node name="Interactable6" parent="Interactables" unique_id=1121106628 instance=ExtResource("6_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2572727, -0.86821425, 3.2648182)
 visible = false
+
+[node name="Placements" type="Node3D" parent="." unique_id=264128029]
+unique_name_in_owner = true
+
+[node name="Kitchen" parent="Placements" unique_id=2039868235 instance=ExtResource("13_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.294499, 0, 9.7593155)
+
+[node name="Shelf" parent="Placements" unique_id=153822818 instance=ExtResource("13_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8405914, 0, 10.627209)
+type = 1
