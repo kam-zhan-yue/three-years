@@ -9,6 +9,9 @@ func start() -> void:
 	Services.dialogue.server_start(DialogueCookLunch.new())
 	await Services.dialogue.dialogue_ended
 
+	# Reset Cameras
+	Services.camera.server_switch_camera(Game.Character.Wato, CameraManager.Camera.Zone)
+
 	# Disconnect Signals
 	Services.dialogue.event_triggered.disconnect(_event_triggered)
 	Services.shelf.server_ingredient_selected.disconnect(_ingredient_selected)
@@ -21,5 +24,4 @@ func _event_triggered(event: Dialogue.Event) -> void:
 
 func _ingredient_selected(type: String) -> void:
 	Services.dialogue.server_respond(Game.Character.Wato, type)
-	Services.camera.server_switch_camera(Game.Character.Wato, CameraManager.Camera.Main)
 	Global.print("Ingredient Selected: %s" % type)

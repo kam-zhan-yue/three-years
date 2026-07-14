@@ -4,6 +4,8 @@ extends Node3D
 enum Type {
 	Kitchen,
 	Shelf,
+	FutonWato,
+	FutonAlex,
 }
 
 @export var type: Placement.Type
@@ -20,6 +22,7 @@ func _ready() -> void:
 	popup.hide_popup()
 
 func activate() -> void:
+	Global.print("activating %s" % name)
 	activated = true
 	area.body_entered.connect(_body_entered)
 

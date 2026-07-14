@@ -14,6 +14,7 @@ enum Camera {
 var CAMERAS: Dictionary[Camera, Camera3D] = {}
 
 var current: Camera3D
+var current_zone_camera: Camera3D
 
 func _ready() -> void:
 	CAMERAS[Camera.Main] = main_zone.camera
@@ -26,6 +27,7 @@ func _ready() -> void:
 
 func _zone_entered(camera: Camera3D):
 	current = camera
+	current_zone_camera = camera
 	camera.make_current()
 
 
@@ -33,6 +35,11 @@ func server_switch_camera(character: Game.Character, camera: Camera) -> void:
 	Server.switch_camera(character, camera)
 
 func client_switch_camera(next: Camera) -> void:
-	if next not in CAMERAS: return
-	current = CAMERAS[next]
-	CAMERAS[next].make_current()
+	if next == Camera.Zone and current_zone_camera:
+		current = current_zone_camera
+		current.make_current()
+	elif next in CAMERAS:
+		current = CAMERAS[next]
+		CAMERAS[next].make_current()
+	else:
+		Global.error("Camera | Trying to switch to %s" % next)

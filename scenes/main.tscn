@@ -102,7 +102,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Environment" unique_id=1023167838]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8695679, -1.4357119, 3.2238362)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.870962, -1.4375291, 3.2245119)
 use_collision = true
 size = Vector3(8.394653, 1, 9.980412)
 
@@ -264,11 +264,19 @@ visible = false
 
 [node name="Placements" type="Node3D" parent="." unique_id=264128029]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19164062, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26858187, 0)
 
 [node name="Kitchen" parent="Placements" unique_id=2039868235 instance=ExtResource("13_trceg")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.294499, 0, 9.7593155)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.3298275, 0, 8.659744)
 
 [node name="Shelf" parent="Placements" unique_id=153822818 instance=ExtResource("13_trceg")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.2039437, 0, 10.627209)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.2982764, 0, 10.627209)
 type = 1
+
+[node name="FutonAlex" parent="Placements" unique_id=15977365 instance=ExtResource("13_trceg")]
+transform = Transform3D(-0.99999994, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.99999994, 0.39449048, -2.3841858e-07, 1.8076578)
+type = 3
+
+[node name="FutonWato" parent="Placements" unique_id=123379710 instance=ExtResource("13_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31499082, 0.0046281815, -0.21239519)
+type = 2
