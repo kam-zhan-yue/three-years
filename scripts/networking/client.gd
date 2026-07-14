@@ -31,7 +31,7 @@ func start_game_event(event: Game.Event) -> void:
 @rpc("authority", "call_remote", "reliable")
 func _start_game_event(event: Game.Event) -> void:
 	Global.debug("Starting Game Event: %s" % Global.EVENT_NAME[event])
-	game.start_event(event)
+	# game.start_event(event)
 
 #==================Dialogue====================
 func start_dialogue(line: Dialogue.Line) -> void:
@@ -99,3 +99,12 @@ func deactivate_shelf() -> void:
 @rpc("authority", "call_remote", "reliable")
 func set_placement(placement: Placement.Type) -> void:
 	Services.placement.client_set(placement)
+
+#==================Players====================
+func register_player(player: Player) -> void:
+	game.player = player
+	Server.register_player(game.character)
+
+@rpc("authority", "call_remote", "reliable")
+func set_player_active(active: bool) -> void:
+	Services.players.client_activate(active)

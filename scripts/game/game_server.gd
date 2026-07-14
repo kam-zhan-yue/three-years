@@ -4,7 +4,6 @@ extends Node
 var game := Game.new()
 
 # Synced Values
-var players: Dictionary[int, Game.Character] = {}
 var current_event: GameEvent
 
 func _init() -> void:
@@ -12,29 +11,32 @@ func _init() -> void:
 		event.ended.connect(_end_event)
 
 func add_player(id: int, character: Game.Character) -> void:
-	players[id] = character
+	Services.players.server_init_player(id, character)
 	send_update()
 
-	if len(players) == 2:
-		start()
-
 func get_player_id(character: Game.Character) -> int:
-	for id in players:
-		if players[id] == character:
+	for id in Services.players.server_players:
+		if Services.players.server_players[id] == character:
 			return id
 	return 1
+
+func get_character(id: int) -> Game.Character:
+	return Services.players.server_players[id]
 
 func send_update() -> void:
 	Client.update_game(get_state())
 
 func get_state() -> Game.GameState:
 	var state := Game.GameState.new()
-	state.players = players
+	state.players = Services.players.server_players
 	return state
 
 var flow := 0
 
-func start() -> void:
+func start_game() -> void:
+	Global.print("Started Game. Waiting for players ...")
+	await Services.players.server_players_loaded
+	Global.print("Players loaded. Entering first event.")
 	enter_flow(0)
 
 # ============FLOW HANDLING=================

@@ -18,6 +18,11 @@ func start() -> void:
 
 func init_game(g: GameServer) -> void:
 	game = g
+	# TODO: Implement proper game resetting
+	start_game()
+
+func start_game() -> void:
+	game.start_game()
 
 # When a peer connects, send them a game update to let them know how it is going
 func _on_connected(_id: int) -> void:
@@ -71,7 +76,7 @@ func _continue_dialogue(client_id: int, line: Dictionary) -> void:
 	
 	# Validate that the player can request to continue this dialogue
 	var l := dict_to_inst(line) as Dialogue.Line
-	var character := game.players[client_id]
+	var character := game.get_character(client_id)
 	if character != l.speaker: return
 
 	game.continue_dialogue(l)
@@ -107,3 +112,15 @@ func confirm_placement(type: Placement.Type) -> void:
 @rpc("any_peer", "call_remote", "reliable")
 func _confirm_placement(type: Placement.Type) -> void:
 	game.confirm_placement(type)
+
+#==================Players====================
+func set_player_active(character: Game.Character, active: bool) -> void:
+	var id := game.get_player_id(character)
+	Client.set_player_active.rpc_id(id, active)
+
+func register_player(character: Game.Character) -> void:
+	_register_player.rpc_id(1, character)
+
+@rpc("any_peer", "call_remote", "reliable")
+func _register_player(character: Game.Character) -> void:
+	Services.players.server_register_player(character)

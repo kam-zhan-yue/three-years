@@ -15,6 +15,7 @@ var game_server: GameServer
 @onready var camera_manager = %CameraManager as CameraManager
 @onready var shelf_manager = %ShelfManager as ShelfManager
 @onready var placement_manager = %PlacementManager as PlacementManager
+@onready var player_manager = %PlayerManager as PlayerManager
 @onready var ui = %UI as UI
 
 
@@ -25,6 +26,7 @@ func _ready() -> void:
 	Services.camera = camera_manager
 	Services.shelf = shelf_manager
 	Services.placement = placement_manager
+	Services.players = player_manager
 
 	Client.started.connect(_init_client)
 	Server.started.connect(_init_server)
@@ -53,4 +55,4 @@ func _spawned(node: Node) -> void:
 		var spawn := alex_spawn if game_client.character == Game.Character.Alex else wato_spawn
 		player.global_position = spawn.global_position
 		player.global_rotation = spawn.global_rotation
-		game_client.set_player(player)
+		Client.register_player(player)

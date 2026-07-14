@@ -6,3 +6,4 @@ var dialogue: DialogueManager
 var shelf: ShelfManager
 var camera: CameraManager
 var placement: PlacementManager
+var players: PlayerManager

@@ -3,7 +3,6 @@ extends Node
 const IP_ADDRESS: String = "localhost"
 const PORT: int = 42069
 
-
 var _debug = false
 
 const EVENT_NAME: Dictionary[Game.Event, String] = {

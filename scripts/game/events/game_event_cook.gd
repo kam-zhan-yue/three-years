@@ -6,6 +6,7 @@ func start() -> void:
 	Services.shelf.server_ingredient_selected.connect(_ingredient_selected)
 
 	# Play Dialogue
+	Services.players.server_activate_all(false)
 	Services.dialogue.server_start(DialogueCookLunch.new())
 	await Services.dialogue.dialogue_ended
 
