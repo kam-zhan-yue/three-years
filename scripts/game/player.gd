@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 
 	if not _can_move(): return
 
-	var cam_basis := Services.camera.current.global_transform.basis
+	var cam_basis = Services.camera.current.global_transform.basis
 
 	# Kill the vertical Y axis to keep movement flat on the ground plane
 	var forward := Vector3(cam_basis.z.x, 0.0, cam_basis.z.z).normalized()

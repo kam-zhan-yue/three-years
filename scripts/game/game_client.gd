@@ -13,6 +13,7 @@ func set_player(p: Player) -> void:
 	_activate_player()
 
 func start_event(_event: Game.Event) -> void:
+	# TODO: Fix this
 	_activate_player()
 
 func _activate_player() -> void:

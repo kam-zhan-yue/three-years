@@ -45,7 +45,7 @@ func spawn_player(id: int) -> void:
 	var player := spawner.spawn_player(id)
 	Global.debug("Server spawning %s" % player.name)
 
-# Called clent-side
+# Called client-side
 func _spawned(node: Node) -> void:
 	var player := node as Player
 	Global.debug("Spawned %s" % player.name)

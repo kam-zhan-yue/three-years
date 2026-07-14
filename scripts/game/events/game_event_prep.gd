@@ -4,8 +4,8 @@ var placements := 0
 
 func start() -> void:
 	placements = 0
-	Services.dialogue.server_start(DialoguePrep.new())
-	await Services.dialogue.dialogue_ended
+	# Services.dialogue.server_start(DialoguePrep.new())
+	# await Services.dialogue.dialogue_ended
 
 	Services.placement.server_set(Game.Character.Alex, Placement.Type.Kitchen)
 	Services.placement.server_set(Game.Character.Wato, Placement.Type.Shelf)

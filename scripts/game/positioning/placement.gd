@@ -37,7 +37,8 @@ func _body_exited(body: Node3D) -> void:
 func _input(event: InputEvent) -> void:
 	var is_selected := event.is_action_pressed("interact")
 	if is_selected && player && activated:
-		# TODO: also position the player
+		player.global_position = global_position
+		player.global_rotation = global_rotation
 		player.deactivate()
 		_complete()
 
