@@ -7,7 +7,10 @@ signal game_updated(state: Game.GameState)
 
 func start() -> void:
 	peer = ENetMultiplayerPeer.new()
-	peer.create_client(Global.IP_ADDRESS, Global.PORT)
+	if OS.has_feature("localhost"):
+		peer.create_client(Global.LOCALHOST, Global.PORT)
+	else:
+		peer.create_client(Global.IP_ADDRESS, Global.PORT)
 	multiplayer.multiplayer_peer = peer
 	start_game()
 

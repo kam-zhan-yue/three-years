@@ -1,0 +1,39 @@
+[tools]
+terraform = "latest"
+
+[env]
+GODOT_BIN = "/Applications/Godot.app/Contents/MacOS/Godot"
+EXPORT_PRESET = "Linux"
+BUILD_DIR = "builds/linux-server"
+BUILD_EXE = "server.x86_64"
+AWS_PROFILE = "AdministratorAccess-912668123173"
+AWS_REGION = "ap-northeast-1"
+PEM_FILE = "mac-keypair.pem"
+# This is likely to change, but oh well
+EC2_INSTANCE = "ec2-52-195-236-239.ap-northeast-1.compute.amazonaws.com"
+
+[tasks.setup]
+description = "Run this once only after generating your .pem file!"
+run = """
+chmod 600 "$PEM_FILE"
+"""
+
+[tasks.build]
+description = "Builds the Linux server!"
+run = """
+mkdir -p $BUILD_DIR
+"$GODOT_BIN" --headless --path . --export-release "$EXPORT_PRESET" "$BUILD_DIR/$BUILD_EXE"
+"""
+
+[tasks.deploy]
+description = "Deploys to AWS EC2 using SSH!"
+depends = ["build"]
+run = """
+scp -i "$PEM_FILE" -r "$BUILD_DIR" ec2-user@"$EC2_INSTANCE":~/.
+"""
+
+[tasks.shell]
+description = "SSH into the EC2 instance"
+run = """
+ssh -i "$PEM_FILE" ec2-user@"$EC2_INSTANCE"
+"""

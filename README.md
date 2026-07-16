@@ -11,3 +11,15 @@
 - [ ] Prepping: Write Dialogue
 - [ ] Cooking: Write Dialogue
 - [ ] Eating: Write Dialogue
+
+## Infra
+I'm too lazy to setup CI/CD and proper infra, so we do this manually :)
+Game is currently running on an AWS EC2 instance with an SSH port to a personal IP.
+
+```shell
+mise setup
+mise deploy
+mise run shell
+> chmod +x ./linux-server/*
+> ./linux-server/server.sh
+```

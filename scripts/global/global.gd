@@ -1,7 +1,8 @@
 extends Node
 
-const IP_ADDRESS: String = "localhost"
-const PORT: int = 42069
+const LOCALHOST: String = "localhost"
+const IP_ADDRESS: String = "ec2-52-195-236-239.ap-northeast-1.compute.amazonaws.com"
+const PORT: int = 8080
 
 var _debug = false
 
