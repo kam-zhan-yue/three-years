@@ -3,25 +3,26 @@ extends Node
 var peer: ENetMultiplayerPeer
 var game: GameServer
 
-signal started
-signal player_joined(id: int)
+enum State {
+	Waiting,
+}
 
-func _ready() -> void:
-	multiplayer.peer_connected.connect(_on_connected)
-
+# Only runs once
 func start() -> void:
+	multiplayer.peer_connected.connect(_on_connected)
+	multiplayer.peer_disconnected.connect(_on_disconnect)
 	peer = ENetMultiplayerPeer.new()
 	peer.create_server(Global.PORT)
 	multiplayer.multiplayer_peer = peer
-	Global.print("Starting Server")
-	started.emit()
 
-func init_game(g: GameServer) -> void:
-	game = g
-	# TODO: Implement proper game resetting
 	start_game()
 
 func start_game() -> void:
+	Services.players.reset_players()
+	Global.print("Starting Server")
+	if game:
+		game.free()
+	game = GameServer.new()
 	game.start_game()
 
 # When a peer connects, send them a game update to let them know how it is going
@@ -30,6 +31,11 @@ func _on_connected(_id: int) -> void:
 	if !game: return
 	game.send_update()
 
+func _on_disconnect(id: int) -> void:
+	if id in Services.players.server_players:
+		Global.print("Player %s disconnected, restart game!" % id)
+		start_game()
+		Client.restart_game()
 
 # Broadcasts a message to all clients
 func broadcast(message: String) -> void:
@@ -47,7 +53,6 @@ func select_character(character: Game.Character) -> void:
 @rpc("any_peer", "call_remote", "reliable")
 func _select_character(id: int, character: Game.Character) -> void:
 	if !multiplayer.is_server(): return
-	player_joined.emit(id)
 	game.add_player(id, character)
 
 #==================Interactions====================

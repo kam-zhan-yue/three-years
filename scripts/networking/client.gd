@@ -3,18 +3,27 @@ extends Node
 var peer: ENetMultiplayerPeer
 var game: GameClient
 
-signal started
 signal game_updated(state: Game.GameState)
 
 func start() -> void:
 	peer = ENetMultiplayerPeer.new()
 	peer.create_client(Global.IP_ADDRESS, Global.PORT)
 	multiplayer.multiplayer_peer = peer
-	Global.print("Starting Client")
-	started.emit()
+	start_game()
 
-func init_game(g: GameClient) -> void:
-	game = g
+func start_game() -> void:
+	Global.print("Starting Client")
+	if game:
+		game.free()
+	game = GameClient.new()
+
+func restart_game() -> void:
+	_restart_game.rpc()
+
+@rpc("authority", "call_remote", "reliable")
+func _restart_game() -> void:
+	Global.print("Restarting Client-Side Game")
+	get_tree().reload_current_scene()
 
 #==================Debugging====================
 func print(message: String) -> void:

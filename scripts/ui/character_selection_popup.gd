@@ -10,6 +10,7 @@ func _ready() -> void:
 	Client.game_updated.connect(_on_game_updated)
 
 func _on_game_updated(state: Game.GameState):
+	Global.print("Players: %s" % len(state.players))
 	for character in state.players.values():
 		if character == Game.Character.Alex:
 			Global.set_inactive(alex_button)

@@ -24,6 +24,7 @@ func get_character(id: int) -> Game.Character:
 	return Services.players.server_players[id]
 
 func send_update() -> void:
+	Global.print("Sending update to clients")
 	Client.update_game(get_state())
 
 func get_state() -> Game.GameState:
