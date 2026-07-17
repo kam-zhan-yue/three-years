@@ -3,11 +3,13 @@ extends Node3D
 
 @onready var shelf_camera := %ShelfCamera as Camera3D
 @onready var main_zone := %MainZone as CameraZone
+@onready var kitchen_zone := %KitchenZone as CameraZone
 @onready var cameras := %Cameras as Node3D
 
 enum Camera {
 	Main,
 	Shelf,
+	Kitchen,
 	Zone,
 }
 
@@ -19,6 +21,7 @@ var current_zone_camera: Camera3D
 func _ready() -> void:
 	CAMERAS[Camera.Main] = main_zone.camera
 	CAMERAS[Camera.Shelf] = shelf_camera
+	CAMERAS[Camera.Kitchen] = kitchen_zone.camera
 	client_switch_camera(Camera.Main)
 	for child in cameras.get_children():
 		if child is CameraZone:

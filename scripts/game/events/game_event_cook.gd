@@ -22,6 +22,8 @@ func _event_triggered(event: Dialogue.Event) -> void:
 	if event == Dialogue.Event.Ingredients:
 		Services.camera.server_switch_camera(Game.Character.Wato, CameraManager.Camera.Shelf)
 		Services.shelf.server_activate(Game.Character.Wato)
+	elif event == Dialogue.Event.KitchenTalk:
+		Services.camera.server_switch_camera(Game.Character.Wato, CameraManager.Camera.Kitchen)
 
 func _ingredient_selected(type: String) -> void:
 	Services.dialogue.server_respond(Game.Character.Wato, type)

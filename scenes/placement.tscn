@@ -8,13 +8,14 @@
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pn1mm"]
-radius = 1.0
+radius = 0.4
 
 [node name="Shelf" type="Marker3D" unique_id=2039868235]
 gizmo_extents = 0.75
 script = ExtResource("1_pn1mm")
 
 [node name="WorldPlacementPopup" type="Sprite3D" parent="." unique_id=198807948]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9479706, 0)
 billboard = 1
 no_depth_test = true
 texture = SubResource("ViewportTexture_pn1mm")

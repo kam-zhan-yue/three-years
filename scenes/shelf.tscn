@@ -12,13 +12,13 @@ script = ExtResource("1_7q781")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30354452, -0.08415067, -0.5665158)
 
-[node name="Mirin" parent="Ingredients" unique_id=736880595 instance=ExtResource("1_viw0s")]
+[node name="Tomato" parent="Ingredients" unique_id=736880595 instance=ExtResource("1_viw0s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09229231, 0.21820995, -0.24514806)
 
-[node name="Sake" parent="Ingredients" unique_id=710074819 instance=ExtResource("1_00mi8")]
+[node name="Pasta" parent="Ingredients" unique_id=710074819 instance=ExtResource("1_00mi8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014313221, 0.28069633, 0.34281933)
 
-[node name="SoySauce" parent="Ingredients" unique_id=152051225 instance=ExtResource("3_7q781")]
+[node name="Natto" parent="Ingredients" unique_id=152051225 instance=ExtResource("3_7q781")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11938667, 0.15786044, 0.060354948)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=214097341]

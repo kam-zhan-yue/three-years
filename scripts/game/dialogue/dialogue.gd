@@ -9,6 +9,7 @@ const SPEAKERS: Dictionary[Game.Character, String] = {
 enum Event {
 	None,
 	Ingredients,
+	KitchenTalk,
 }
 
 class Response:

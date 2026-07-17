@@ -45,7 +45,7 @@ unique_name_in_owner = true
 
 [node name="ShelfCamera" type="Camera3D" parent="Cameras" unique_id=1562081901]
 unique_name_in_owner = true
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.2549663, 0.305, 10.869588)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.3427677, 0.305, 10.869588)
 fov = 40.0
 
 [node name="DiningZone" type="Node3D" parent="Cameras" unique_id=470995314]
@@ -64,6 +64,7 @@ transform = Transform3D(-0.5033367, -0.4320452, 0.7483242, 0, 0.8660254, 0.5, -0
 fov = 50.0
 
 [node name="KitchenZone" type="Node3D" parent="Cameras" unique_id=844251554]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.118983746, 0, 10.779945)
 script = ExtResource("11_ya4ey")
 
@@ -277,7 +278,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26858187, 0)
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.3298275, 0, 8.659744)
 
 [node name="Shelf" parent="Placements" unique_id=153822818 instance=ExtResource("13_trceg")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.2982764, 0, 10.627209)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.2033296, 0, 10.627209)
 type = 1
 
 [node name="FutonAlex" parent="Placements" unique_id=15977365 instance=ExtResource("13_trceg")]
