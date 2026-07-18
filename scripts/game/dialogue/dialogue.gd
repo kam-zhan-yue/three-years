@@ -1,7 +1,7 @@
 class_name Dialogue
 
 const SPEAKERS: Dictionary[Game.Character, String] = {
-	Game.Character.None: "N/A",
+	Game.Character.None: "",
 	Game.Character.Alex: "Alex",
 	Game.Character.Wato: "Wato",
 }
@@ -10,6 +10,7 @@ enum Event {
 	None,
 	Ingredients,
 	KitchenTalk,
+	DeepTalk,
 }
 
 class Response:

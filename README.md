@@ -7,10 +7,10 @@
 - [x] Bug: Fix camera zones overlapping
 - [x] Flow: Implement player leave, game restart, etc
 - [x] Infra: Implement Deployment
-- [ ] Cleaning: Write Dialogue
-- [ ] Prepping: Write Dialogue
-- [ ] Cooking: Write Dialogue
-- [ ] Eating: Write Dialogue
+- [x] Cleaning: Write Dialogue
+- [x] Prepping: Write Dialogue
+- [x] Cooking: Write Dialogue
+- [x] Eating: Write Dialogue
 - [ ] Dialogue: Implement Typewriter
 - [ ] Cleaning: Implement Clean Together Event
 

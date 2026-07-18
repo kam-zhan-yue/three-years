@@ -23,7 +23,7 @@ func _input(event: InputEvent) -> void:
 	if current_line.response != null: return
 	var is_clicked := event.is_action_pressed("select")
 	var is_same_character = current_line and current_line.speaker == Client.game.character
-	if is_clicked and is_same_character:
+	if is_clicked and is_same_character or current_line.speaker == Game.Character.None:
 		Server.continue_dialogue(current_line)
 
 func start_dialogue(line: Dialogue.Line) -> void:

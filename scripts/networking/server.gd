@@ -82,7 +82,7 @@ func _continue_dialogue(client_id: int, line: Dictionary) -> void:
 	# Validate that the player can request to continue this dialogue
 	var l := dict_to_inst(line) as Dialogue.Line
 	var character := game.get_character(client_id)
-	if character != l.speaker: return
+	if l.speaker != Game.Character.None and character != l.speaker: return
 
 	game.continue_dialogue(l)
 
