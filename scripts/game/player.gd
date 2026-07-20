@@ -28,7 +28,9 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= GRAVITY * delta
 
-	if not _can_move(): return
+	if not _can_move(): 
+		move_and_slide()
+		return
 
 	var cam_basis = Services.camera.current.global_transform.basis
 

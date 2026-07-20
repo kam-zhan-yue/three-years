@@ -1,16 +1,9 @@
 [gd_scene format=3 uid="uid://ci7yeyteds4rj"]
 
 [ext_resource type="Script" uid="uid://dp6s87k67imvo" path="res://scripts/game/player.gd" id="1_dqkch"]
-[ext_resource type="Material" uid="uid://ctbm7id207vxy" path="res://materials/player.tres" id="2_g2els"]
-[ext_resource type="Material" uid="uid://yv7kr2cf808i" path="res://materials/eyes.tres" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://da53ybgieq0xh" path="res://scripts/game/interactor.gd" id="4_dqkch"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qhqgy"]
-radius = 0.3
-height = 1.5
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_dqkch"]
-radius = 0.3
 height = 1.5
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_3vyb7"]
@@ -21,10 +14,6 @@ properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
 
-[sub_resource type="SphereMesh" id="SphereMesh_dqkch"]
-radius = 0.15
-height = 0.25
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_dqkch"]
 radius = 1.2
 
@@ -32,27 +21,15 @@ radius = 1.2
 script = ExtResource("1_dqkch")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=508933110]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7005834, 0)
 shape = SubResource("CapsuleShape3D_qhqgy")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=863936321]
-mesh = SubResource("CapsuleMesh_dqkch")
-surface_material_override/0 = ExtResource("2_g2els")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=767194144]
 replication_config = SubResource("SceneReplicationConfig_3vyb7")
 
-[node name="Eye1" type="MeshInstance3D" parent="." unique_id=205867685]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.121708006, 0.5039055, 0.16684121)
-mesh = SubResource("SphereMesh_dqkch")
-surface_material_override/0 = ExtResource("3_qhqgy")
-
-[node name="Eye2" type="MeshInstance3D" parent="." unique_id=209486917]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13165411, 0.5039055, 0.16684121)
-mesh = SubResource("SphereMesh_dqkch")
-surface_material_override/0 = ExtResource("3_qhqgy")
-
 [node name="Interactor" type="Node3D" parent="." unique_id=913993954]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7005834, 0)
 script = ExtResource("4_dqkch")
 
 [node name="InteractorArea" type="Area3D" parent="Interactor" unique_id=2046170038]

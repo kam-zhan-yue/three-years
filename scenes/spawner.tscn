@@ -2,8 +2,13 @@
 
 [ext_resource type="Script" uid="uid://pqdksl1d3rrh" path="res://scripts/networking/spawner.gd" id="1_2vbf6"]
 [ext_resource type="PackedScene" uid="uid://ci7yeyteds4rj" path="res://scenes/player.tscn" id="2_ik2nu"]
+[ext_resource type="PackedScene" uid="uid://fgtbnbf65tqp" path="res://scenes/players/wato.tscn" id="2_tx2ig"]
+[ext_resource type="PackedScene" uid="uid://bajkub6i4cfe1" path="res://scenes/players/alex.tscn" id="3_6bbd6"]
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" unique_id=1378144154]
-spawn_path = NodePath(".")
+[node name="Spawner" type="MultiplayerSpawner" unique_id=254750168]
+_spawnable_scenes = PackedStringArray("uid://ci7yeyteds4rj", "uid://fgtbnbf65tqp", "uid://bajkub6i4cfe1")
+spawn_path = NodePath("../..")
 script = ExtResource("1_2vbf6")
 network_player = ExtResource("2_ik2nu")
+wato = ExtResource("2_tx2ig")
+alex = ExtResource("3_6bbd6")

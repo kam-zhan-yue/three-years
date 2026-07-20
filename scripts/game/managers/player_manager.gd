@@ -19,7 +19,7 @@ func reset_players() -> void:
 
 func server_init_player(id: int, character: Game.Character) -> void:
 	if !multiplayer.is_server(): return
-	var player := spawner.spawn_player(id)
+	var player := spawner.spawn_player(id, character)
 	Global.debug("Server spawning %s" % player.name)
 	server_players[id] = character
 

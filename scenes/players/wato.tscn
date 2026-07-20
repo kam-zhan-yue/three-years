@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://fgtbnbf65tqp"]
+
+[ext_resource type="PackedScene" uid="uid://ci7yeyteds4rj" path="res://scenes/player.tscn" id="1_r5l1f"]
+[ext_resource type="PackedScene" uid="uid://ccqil5wu2c1q" path="res://models/wato.blend" id="2_r5l1f"]
+
+[node name="Wato" unique_id=1164720771 instance=ExtResource("1_r5l1f")]
+
+[node name="Model" parent="." index="0" unique_id=1234227004 instance=ExtResource("2_r5l1f")]
+unique_name_in_owner = true

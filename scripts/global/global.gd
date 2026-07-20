@@ -13,6 +13,9 @@ const EVENT_NAME: Dictionary[Game.Event, String] = {
 	Game.Event.Prep: "Prepping",
 }
 
+func get_character_name(character: Game.Character) -> String:
+	return Game.Character.keys()[character]
+
 func get_event_type(node: String) -> Game.EventType:
 	if node[0] == "D":
 		return Game.EventType.Dialogue

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bajkub6i4cfe1"]
+
+[ext_resource type="PackedScene" uid="uid://ci7yeyteds4rj" path="res://scenes/player.tscn" id="1_pcyih"]
+[ext_resource type="PackedScene" uid="uid://yuv6n5pfqtmp" path="res://models/alex.blend" id="2_pcyih"]
+
+[node name="Alex" unique_id=1164720771 instance=ExtResource("1_pcyih")]
+
+[node name="Model" parent="." index="0" unique_id=847602225 instance=ExtResource("2_pcyih")]
+unique_name_in_owner = true
