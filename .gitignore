@@ -6,13 +6,7 @@
 /builds/
 export_presets.cfg
 
-# Terraform
-terraform/.terraform/
-terraform/.terraform.lock.hcl
-terraform/terraform.tfstate
-terraform/terraform.tfstate.backup
-terraform/*.tfvars
-terraform/crash.log
-
 # mise local overrides
 mise.local.toml
+
+krita/
