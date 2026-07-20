@@ -3,7 +3,70 @@
 [ext_resource type="PackedScene" uid="uid://ci7yeyteds4rj" path="res://scenes/player.tscn" id="1_r5l1f"]
 [ext_resource type="PackedScene" uid="uid://ccqil5wu2c1q" path="res://models/wato.blend" id="2_r5l1f"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1vhqq"]
+animation = &"sitting"
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_r5l1f"]
+input_0/name = "sitting"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = false
+input_1/name = "standing"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = false
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fw7h8"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v8vkp"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_t0cbr"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_fw7h8")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_v8vkp")
+blend_point_1/pos = 1.0
+min_space = 0.0
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_aef5b"]
+nodes/output/position = Vector2(710, 210)
+nodes/walking/node = SubResource("AnimationNodeBlendSpace1D_t0cbr")
+nodes/walking/position = Vector2(220, 280)
+nodes/state/node = SubResource("AnimationNodeTransition_r5l1f")
+nodes/state/position = Vector2(450, 160)
+nodes/sitting/node = SubResource("AnimationNodeAnimation_1vhqq")
+nodes/sitting/position = Vector2(280, 60)
+node_connections = [&"output", 0, &"state", &"state", 0, &"sitting", &"state", 1, &"walking"]
+
 [node name="Wato" unique_id=1164720771 instance=ExtResource("1_r5l1f")]
 
-[node name="Model" parent="." index="0" unique_id=1234227004 instance=ExtResource("2_r5l1f")]
+[node name="Model" parent="." index="0" unique_id=2123482757 instance=ExtResource("2_r5l1f")]
 unique_name_in_owner = true
+
+[node name="Body" parent="Model" index="0" unique_id=1109085085]
+transform = Transform3D(0.89239347, 0, 0, 0, 0.53409773, 0, 0, 0, 1.1990806, 0, 0, 0)
+
+[node name="Earrings" parent="Model" index="1" unique_id=1589206031]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.489882, 0)
+
+[node name="Ears" parent="Model" index="2" unique_id=1525949762]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.489882, 0)
+
+[node name="Hair" parent="Model" index="3" unique_id=1380322380]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.44820386, 0)
+
+[node name="Head" parent="Model" index="4" unique_id=121659306]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5150485, 0)
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="4" unique_id=722125291]
+unique_name_in_owner = true
+root_node = NodePath("%Model")
+tree_root = SubResource("AnimationNodeBlendTree_aef5b")
+anim_player = NodePath("../Model/AnimationPlayer")
+parameters/walking/blend_position = 0.0
+parameters/state/current_state = "sitting"
+parameters/state/transition_request = ""
+parameters/state/current_index = 0
+
+[editable path="Model"]

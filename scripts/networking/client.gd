@@ -120,3 +120,10 @@ func register_player(player: Player) -> void:
 @rpc("authority", "call_remote", "reliable")
 func set_player_active(active: bool) -> void:
 	Services.players.client_activate(active)
+
+func set_anim(anim: Player.AnimState) -> void:
+	_set_anim.rpc(anim)
+
+@rpc("authority", "call_remote", "reliable")
+func _set_anim(anim: Player.AnimState) -> void:
+	Services.players.client_set_anim(anim)

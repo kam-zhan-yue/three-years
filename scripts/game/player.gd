@@ -2,12 +2,20 @@ class_name Player
 extends CharacterBody3D
 
 @onready var interactor := %Interactor as Interactor
+@onready var animation_player = %Model/AnimationPlayer as AnimationPlayer
+@onready var animation_tree = %AnimationTree as AnimationTree
 
 @export var rotation_offset := PI * 0.5
 @export var rotation_speed := TAU * 3 # 2 full rotations per second
 @export var speed := 5.0
+@export var anim_state := AnimState.Sitting
 
 var GRAVITY = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+enum AnimState {
+	Sitting,
+	Standing,
+}
 
 var activated := false
 
@@ -20,15 +28,18 @@ func activate() -> void:
 func deactivate() -> void:
 	activated = false
 
+func client_set_anim(state: AnimState) -> void:
+	anim_state = state
+
 func _can_move() -> bool:
-	return activated && !interactor.interacting
+	return activated && !interactor.interacting && is_multiplayer_authority()
 
 func _physics_process(delta: float) -> void:
-	if !is_multiplayer_authority(): return
 	if not is_on_floor():
 		velocity.y -= GRAVITY * delta
 
 	if not _can_move(): 
+		_set_animations()
 		move_and_slide()
 		return
 
@@ -50,7 +61,16 @@ func _physics_process(delta: float) -> void:
 	
 	var velocity_2d := direction_2d * speed
 	velocity = Vector3(velocity_2d.x, velocity.y, velocity_2d.y)
+	_set_animations()
 	move_and_slide()
+
+func _set_animations() -> void:
+	match anim_state:
+		AnimState.Sitting:
+			animation_tree.set("parameters/state/transition_request", "sitting")
+		AnimState.Standing:
+			animation_tree.set("parameters/state/transition_request", "standing")
+	animation_tree.set("parameters/walking/blend_position", velocity.length())
 
 func _interact_started() -> void:
 	self.activated = false

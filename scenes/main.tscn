@@ -103,7 +103,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Environment" unique_id=1023167838]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8131977, -1.3657665, 3.2150748)
+transform = Transform3D(1.0634108, 0, 0, 0, 1.0634108, 0, 0, 0, 1.0634108, 1.8131977, -1.3657665, 3.2150748)
 use_collision = true
 size = Vector3(8.394653, 1, 9.980412)
 

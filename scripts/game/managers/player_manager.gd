@@ -24,7 +24,7 @@ func server_init_player(id: int, character: Game.Character) -> void:
 	server_players[id] = character
 
 func server_register_player(character: Game.Character) -> void:
-	Global.print("Character joined: %s" % character)
+	Global.print("Character spawned: %s" % character)
 	server_loaded_players.append(character)
 	if len(server_loaded_players) == 2:
 		server_players_loaded.emit()
@@ -37,7 +37,6 @@ func server_activate(character: Game.Character, active: bool) -> void:
 	Server.set_player_active(character, active)
 
 func client_activate(active: bool) -> void:
-	Global.print("Setting to %s" % active)
 	if active:
 		Client.game.player.activate()
 	else:
@@ -56,3 +55,10 @@ func _client_spawn_player(node: Node) -> void:
 		player.global_position = spawn.global_position
 		player.global_rotation = spawn.global_rotation
 		Client.register_player(player)
+
+
+func server_set_anim(anim: Player.AnimState) -> void:
+	Client.set_anim(anim)
+
+func client_set_anim(anim: Player.AnimState) -> void:
+	Client.game.player.client_set_anim(anim)

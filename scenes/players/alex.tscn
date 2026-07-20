@@ -2,8 +2,33 @@
 
 [ext_resource type="PackedScene" uid="uid://ci7yeyteds4rj" path="res://scenes/player.tscn" id="1_pcyih"]
 [ext_resource type="PackedScene" uid="uid://yuv6n5pfqtmp" path="res://models/alex.blend" id="2_pcyih"]
+[ext_resource type="AnimationNodeBlendTree" uid="uid://b7q8urexlycdw" path="res://scenes/players/player_animation_tree.tres" id="3_40k1r"]
 
 [node name="Alex" unique_id=1164720771 instance=ExtResource("1_pcyih")]
 
-[node name="Model" parent="." index="0" unique_id=847602225 instance=ExtResource("2_pcyih")]
+[node name="Model" parent="." index="0" unique_id=2017886100 instance=ExtResource("2_pcyih")]
 unique_name_in_owner = true
+
+[node name="Body" parent="Model" index="0" unique_id=387476052]
+transform = Transform3D(0.47299182, 0, 0, 0, 0.3005954, 0, 0, 0, 0.42272657, 0, 0, 0)
+
+[node name="Head" parent="Model" index="1" unique_id=456202002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91373956, 0)
+
+[node name="Hair" parent="Model" index="2" unique_id=1828215553]
+transform = Transform3D(1.1330963, 0, 0, 0, 1.1330963, 0, 0, 0, 1.1330963, 0, 0.91373956, 0)
+
+[node name="Ears" parent="Model" index="3" unique_id=462959025]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.059759576, -0.55464613, 0)
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="4" unique_id=2001382198]
+unique_name_in_owner = true
+root_node = NodePath("%Model")
+tree_root = ExtResource("3_40k1r")
+anim_player = NodePath("../Model/AnimationPlayer")
+parameters/walking/blend_position = 0.0
+parameters/state/current_state = "sitting"
+parameters/state/transition_request = ""
+parameters/state/current_index = 0
+
+[editable path="Model"]

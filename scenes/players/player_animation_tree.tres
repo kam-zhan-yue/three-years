@@ -1,0 +1,38 @@
+[gd_resource type="AnimationNodeBlendTree" format=3 uid="uid://b7q8urexlycdw"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e6rwx"]
+animation = &"sitting"
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_jljl1"]
+input_0/name = "sitting"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = false
+input_1/name = "standing"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = false
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pcyih"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_40k1r"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_e6rwx"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_pcyih")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_40k1r")
+blend_point_1/pos = 1.0
+min_space = 0.0
+
+[resource]
+graph_offset = Vector2(-126, 23)
+nodes/output/position = Vector2(580, 190)
+nodes/walking/node = SubResource("AnimationNodeBlendSpace1D_e6rwx")
+nodes/walking/position = Vector2(160, 350)
+nodes/state/node = SubResource("AnimationNodeTransition_jljl1")
+nodes/state/position = Vector2(390, 120)
+nodes/sitting/node = SubResource("AnimationNodeAnimation_e6rwx")
+nodes/sitting/position = Vector2(200, 120)
+node_connections = [&"output", 0, &"state", &"state", 0, &"sitting", &"state", 1, &"walking"]
