@@ -15,11 +15,18 @@
 [ext_resource type="PackedScene" uid="uid://cag3hb86gdnhf" path="res://scenes/interactable.tscn" id="6_tefeu"]
 [ext_resource type="Script" uid="uid://n46uht8c54bg" path="res://scripts/game/dialogue/dialogue_manager.gd" id="6_tipki"]
 [ext_resource type="PackedScene" uid="uid://bq8imk30yih1n" path="res://models/carpet.blend" id="7_pm3ni"]
+[ext_resource type="PackedScene" uid="uid://cjxl1agceivlb" path="res://models/laundry-basket.blend" id="9_vxglm"]
+[ext_resource type="PackedScene" uid="uid://b2ehwgyak2rox" path="res://models/shelf.blend" id="10_2f3dj"]
 [ext_resource type="Script" uid="uid://b4pyo4tdbh760" path="res://scripts/game/camera_manager.gd" id="10_eb6dy"]
 [ext_resource type="Script" uid="uid://cbw48dagig15d" path="res://scripts/game/positioning/placement_manager.gd" id="10_trceg"]
 [ext_resource type="Script" uid="uid://d3am6vmeye8lv" path="res://scripts/game/managers/player_manager.gd" id="11_a8y0u"]
 [ext_resource type="Script" uid="uid://cc8h2p22u7gpn" path="res://scripts/game/camera_zone.gd" id="11_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://jmntjjpbh5u5" path="res://models/bin.blend" id="11_yq6so"]
+[ext_resource type="PackedScene" uid="uid://dfd8ouv4wpg7k" path="res://models/snack-box.blend" id="12_fv21b"]
+[ext_resource type="PackedScene" uid="uid://1vd34xxyoopq" path="res://models/ukelele.blend" id="13_tel4y"]
 [ext_resource type="PackedScene" uid="uid://dsd0c05ehsa32" path="res://scenes/placement.tscn" id="13_trceg"]
+[ext_resource type="PackedScene" uid="uid://b05m60glyaai5" path="res://models/pantry.blend" id="26_qkpxi"]
+[ext_resource type="PackedScene" uid="uid://floe4tleksv" path="res://models/fridge.blend" id="27_5q0nq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eb6dy"]
 size = Vector3(8.93544, 2.5722656, 4.5850244)
@@ -67,11 +74,26 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5
 [node name="boxes" parent="Models" unique_id=426176544 instance=ExtResource("5_yc10j")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5866619, -0.8303439, 3.433329)
 
-[node name="table" parent="Models" unique_id=1126093985 instance=ExtResource("6_jscy8")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.3134732, -0.83406067, 2.644681)
+[node name="table" parent="Models" unique_id=240673436 instance=ExtResource("6_jscy8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.3134732, -0.83406067, 2.1238604)
 
 [node name="carpet" parent="Models" unique_id=532460493 instance=ExtResource("7_pm3ni")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6487441, -0.8838955, 2.944374)
+
+[node name="laundry-basket" parent="Models" unique_id=1343785223 instance=ExtResource("9_vxglm")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.631363, -0.90346724, 7.319723)
+
+[node name="shelf" parent="Models" unique_id=450259370 instance=ExtResource("10_2f3dj")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.7595959, -0.90346694, 4.7232203)
+
+[node name="bin" parent="Models" unique_id=272832661 instance=ExtResource("11_yq6so")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.849845, -0.9034672, 5.7030487)
+
+[node name="snack-box" parent="Models" unique_id=1896903240 instance=ExtResource("12_fv21b")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.673143, -0.90346694, 6.4397163)
+
+[node name="ukelele" parent="Models" unique_id=947039479 instance=ExtResource("13_tel4y")]
+transform = Transform3D(-0.56196797, 0, 0.827159, 0, 1, 0, -0.827159, 0, -0.56196797, 0.5835283, -0.90326965, 7.398413)
 
 [node name="Cameras" type="Node3D" parent="." unique_id=594748807]
 unique_name_in_owner = true
@@ -303,3 +325,9 @@ type = 3
 [node name="FutonWato" parent="Placements" unique_id=123379710 instance=ExtResource("13_trceg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31499082, 0.0046281815, -0.21239519)
 type = 2
+
+[node name="pantry" parent="." unique_id=469098543 instance=ExtResource("26_qkpxi")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.702947, -0.93571186, 8.639446)
+
+[node name="fridge" parent="." unique_id=286576147 instance=ExtResource("27_5q0nq")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.6982665, -0.9357121, 9.64205)
