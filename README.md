@@ -16,11 +16,11 @@
 - [ ] Cleaning: Implement Clean Together Event
 
 ## Models
-- [ ] Wato + Sitting + Moving
-- [ ] Alex + Sitting + Moving
-- [ ] Bed
-- [ ] Kotatsu
-- [ ] Floor Chairs
+- [x] Wato + Sitting + Moving
+- [x] Alex + Sitting + Moving
+- [x] Bed
+- [x] Kotatsu
+- [x] Floor Chairs
 - [ ] Natto
 - [ ] Pack of Pasta
 - [ ] Kitchen + Stove + Sick
@@ -28,6 +28,7 @@
 - [ ] Wato's Cupboard
 - [ ] The boxes in the corner
 - [ ] Curtains and Window
+- [ ] Dirty Laundry
 
 
 ## Polishing

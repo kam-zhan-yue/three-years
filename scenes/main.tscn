@@ -3,11 +3,18 @@
 [ext_resource type="Script" uid="uid://tfha1p81v724" path="res://scripts/networking/entry_point.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://d6w68osi1iul" path="res://scenes/ui.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://c6hnu3e567lrx" path="res://scenes/shelf.tscn" id="2_choun"]
+[ext_resource type="PackedScene" uid="uid://bgghsr0jrc66o" path="res://models/floor-chair.blend" id="2_gqmmt"]
+[ext_resource type="PackedScene" uid="uid://i4veplo6smmh" path="res://models/kotatsu.blend" id="3_0ld40"]
+[ext_resource type="PackedScene" uid="uid://bbllr1lli56mf" path="res://models/bed.blend" id="3_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://bpd4sn83dcxd0" path="res://models/closet.blend" id="4_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://b8m58gkrv55mb" path="res://scenes/spawner.tscn" id="4_trceg"]
 [ext_resource type="Script" uid="uid://be4m3qov8whtv" path="res://scripts/game/interact_manager.gd" id="5_o6xl0"]
 [ext_resource type="Script" uid="uid://bfgb2sskms4j8" path="res://scripts/game/game_manager.gd" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://dqoyrei13ifbi" path="res://models/boxes.blend" id="5_yc10j"]
+[ext_resource type="PackedScene" uid="uid://cpiquo0me1pan" path="res://models/table.blend" id="6_jscy8"]
 [ext_resource type="PackedScene" uid="uid://cag3hb86gdnhf" path="res://scenes/interactable.tscn" id="6_tefeu"]
 [ext_resource type="Script" uid="uid://n46uht8c54bg" path="res://scripts/game/dialogue/dialogue_manager.gd" id="6_tipki"]
+[ext_resource type="PackedScene" uid="uid://bq8imk30yih1n" path="res://models/carpet.blend" id="7_pm3ni"]
 [ext_resource type="Script" uid="uid://b4pyo4tdbh760" path="res://scripts/game/camera_manager.gd" id="10_eb6dy"]
 [ext_resource type="Script" uid="uid://cbw48dagig15d" path="res://scripts/game/positioning/placement_manager.gd" id="10_trceg"]
 [ext_resource type="Script" uid="uid://d3am6vmeye8lv" path="res://scripts/game/managers/player_manager.gd" id="11_a8y0u"]
@@ -38,6 +45,33 @@ glow_enabled = true
 
 [node name="Main" type="Node3D" unique_id=1814151517]
 script = ExtResource("1_jyhfs")
+
+[node name="Models" type="Node3D" parent="." unique_id=1387700028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.949904, 0, 0)
+
+[node name="floor-chair" parent="Models" unique_id=796020403 instance=ExtResource("2_gqmmt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5141227, -0.88825476, 2.1085825)
+
+[node name="floor-chair2" parent="Models" unique_id=1906358413 instance=ExtResource("2_gqmmt")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.5141227, -0.88825476, 3.410921)
+
+[node name="bed" parent="Models" unique_id=674872799 instance=ExtResource("3_a8y0u")]
+transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, -1.0035471, -0.8340616, 6.421885)
+
+[node name="kotatsu" parent="Models" unique_id=370179912 instance=ExtResource("3_0ld40")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5594425, -0.7111442, 2.7407098)
+
+[node name="closet" parent="Models" unique_id=281806244 instance=ExtResource("4_gqmmt")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5587746, -0.83406067, 4.370658)
+
+[node name="boxes" parent="Models" unique_id=426176544 instance=ExtResource("5_yc10j")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5866619, -0.8303439, 3.433329)
+
+[node name="table" parent="Models" unique_id=1126093985 instance=ExtResource("6_jscy8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.3134732, -0.83406067, 2.644681)
+
+[node name="carpet" parent="Models" unique_id=532460493 instance=ExtResource("7_pm3ni")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6487441, -0.8838955, 2.944374)
 
 [node name="Cameras" type="Node3D" parent="." unique_id=594748807]
 unique_name_in_owner = true
@@ -103,24 +137,9 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Environment" unique_id=1023167838]
-transform = Transform3D(1.0634108, 0, 0, 0, 1.0634108, 0, 0, 0, 1.0634108, 1.8131977, -1.3657665, 3.2150748)
+transform = Transform3D(1.0634108, 0, 0, 0, 1.0634108, 0, 0, 0, 1.0634108, 1.9173352, -1.4351726, 2.6603887)
 use_collision = true
 size = Vector3(8.394653, 1, 9.980412)
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="Environment" unique_id=136540894]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9426012, -0.5470644, 6.329611)
-use_collision = true
-size = Vector3(2.7246857, 1, 3.6683064)
-
-[node name="CSGBox3D9" type="CSGBox3D" parent="Environment" unique_id=261931081]
-transform = Transform3D(0.5453901, 0, 0, 0, 0.17356673, 0, 0, 0, 0.5453901, 5.351221, 0.2533524, 1.179333)
-use_collision = true
-size = Vector3(2.3559952, 1, 3.6683064)
-
-[node name="CSGBox3D10" type="CSGBox3D" parent="Environment" unique_id=1141271634]
-transform = Transform3D(0.5453901, 0, 0, 0, 0.17356673, 0, 0, 0, 0.5453901, 0.38980144, -0.84228325, 0.8626065)
-use_collision = true
-size = Vector3(3.2736912, 1.5111084, 1.8555155)
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="Environment" unique_id=271027459]
 transform = Transform3D(0.5453901, 0, 0, 0, 0.17356673, 0, 0, 0, 0.5453901, 2.129838, -0.4182291, 9.236508)
@@ -165,7 +184,7 @@ use_collision = true
 size = Vector3(7.782913, 7.486328, 0.001)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Environment" unique_id=151431954]
-transform = Transform3D(1, 0, 0, 0, 0.53059936, 0, 0, 0, 1, -2.3283522, 0.34411216, 1.4179413)
+transform = Transform3D(1, 0, 0, 0, 0.53059936, 0, 0, 0, 1, 0.048309267, 0.34411216, 1.4179413)
 use_collision = true
 size = Vector3(0.001, 7.48938, 13.290588)
 
@@ -241,9 +260,10 @@ unique_name_in_owner = true
 
 [node name="Interactables" type="Node3D" parent="." unique_id=245774459]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3999243, 0, 3.621666)
 
 [node name="Interactable" parent="Interactables" unique_id=211024313 instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7427275, -0.86821425, 3.2648182)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.67352366, -0.86821425, 3.2648182)
 
 [node name="Interactable2" parent="Interactables" unique_id=1312227999 instance=ExtResource("6_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2572727, -0.86821425, 0.2648182)
