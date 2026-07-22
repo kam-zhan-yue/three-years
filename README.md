@@ -14,8 +14,11 @@
 - [ ] Implement Models and Animations
 - [ ] Implement Polishing
 - [ ] Cleaning: Implement Clean Together Event
+- [ ] Cleaning: Implement Dirty and Cleaned Models
 
 ## Models
+
+### Essentials
 - [x] Wato + Sitting + Moving
 - [x] Alex + Sitting + Moving
 - [x] Bed
@@ -23,12 +26,19 @@
 - [x] Floor Chairs
 - [ ] Natto
 - [ ] Pack of Pasta
-- [ ] Kitchen + Stove + Sick
-- [ ] Pantry
-- [ ] Wato's Cupboard
-- [ ] The boxes in the corner
-- [ ] Curtains and Window
+- [x] Kitchen + Stove + Sick
+- [x] Pantry
+- [x] Wato's Cupboard
+- [x] The boxes in the corner
+- [x] Curtains and Window
 - [ ] Dirty Laundry
+
+### Nice to Haves
+- [ ] Pink Mug
+- [ ] Coffee Grinder
+- [ ] Derek
+- [ ] Sharkie
+- [ ] Chair
 
 
 ## Polishing
