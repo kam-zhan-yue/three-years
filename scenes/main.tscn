@@ -38,7 +38,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kmb1v"]
 render_priority = 0
 shader = ExtResource("34_j8jky")
-shader_parameter/pixel_size = 12.0
+shader_parameter/pixel_size = 100.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_fuf3a"]
 material = SubResource("ShaderMaterial_kmb1v")
@@ -70,7 +70,7 @@ glow_enabled = true
 [node name="Main" type="Node3D" unique_id=1814151517]
 script = ExtResource("1_jyhfs")
 
-[node name="PixelShader" type="MeshInstance3D" parent="." unique_id=1175324368]
+[node name="EdgeDetection" type="MeshInstance3D" parent="." unique_id=1175324368]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.619288, 1.6421988, 0.69833446)
 extra_cull_margin = 117.7
 mesh = SubResource("QuadMesh_fuf3a")
@@ -268,9 +268,6 @@ unique_name_in_owner = true
 script = ExtResource("11_a8y0u")
 metadata/_custom_type_script = "uid://d3am6vmeye8lv"
 
-[node name="UI" parent="." unique_id=1811158779 instance=ExtResource("1_o5qli")]
-unique_name_in_owner = true
-
 [node name="Interactables" type="Node3D" parent="." unique_id=245774459]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3999243, 0, 3.621666)
@@ -334,3 +331,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6768074, -0.36675072, 9.765
 
 [node name="milk" parent="." unique_id=405452032 instance=ExtResource("32_qkpxi")]
 transform = Transform3D(0.7531961, 0, 0.657796, 0, 1, 0, -0.657796, 0, 0.7531961, 5.7956977, -0.3474522, 9.646193)
+
+[node name="UI" parent="." unique_id=1811158779 instance=ExtResource("1_o5qli")]
+unique_name_in_owner = true
