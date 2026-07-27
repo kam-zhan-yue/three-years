@@ -10,16 +10,16 @@
 unique_name_in_owner = true
 
 [node name="Body" parent="Model" index="0" unique_id=387476052]
-transform = Transform3D(0.47299182, 0, 0, 0, 0.3005954, 0, 0, 0, 0.42272657, 0, 0, 0)
+transform = Transform3D(0.4844203, 0, 0, 0, 0.28955013, 0, 0, 0, 0.43294048, 0, 0, 0)
 
 [node name="Head" parent="Model" index="1" unique_id=456202002]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91373956, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.88426703, 0)
 
 [node name="Hair" parent="Model" index="2" unique_id=1828215553]
-transform = Transform3D(1.1330963, 0, 0, 0, 1.1330963, 0, 0, 0, 1.1330963, 0, 0.91373956, 0)
+transform = Transform3D(1.1330963, 0, 0, 0, 1.1330963, 0, 0, 0, 1.1330963, 0, 0.88426703, 0)
 
 [node name="Ears" parent="Model" index="3" unique_id=462959025]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.059759576, -0.55464613, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.059759576, -0.58411866, 0)
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="4" unique_id=2001382198]
 unique_name_in_owner = true

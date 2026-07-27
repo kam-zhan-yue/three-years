@@ -26,12 +26,24 @@
 [ext_resource type="PackedScene" uid="uid://1vd34xxyoopq" path="res://models/ukelele.blend" id="13_tel4y"]
 [ext_resource type="PackedScene" uid="uid://dsd0c05ehsa32" path="res://scenes/placement.tscn" id="13_trceg"]
 [ext_resource type="PackedScene" uid="uid://vwkq65kp38r8" path="res://models/natto.blend" id="14_fv21b"]
+[ext_resource type="PackedScene" uid="uid://j6hhcygt7lbq" path="res://models/window.blend" id="15_dgi5k"]
 [ext_resource type="PackedScene" uid="uid://6br1bpm2actl" path="res://models/broccoli.blend" id="16_tel4y"]
 [ext_resource type="PackedScene" uid="uid://b05m60glyaai5" path="res://models/pantry.blend" id="26_qkpxi"]
 [ext_resource type="PackedScene" uid="uid://floe4tleksv" path="res://models/fridge.blend" id="27_5q0nq"]
 [ext_resource type="PackedScene" uid="uid://5jf2tctx7870" path="res://models/kitchen-bin.blend" id="28_yq6so"]
 [ext_resource type="PackedScene" uid="uid://oujb6txod87h" path="res://models/stove.blend" id="29_fv21b"]
 [ext_resource type="PackedScene" uid="uid://2r7txci2ivg2" path="res://models/milk.blend" id="32_qkpxi"]
+[ext_resource type="Shader" uid="uid://bb6b2mlbhh08c" path="res://shaders/pixel.gdshader" id="34_j8jky"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kmb1v"]
+render_priority = 0
+shader = ExtResource("34_j8jky")
+shader_parameter/pixel_size = 12.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_fuf3a"]
+material = SubResource("ShaderMaterial_kmb1v")
+flip_faces = true
+size = Vector2(2, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eb6dy"]
 size = Vector3(8.93544, 2.5722656, 4.5850244)
@@ -40,7 +52,7 @@ size = Vector3(8.93544, 2.5722656, 4.5850244)
 size = Vector3(5.6003714, 2.5722656, 5.485415)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ya4ey"]
-size = Vector3(8.93544, 2.5722656, 4.2428293)
+size = Vector3(8.93544, 2.5722656, 3.3323522)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0wfyh"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -58,14 +70,19 @@ glow_enabled = true
 [node name="Main" type="Node3D" unique_id=1814151517]
 script = ExtResource("1_jyhfs")
 
+[node name="PixelShader" type="MeshInstance3D" parent="." unique_id=1175324368]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.619288, 1.6421988, 0.69833446)
+extra_cull_margin = 117.7
+mesh = SubResource("QuadMesh_fuf3a")
+
 [node name="Models" type="Node3D" parent="." unique_id=1387700028]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.949904, 0, 0)
 
 [node name="floor-chair" parent="Models" unique_id=796020403 instance=ExtResource("2_gqmmt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5141227, -0.88825476, 2.1085825)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5141227, -0.88825476, 1.9332814)
 
 [node name="floor-chair2" parent="Models" unique_id=1906358413 instance=ExtResource("2_gqmmt")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.5141227, -0.88825476, 3.410921)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.5141227, -0.88825476, 3.572971)
 
 [node name="bed" parent="Models" unique_id=674872799 instance=ExtResource("3_a8y0u")]
 transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, -1.0035471, -0.8340616, 6.421885)
@@ -89,7 +106,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6487441, -0.8838955, 2.9443
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.631363, -0.90346724, 7.319723)
 
 [node name="shelf" parent="Models" unique_id=450259370 instance=ExtResource("10_2f3dj")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.7595959, -0.90346694, 4.7232203)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.75916, -0.90292007, 4.723606)
 
 [node name="bin" parent="Models" unique_id=272832661 instance=ExtResource("11_yq6so")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.849845, -0.9034672, 5.7030487)
@@ -103,6 +120,9 @@ transform = Transform3D(-0.56196797, 0, 0.827159, 0, 1, 0, -0.827159, 0, -0.5619
 [node name="natto" parent="Models" unique_id=77248389 instance=ExtResource("14_fv21b")]
 transform = Transform3D(0.90109974, 0, 0.4336119, 0, 1, 0, -0.4336119, 0, 0.90109974, 3.7389317, -0.3620779, 9.485092)
 
+[node name="window" parent="Models" unique_id=1597319655 instance=ExtResource("15_dgi5k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0608788, -1.0029838, 0.030363679)
+
 [node name="Cameras" type="Node3D" parent="." unique_id=594748807]
 unique_name_in_owner = true
 
@@ -112,6 +132,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.34
 fov = 40.0
 
 [node name="DiningZone" type="Node3D" parent="Cameras" unique_id=470995314]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6253042, 0, 0)
 script = ExtResource("11_ya4ey")
 
@@ -123,7 +144,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6984034, 0.7861328, 1.1801
 shape = SubResource("BoxShape3D_eb6dy")
 
 [node name="Camera" type="Camera3D" parent="Cameras/DiningZone" unique_id=615017300]
-transform = Transform3D(-0.5033367, -0.4320452, 0.7483242, 0, 0.8660254, 0.5, -0.8640904, 0.25166836, -0.4359024, 8.604815, 1.6789436, -0.7943001)
+transform = Transform3D(-0.5033367, -0.4320452, 0.7483242, 0, 0.8660254, 0.5, -0.8640904, 0.25166836, -0.4359024, 8.3497095, 1.7016971, 0.61474854)
 fov = 50.0
 
 [node name="KitchenZone" type="Node3D" parent="Cameras" unique_id=844251554]
@@ -150,11 +171,11 @@ script = ExtResource("11_ya4ey")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9024773, 0, 4.5281715)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/MainZone/Area" unique_id=1749922721]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6984034, 0.7861328, 1.0090303)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6984034, 0.7861328, 1.4642687)
 shape = SubResource("BoxShape3D_ya4ey")
 
 [node name="Camera" type="Camera3D" parent="Cameras/MainZone" unique_id=1237677062]
-transform = Transform3D(-4.0330423e-08, -0.12735891, 0.9918567, 1.6856523e-08, 0.9918567, 0.12735891, -1, 2.1855694e-08, -3.7855173e-08, 5.97951, 0.73871803, 5.750219)
+transform = Transform3D(0.66913056, -0.30463222, 0.6778374, 0, 0.9121201, 0.40992305, -0.74314487, -0.27429205, 0.6103274, 5.98, 1.877, 7.89)
 fov = 50.0
 
 [node name="Environment" type="Node3D" parent="." unique_id=1914465089]
@@ -186,12 +207,6 @@ transform = Transform3D(1, 0, 0, 0, 0.53059936, 0, 0, 0, 1, 0.048309267, 0.34411
 use_collision = true
 size = Vector3(0.001, 7.48938, 13.290588)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Environment" unique_id=1511751806]
-transform = Transform3D(1, 0, 0, 0, 0.53059936, 0, 0, 0, 1, 0.43527225, -0.7062861, -1.0377345)
-use_collision = true
-size = Vector3(11.666321, 11.594666, 0.001)
-metadata/_edit_lock_ = true
-
 [node name="CSGBox3D2" type="CSGBox3D" parent="Environment" unique_id=513173396]
 transform = Transform3D(0.39524925, 0, 0, 0, 1, 0, 0, 0, 1, 3.0375953, -1.4357119, 10.735312)
 use_collision = true
@@ -208,7 +223,7 @@ use_collision = true
 size = Vector3(0.001, 7.4629517, 5.395935)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Environment" unique_id=571237887]
-transform = Transform3D(0.39524925, 0, 0, 0, 0.53059936, 0, 0, 0, 1, 6.0284004, 0.36454722, 4.192519)
+transform = Transform3D(0.39524925, 0, 0, 0, 0.53059936, 0, 0, 0, 1, 6.03544, 0.3467495, 4.1698728)
 use_collision = true
 size = Vector3(0.001, 7.5664063, 18.464462)
 
@@ -220,11 +235,11 @@ unique_name_in_owner = true
 
 [node name="AlexSpawn" type="Marker3D" parent="GameManager" unique_id=1564376686]
 unique_name_in_owner = true
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.31270385, -0.38865566, 2)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.3747847, -0.8085147, 3.736681)
 
 [node name="WatoSpawn" type="Marker3D" parent="GameManager" unique_id=1493195581]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7135705, -0.20611632, -0.3210473)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4628732, -0.8085147, 2.0270526)
 
 [node name="InteractManager" type="Node3D" parent="GameManager" unique_id=1726704203]
 unique_name_in_owner = true

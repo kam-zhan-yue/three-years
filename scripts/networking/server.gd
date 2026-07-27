@@ -87,6 +87,9 @@ func _continue_dialogue(client_id: int, line: Dictionary) -> void:
 	game.continue_dialogue(l)
 
 #==================Camera====================
+func activate_camera_zones() -> void:
+	Client.activate_camera_zones()
+
 func switch_camera(character: Game.Character, camera: CameraManager.Camera) -> void:
 	var id := game.get_player_id(character)
 	Client.switch_camera.rpc_id(id, camera)

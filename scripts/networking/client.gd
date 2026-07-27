@@ -94,6 +94,13 @@ func _complete_interaction(interact_id: String) -> void:
 	game.complete_interaction(interact_id)
 
 #==================Cameras====================
+func activate_camera_zones() -> void:
+	_activate_camera_zones.rpc()
+
+@rpc("authority", "call_remote", "reliable")
+func _activate_camera_zones() -> void:
+	Services.camera.client_activate_zones()
+
 @rpc("authority", "call_remote", "reliable")
 func switch_camera(camera: CameraManager.Camera) -> void:
 	Services.camera.client_switch_camera(camera)
