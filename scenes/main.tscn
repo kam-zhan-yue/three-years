@@ -27,14 +27,15 @@
 [ext_resource type="PackedScene" uid="uid://1vd34xxyoopq" path="res://models/ukelele.blend" id="13_tel4y"]
 [ext_resource type="PackedScene" uid="uid://dsd0c05ehsa32" path="res://scenes/placement.tscn" id="13_trceg"]
 [ext_resource type="PackedScene" uid="uid://vwkq65kp38r8" path="res://models/natto.blend" id="14_fv21b"]
-[ext_resource type="PackedScene" uid="uid://j6hhcygt7lbq" path="res://models/window.blend" id="15_dgi5k"]
 [ext_resource type="PackedScene" uid="uid://6br1bpm2actl" path="res://models/broccoli.blend" id="16_tel4y"]
+[ext_resource type="Material" uid="uid://yv7kr2cf808i" path="res://materials/eyes.tres" id="25_kmb1v"]
 [ext_resource type="PackedScene" uid="uid://b05m60glyaai5" path="res://models/pantry.blend" id="26_qkpxi"]
 [ext_resource type="PackedScene" uid="uid://floe4tleksv" path="res://models/fridge.blend" id="27_5q0nq"]
 [ext_resource type="PackedScene" uid="uid://5jf2tctx7870" path="res://models/kitchen-bin.blend" id="28_yq6so"]
 [ext_resource type="PackedScene" uid="uid://oujb6txod87h" path="res://models/stove.blend" id="29_fv21b"]
 [ext_resource type="PackedScene" uid="uid://2r7txci2ivg2" path="res://models/milk.blend" id="32_qkpxi"]
 [ext_resource type="Shader" uid="uid://bb6b2mlbhh08c" path="res://shaders/pixel.gdshader" id="34_j8jky"]
+[ext_resource type="PackedScene" uid="uid://cu6pdcclugdtg" path="res://models/window-2.blend" id="36_kmb1v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fuf3a"]
 render_priority = 0
@@ -80,16 +81,21 @@ sky = SubResource("Sky_sugp2")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fuf3a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pibwh"]
+uv1_scale = Vector3(2.5, 2.5, 2.5)
+
 [node name="Main" type="Node3D" unique_id=1814151517]
 script = ExtResource("1_jyhfs")
 
 [node name="Pixel" type="MeshInstance3D" parent="." unique_id=671524005]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.619288, 1.6421988, 0.69833446)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.616529, 4.872381, 4.2128563)
 extra_cull_margin = 117.7
 mesh = SubResource("QuadMesh_pibwh")
 
 [node name="Edge" type="MeshInstance3D" parent="." unique_id=586459874]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.619288, 1.6421988, 0.69833446)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.619288, 8.790932, 7.5928965)
 visible = false
 extra_cull_margin = 117.7
 mesh = SubResource("QuadMesh_j8jky")
@@ -108,16 +114,16 @@ size = Vector2i(1152, 648)
 [node name="Models" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=1387700028]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.949904, 0, 0)
 
-[node name="floor-chair" parent="SubViewportContainer/SubViewport/Models" unique_id=796020403 instance=ExtResource("2_gqmmt")]
+[node name="floor-chair" parent="SubViewportContainer/SubViewport/Models" unique_id=188915586 instance=ExtResource("2_gqmmt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5141227, -0.88825476, 1.9332814)
 
-[node name="floor-chair2" parent="SubViewportContainer/SubViewport/Models" unique_id=1906358413 instance=ExtResource("2_gqmmt")]
+[node name="floor-chair2" parent="SubViewportContainer/SubViewport/Models" unique_id=808694286 instance=ExtResource("2_gqmmt")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.5141227, -0.88825476, 3.572971)
 
 [node name="bed" parent="SubViewportContainer/SubViewport/Models" unique_id=674872799 instance=ExtResource("3_a8y0u")]
 transform = Transform3D(-0.99999994, 0, -8.742277e-08, 0, 1, 0, 8.742277e-08, 0, -0.99999994, -1.0035471, -0.8340616, 6.421885)
 
-[node name="kotatsu" parent="SubViewportContainer/SubViewport/Models" unique_id=370179912 instance=ExtResource("3_0ld40")]
+[node name="kotatsu" parent="SubViewportContainer/SubViewport/Models" unique_id=1154931988 instance=ExtResource("3_0ld40")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5594425, -0.7111442, 2.7407098)
 
 [node name="closet" parent="SubViewportContainer/SubViewport/Models" unique_id=281806244 instance=ExtResource("4_gqmmt")]
@@ -149,9 +155,6 @@ transform = Transform3D(-0.56196797, 0, 0.827159, 0, 1, 0, -0.827159, 0, -0.5619
 
 [node name="natto" parent="SubViewportContainer/SubViewport/Models" unique_id=77248389 instance=ExtResource("14_fv21b")]
 transform = Transform3D(0.90109974, 0, 0.4336119, 0, 1, 0, -0.4336119, 0, 0.90109974, 3.7389317, -0.3620779, 9.485092)
-
-[node name="window" parent="SubViewportContainer/SubViewport/Models" unique_id=1597319655 instance=ExtResource("15_dgi5k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0608788, -1.0029838, 0.030363679)
 
 [node name="pantry" parent="SubViewportContainer/SubViewport/Models" unique_id=882638358 instance=ExtResource("26_qkpxi")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.7530432, -0.93571186, 8.639446)
@@ -232,13 +235,14 @@ fov = 50.0
 environment = SubResource("Environment_jyhfs")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=1447567259]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+transform = Transform3D(-0.8660253, -0.47650826, -0.15145944, 0, -0.3029189, 0.9530164, -0.50000006, 0.8253364, 0.2623354, 0, 0, 0)
 shadow_enabled = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=1023167838]
-transform = Transform3D(1.0634108, 0, 0, 0, 1.0634108, 0, 0, 0, 1.0634108, 1.9173352, -1.4351726, 2.6603887)
+transform = Transform3D(1.0634108, 0, 0, 0, 1.0634108, 0, 0, 0, 1.0634108, 3.032251, -1.4351726, 3.963492)
 use_collision = true
-size = Vector3(8.394653, 1, 9.980412)
+size = Vector3(6.0692635, 1, 7.717863)
+material = ExtResource("25_kmb1v")
 
 [node name="CSGBox3D13" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=137765977]
 transform = Transform3D(0.5453901, 0, 0, 0, 0.17356673, 0, 0, 0, 0.5453901, 5.5399547, -0.12960449, 12.558699)
@@ -246,14 +250,64 @@ use_collision = true
 size = Vector3(1.8912377, 9.723267, 2.009863)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=757196892]
-transform = Transform3D(1, 0, 0, 0, 0.53059936, 0, 0, 0, 1, -1.1971664, 0.34330255, 8.062736)
+transform = Transform3D(1, 0, 0, 0, 0.53059936, 0, 0, 0, 1, -1.1971664, 0.34330255, 8.156968)
 use_collision = true
-size = Vector3(7.782913, 7.486328, 0.001)
+size = Vector3(7.782913, 7.486328, 0.18946484)
+material = SubResource("StandardMaterial3D_fuf3a")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=151431954]
-transform = Transform3D(1, 0, 0, 0, 0.53059936, 0, 0, 0, 1, 0.048309267, 0.34411216, 1.4179413)
+transform = Transform3D(1, 0, 0, 0, 0.53059936, 0, 0, 0, 1, -0.027856752, 0.40553975, 2.683284)
 use_collision = true
-size = Vector3(0.001, 7.48938, 13.290588)
+size = Vector3(0.15333202, 8.293182, 10.759903)
+material = SubResource("StandardMaterial3D_pibwh")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=987306513]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 0.53059936, 0, -0.99999994, 0, -4.3711385e-08, 0.7916262, 0.45802608, -0.12819096)
+use_collision = true
+size = Vector3(0.15333202, 8.49102, 1.7238941)
+material = SubResource("StandardMaterial3D_pibwh")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=1641616563]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 0.53059936, 0, -0.99999994, 0, -4.3711385e-08, 5.2026553, 0.45802608, -0.12819117)
+use_collision = true
+size = Vector3(0.15333202, 8.49102, 1.7238941)
+material = SubResource("StandardMaterial3D_pibwh")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=1283030730]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 0.53059936, 0, -0.99999994, 0, -4.3711385e-08, 2.9144576, 2.2483723, -0.12819107)
+use_collision = true
+size = Vector3(0.15333202, 1.7426281, 3.169499)
+material = SubResource("StandardMaterial3D_pibwh")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=228693505]
+transform = Transform3D(-4.371139e-08, -0.53059936, 0, 1, -2.3193234e-08, 0, 0, 0, 1, 3.0536194, 2.7680833, 5.4321947)
+use_collision = true
+size = Vector3(0.3828242, 11.528107, 16.033892)
+material = SubResource("StandardMaterial3D_pibwh")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=29930791]
+transform = Transform3D(-4.371139e-08, -0.53059936, 0, 1, -2.3193234e-08, 0, 0, 0, 1, 3.0613573, -1.1798635, -0.3230338)
+use_collision = true
+size = Vector3(0.3828242, 11.528107, 4.7345166)
+material = SubResource("StandardMaterial3D_pibwh")
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=748058941]
+transform = Transform3D(-4.371139e-08, -0.53059936, 0, 1, -2.3193234e-08, 0, 0, 0, 1, 3.0613573, -0.40613168, -2.5738015)
+use_collision = true
+size = Vector3(1.62879, 11.528107, 0.23298097)
+material = SubResource("StandardMaterial3D_pibwh")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=110085764]
+transform = Transform3D(1, 0, 0, 0, 0.53059936, 0, 0, 0, 1.3668272, 6.1221423, 0.5586156, 6.5434284)
+use_collision = true
+size = Vector3(0.15284374, 8.297913, 9.972794)
+material = SubResource("StandardMaterial3D_pibwh")
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=123766400]
+transform = Transform3D(1, 0, 0, 0, 0.53059936, 0, 0, 0, 1.3668272, 6.1221423, 0.54509985, -1.3431287)
+use_collision = true
+size = Vector3(0.15284374, 8.246967, 1.8679438)
+material = SubResource("StandardMaterial3D_pibwh")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=513173396]
 transform = Transform3D(0.39524925, 0, 0, 0, 1, 0, 0, 0, 1, 3.0375953, -1.4357119, 10.735312)
@@ -266,14 +320,9 @@ use_collision = true
 size = Vector3(15.134766, 4.2442627, 0.001)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=779130767]
-transform = Transform3D(0.39524925, 0, 0, 0, 0.53059936, 0, 0, 0, 1, 1.4118707, 0.3371007, 10.739402)
+transform = Transform3D(0.39524925, 0, 0, 0, 0.53059936, 0, 0, 0, 1, 1.4118707, 0.3371007, 10.868984)
 use_collision = true
 size = Vector3(0.001, 7.4629517, 5.395935)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=571237887]
-transform = Transform3D(0.39524925, 0, 0, 0, 0.53059936, 0, 0, 0, 1, 6.03544, 0.3467495, 4.1698728)
-use_collision = true
-size = Vector3(0.001, 7.5664063, 18.464462)
 
 [node name="GameManager" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=1404272880]
 script = ExtResource("5_tbgi4")
@@ -365,3 +414,6 @@ type = 2
 
 [node name="UI" parent="." unique_id=1811158779 instance=ExtResource("1_o5qli")]
 unique_name_in_owner = true
+
+[node name="window-2" parent="." unique_id=1992315749 instance=ExtResource("36_kmb1v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.90960157, -0.18647909)
