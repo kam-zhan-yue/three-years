@@ -24,21 +24,33 @@
 - [x] Bed
 - [x] Kotatsu
 - [x] Floor Chairs
-- [ ] Natto
-- [ ] Pack of Pasta
+- [x] Natto
+- [x] Pack of Pasta
 - [x] Kitchen + Stove + Sick
 - [x] Pantry
 - [x] Wato's Cupboard
 - [x] The boxes in the corner
 - [x] Curtains and Window
-- [ ] Dirty Laundry
+
+### Still Waiting
+- [x] Dining Chairs
+- [x] Bathroom Door
+- [x] Wardrobe
+- [x] Main Door
+- [ ] Light
+- [ ] Laptop
+- [ ] Clean Items
+    - [ ] Bottles on the Floor
+    - [x] Clothes on the Floor
+    - [ ] Mirror on the Floor
+
 
 ### Nice to Haves
-- [ ] Pink Mug
+- [x] Pink Mug
+- [x] Derek
 - [ ] Coffee Grinder
-- [ ] Derek
 - [ ] Sharkie
-- [ ] Chair
+- [ ] Sky Shader
 
 
 ## Polishing
