@@ -10,6 +10,7 @@ extends Control
 
 var current_line: Dialogue.Line
 var showing := false
+var animating := false
 
 func _ready() -> void:
 	alex_animator.play("idle")
@@ -30,7 +31,21 @@ func _input(event: InputEvent) -> void:
 	var is_clicked := event.is_action_pressed("select")
 	var is_same_character = current_line and current_line.speaker == Client.game.character
 	if is_clicked and is_same_character or current_line.speaker == Game.Character.None:
+		_on_click()
+
+func _on_click() -> void:
+	if animating:
+		animating = false
+		Server.skip_dialogue_animation(current_line)
+	else:
 		Server.continue_dialogue(current_line)
+
+func skip_animation(line: Dialogue.Line) -> void:
+	if not Services.dialogue.is_equal(line, current_line):
+		Global.error("Can't skip dialogue as lines are not equal. Server Line: %s, Client Line %s" % [line.body, current_line.body])
+		return
+	animating = false
+	dialogue.visible_characters = len(current_line.body)
 
 func start_dialogue(line: Dialogue.Line) -> void:
 	show_popup()
@@ -40,6 +55,8 @@ func continue_dialogue(line: Dialogue.Line) -> void:
 	set_line(line)
 
 func set_line(line: Dialogue.Line) -> void:
+	dialogue.visible_characters = 2
+	animating = true
 	current_line = line
 	speaker.text = Dialogue.SPEAKERS[line.speaker]
 	dialogue.text = line.body

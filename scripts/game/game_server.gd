@@ -63,6 +63,9 @@ func _end_event() -> void:
 	next_flow()
 
 # ============DIALOGUE HANDLING=================
+func skip_dialogue_animation(line: Dialogue.Line) -> void:
+	Services.dialogue.server_skip_dialogue_animation(line)
+
 func continue_dialogue(line: Dialogue.Line) -> void:
 	Services.dialogue.server_continue(line)
 

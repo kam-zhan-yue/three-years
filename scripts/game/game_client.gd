@@ -22,6 +22,9 @@ func complete_interaction(interact_id: String) -> void:
 func start_dialogue(line: Dialogue.Line) -> void:
 	Services.dialogue.client_start(line)
 
+func skip_dialogue_animation(line: Dialogue.Line) -> void:
+	Services.dialogue.client_skip_animation(line)
+
 func continue_dialogue(line: Dialogue.Line) -> void:
 	Services.dialogue.client_continue(line)
 

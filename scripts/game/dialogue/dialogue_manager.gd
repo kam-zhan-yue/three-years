@@ -13,6 +13,9 @@ signal dialogue_ended()
 func client_start(line: Dialogue.Line) -> void:
 	Services.ui.dialogue_popup.start_dialogue(line)
 
+func client_skip_animation(line: Dialogue.Line) -> void:
+	Services.ui.dialogue_popup.skip_animation(line)
+
 func client_continue(line: Dialogue.Line) -> void:
 	Services.ui.dialogue_popup.continue_dialogue(line)
 
@@ -27,9 +30,26 @@ func server_start(dialogue: DialogueScript) -> void:
 	server_trigger_event(line)
 	Client.start_dialogue(line)
 
+
+func is_equal(a: Dialogue.Line, b: Dialogue.Line) -> bool:
+	if a.speaker != b.speaker or a.body != b.body: 
+		return false
+	return true
+
+
+func server_skip_dialogue_animation(line: Dialogue.Line) -> void:
+	# Check if we are on the current line and can skip the animation
+	var current := _get_current_line()
+	if not is_equal(_get_current_line(), line):
+		Global.error("Line expecting %s, got %s" % [Global.SPEAKERS[current.speaker], Global.SPEAKERS[line.speaker]])
+		return
+
+	# Sync up the clients' dialogue
+	Client.skip_dialogue_animation(line)
+
 func server_continue(line: Dialogue.Line) -> void:
 	var current := _get_current_line()
-	if current.speaker != line.speaker or current.body != line.body: 
+	if not is_equal(_get_current_line(), line):
 		Global.error("Line expecting %s, got %s" % [Global.SPEAKERS[current.speaker], Global.SPEAKERS[line.speaker]])
 		return
 	if line.response != null: 

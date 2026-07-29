@@ -46,6 +46,14 @@ func _start_game_event(event: Game.Event) -> void:
 	# game.start_event(event)
 
 #==================Dialogue====================
+func skip_dialogue_animation(line: Dialogue.Line) -> void:
+	_skip_dialogue_animation.rpc(inst_to_dict(line))
+
+@rpc("authority", "call_remote", "reliable")
+func _skip_dialogue_animation(line_dict: Dictionary) -> void:
+	var line := dict_to_inst(line_dict) as Dialogue.Line
+	game.skip_dialogue_animation(line)
+
 func start_dialogue(line: Dialogue.Line) -> void:
 	_start_dialogue.rpc(inst_to_dict(line))
 

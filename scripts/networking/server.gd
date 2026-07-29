@@ -71,20 +71,38 @@ func _stop_interacting(interact_id: String) -> void:
 	game.stop_interacting(interact_id)
 
 #==================Dialogue====================
+func skip_dialogue_animation(line: Dialogue.Line) -> void:
+	_skip_dialogue_animation.rpc_id(1, Global.id(), inst_to_dict(line))
+
+@rpc("any_peer", "call_remote", "reliable")
+func _skip_dialogue_animation(client_id: int, line_dict: Dictionary) -> void:
+	if !multiplayer.is_server(): return
+	Global.debug("SKipping dialogue animation...")
+	
+	# Validate that the player can request to continue this dialogue
+	var line := dict_to_inst(line_dict) as Dialogue.Line
+	if _can_change_dialogue(client_id, line):
+		game.skip_dialogue_animation(line)
+
 func continue_dialogue(line: Dialogue.Line) -> void:
 	_continue_dialogue.rpc_id(1, Global.id(), inst_to_dict(line))
 
 @rpc("any_peer", "call_remote", "reliable")
-func _continue_dialogue(client_id: int, line: Dictionary) -> void:
+func _continue_dialogue(client_id: int, line_dict: Dictionary) -> void:
 	if !multiplayer.is_server(): return
 	Global.debug("Progressing dialogue...")
 	
 	# Validate that the player can request to continue this dialogue
-	var l := dict_to_inst(line) as Dialogue.Line
-	var character := game.get_character(client_id)
-	if l.speaker != Game.Character.None and character != l.speaker: return
+	var line := dict_to_inst(line_dict) as Dialogue.Line
+	if _can_change_dialogue(client_id, line):
+		game.continue_dialogue(line)
 
-	game.continue_dialogue(l)
+func _can_change_dialogue(client_id: int, line: Dialogue.Line) -> bool:
+	var character := game.get_character(client_id)
+	if line.speaker != Game.Character.None and character != line.speaker:
+		return false
+	return true
+
 
 #==================Camera====================
 func activate_camera_zones() -> void:
