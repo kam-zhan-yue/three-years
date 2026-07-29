@@ -58,7 +58,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fuf3a"]
 render_priority = 0
 shader = ExtResource("34_j8jky")
-shader_parameter/pixel_size = 8.0
+shader_parameter/pixel_size = 6.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_pibwh"]
 material = SubResource("ShaderMaterial_fuf3a")
@@ -77,15 +77,6 @@ material = SubResource("ShaderMaterial_kmb1v")
 flip_faces = true
 size = Vector2(2, 2)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_eb6dy"]
-size = Vector3(8.93544, 2.5722656, 4.5850244)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_choun"]
-size = Vector3(5.6003714, 2.5722656, 5.485415)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ya4ey"]
-size = Vector3(8.93544, 2.5722656, 3.3323522)
-
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vchkt"]
 
 [sub_resource type="Sky" id="Sky_txyw0"]
@@ -97,6 +88,15 @@ sky = SubResource("Sky_txyw0")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_eb6dy"]
+size = Vector3(8.93544, 2.5722656, 4.5850244)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_choun"]
+size = Vector3(5.6003714, 2.5722656, 5.331086)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ya4ey"]
+size = Vector3(8.93544, 2.5722656, 3.808266)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fuf3a"]
 albedo_color = Color(0.3121369, 0.19734289, 0.017634595, 1)
 
@@ -106,6 +106,15 @@ uv1_scale = Vector3(2.5, 2.5, 2.5)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5he1u"]
 albedo_texture = ExtResource("25_fuf3a")
 uv1_scale = Vector3(6.04, 6.04, 6.04)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0loja"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ids8r"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dnhof"]
+viewport_path = NodePath("SubViewport")
 
 [node name="Main" type="Node3D" unique_id=1814151517]
 script = ExtResource("1_jyhfs")
@@ -121,6 +130,13 @@ visible = false
 extra_cull_margin = 117.7
 mesh = SubResource("QuadMesh_j8jky")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1603057605]
+environment = SubResource("Environment_jyhfs")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1447567259]
+transform = Transform3D(-0.8660254, -0.47650826, -0.1514595, 0, -0.3029189, 0.9530164, -0.5000001, 0.82533634, 0.26233548, 0, 0, 0)
+shadow_enabled = true
+
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=272359121]
 anchors_preset = 15
 anchor_right = 1.0
@@ -131,7 +147,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=686099777]
 handle_input_locally = false
-size = Vector2i(1152, 648)
+size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="Models" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=1387700028]
@@ -176,12 +192,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.67
 [node name="power-plugs-tidied" parent="SubViewportContainer/SubViewport/Models" unique_id=712077213 instance=ExtResource("12_fv21b")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5392737, -0.90346694, 0.5291155)
 
-[node name="ukelele" parent="SubViewportContainer/SubViewport/Models" unique_id=947039479 instance=ExtResource("13_tel4y")]
-transform = Transform3D(-0.56196797, 0, 0.827159, 0, 1, 0, -0.827159, 0, -0.56196797, 0.54104817, -0.90326965, 6.7959447)
-
-[node name="ukelele-tidied" parent="SubViewportContainer/SubViewport/Models" unique_id=432813015 instance=ExtResource("13_tel4y")]
-transform = Transform3D(-0.5906056, 0.7757001, 0.22242844, 0, 0.2756374, -0.9612617, -0.80696034, -0.56772655, -0.162793, 0.053, -0.583, 7.815)
-
 [node name="natto" parent="SubViewportContainer/SubViewport/Models" unique_id=77248389 instance=ExtResource("14_fv21b")]
 transform = Transform3D(0.90109974, 0, 0.4336119, 0, 1, 0, -0.4336119, 0, 0.90109974, 3.7389317, -0.3620779, 9.485092)
 
@@ -212,48 +222,6 @@ transform = Transform3D(0.021308912, 0, 0.99977297, 0, 1, 0, -0.99977297, 0, 0.0
 [node name="dining-chair2" parent="SubViewportContainer/SubViewport/Models" unique_id=2009149560 instance=ExtResource("24_pibwh")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.428627, -0.90346706, 0.7692857)
 
-[node name="derek" parent="SubViewportContainer/SubViewport/Models" unique_id=343801456 instance=ExtResource("25_chjal")]
-transform = Transform3D(-0.7575233, -0.5755925, 0.3079803, 0.26830375, 0.155574, 0.95068914, -0.5951233, 0.8028014, 0.036582697, 0.746, -0.684, 4.842)
-
-[node name="derek2" parent="SubViewportContainer/SubViewport/Models" unique_id=514675576 instance=ExtResource("25_chjal")]
-transform = Transform3D(-4.3711392e-08, 0, 1, 0, 1, 0, -1.0000001, 0, -4.371139e-08, -1.3789577, 0.07876027, 5.1438437)
-
-[node name="PlatesAndStuff" type="Node3D" parent="SubViewportContainer/SubViewport/Models" unique_id=1490849101]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.129838, 0.13031965, 2.5909846)
-
-[node name="bowl" parent="SubViewportContainer/SubViewport/Models/PlatesAndStuff" unique_id=172443285 instance=ExtResource("27_bu4jf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1578269, -5.9604645e-08, 0.07876158)
-
-[node name="bowl2" parent="SubViewportContainer/SubViewport/Models/PlatesAndStuff" unique_id=1213267188 instance=ExtResource("27_bu4jf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17457485, 0, 0.13951707)
-
-[node name="pink-mug" parent="SubViewportContainer/SubViewport/Models/PlatesAndStuff" unique_id=1491165820 instance=ExtResource("28_5poiv")]
-transform = Transform3D(-0.89592123, 0, 0.44421294, 0, 1, 0, -0.44421294, 0, -0.89592123, 0.284451, 0.0083325505, -0.24923587)
-
-[node name="plate" parent="SubViewportContainer/SubViewport/Models/PlatesAndStuff" unique_id=1270782701 instance=ExtResource("39_ids8r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07675934, -0.0014821887, -0.25705743)
-
-[node name="blue-cup" parent="SubViewportContainer/SubViewport/Models/PlatesAndStuff" unique_id=61236743 instance=ExtResource("29_0loja")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.042267323, -0.07444674, 0.26733875)
-
-[node name="PlatesTidied" type="Node3D" parent="SubViewportContainer/SubViewport/Models" unique_id=1606333132]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.129838, 0.13031965, 1.7845471)
-
-[node name="bowl" parent="SubViewportContainer/SubViewport/Models/PlatesTidied" unique_id=173528730 instance=ExtResource("27_bu4jf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.076919556, 0.065387964, -0.2159735)
-
-[node name="bowl2" parent="SubViewportContainer/SubViewport/Models/PlatesTidied" unique_id=473597198 instance=ExtResource("27_bu4jf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07353735, 0.011109769, -0.214867)
-
-[node name="pink-mug" parent="SubViewportContainer/SubViewport/Models/PlatesTidied" unique_id=1749525734 instance=ExtResource("28_5poiv")]
-transform = Transform3D(-0.89592123, 0, 0.44421294, 0, 1, 0, -0.44421294, 0, -0.89592123, 0.284451, 0.0083325505, -0.24923587)
-
-[node name="plate" parent="SubViewportContainer/SubViewport/Models/PlatesTidied" unique_id=1807633103 instance=ExtResource("39_ids8r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07675934, -0.0014821887, -0.25705743)
-
-[node name="blue-cup" parent="SubViewportContainer/SubViewport/Models/PlatesTidied" unique_id=35497126 instance=ExtResource("29_0loja")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06726599, 0.087650985, -0.20831966)
-
 [node name="Mirror" type="Node3D" parent="SubViewportContainer/SubViewport/Models" unique_id=2127755207]
 
 [node name="mirror" parent="SubViewportContainer/SubViewport/Models/Mirror" unique_id=139766852 instance=ExtResource("26_bjg73")]
@@ -272,12 +240,6 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.95
 
 [node name="light" parent="SubViewportContainer/SubViewport/Models" unique_id=1253745616 instance=ExtResource("33_cjqg0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7361834, 1.2933519, 4.4912963)
-
-[node name="dirty-clothes" parent="SubViewportContainer/SubViewport/Models" unique_id=400386096 instance=ExtResource("34_vchkt")]
-transform = Transform3D(0.55032045, 0, -0.83495355, 0, 1, 0, 0.83495355, 0, 0.55032045, 2.0878305, -0.8849823, 7.4072704)
-
-[node name="laundry-tidied" parent="SubViewportContainer/SubViewport/Models" unique_id=722516938 instance=ExtResource("34_vchkt")]
-transform = Transform3D(0.73574126, 0, -0.014357574, 0, 1, 0, 0.01898335, 0, 0.5564593, 3.6269708, -0.16976675, 7.6998286)
 
 [node name="Cameras" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=594748807]
 unique_name_in_owner = true
@@ -312,7 +274,7 @@ script = ExtResource("11_ya4ey")
 transform = Transform3D(1, 0, 2.9802322e-08, -2.9802322e-08, 0.99999994, 2.9802322e-08, 2.9802322e-08, 0, 0.99999994, 4.021461, 0, -0.67087746)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Cameras/KitchenZone/Area" unique_id=111098913]
-transform = Transform3D(1, 0, 3.907985e-14, 3.996803e-14, 0.9999987, 0, 0, 0, 0.9999987, -0.030869007, 0.7861327, 0.72993183)
+transform = Transform3D(1, 0, 9.592327e-14, 9.681145e-14, 0.9999968, 0, 0, 0, 0.9999968, -0.030869007, 0.7861326, 0.8070965)
 shape = SubResource("BoxShape3D_choun")
 
 [node name="Camera" type="Camera3D" parent="SubViewportContainer/SubViewport/Cameras/KitchenZone" unique_id=723894283]
@@ -327,187 +289,168 @@ script = ExtResource("11_ya4ey")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9024773, 0, 4.5281715)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Cameras/MainZone/Area" unique_id=1749922721]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6984034, 0.7861328, 1.4642687)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6984034, 0.7861328, 1.7022257)
 shape = SubResource("BoxShape3D_ya4ey")
 
 [node name="Camera" type="Camera3D" parent="SubViewportContainer/SubViewport/Cameras/MainZone" unique_id=1237677062]
-transform = Transform3D(0.66913056, -0.30463222, 0.6778374, 0, 0.9121201, 0.40992305, -0.74314487, -0.27429205, 0.6103274, 5.98, 1.877, 7.89)
+transform = Transform3D(0.58778524, -0.40695167, 0.699213, 0, 0.8642748, 0.5030199, -0.809017, -0.29566768, 0.508008, 6.77, 2.097, 8.83)
+cull_mask = 1048573
 fov = 50.0
 
-[node name="Environment" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=1914465089]
+[node name="Walls" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=1914465089]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/Environment" unique_id=1603057605]
-environment = SubResource("Environment_jyhfs")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=1447567259]
-transform = Transform3D(-0.8660253, -0.47650826, -0.15145944, 0, -0.3029189, 0.9530164, -0.50000006, 0.8253364, 0.2623354, 0, 0, 0)
-shadow_enabled = true
-
-[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=1023167838]
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=1023167838]
 transform = Transform3D(1.0634108, 0, 0, 0, 1.0634108, 0, 0, 0, 1.0634108, 3.033233, -1.4343275, 3.9639528)
 use_collision = true
 size = Vector3(6.0692635, 1, 7.717863)
 material = ExtResource("25_kmb1v")
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=757196892]
+[node name="CSGBox3D6" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=757196892]
 transform = Transform3D(1, 0, 0, 0, 0.53059936, 0, 0, 0, 1, 1.2181859, 0.77620035, 8.157236)
 use_collision = true
 size = Vector3(2.9587173, 5.866699, 0.18946484)
 
-[node name="CSGBox3D21" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=114323400]
+[node name="CSGBox3D21" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=114323400]
 transform = Transform3D(1, 0, 0, 0, 0.53059936, 0, 0, 0, 1, 4.194185, 2.0013978, 8.157236)
+layers = 2
 use_collision = true
 size = Vector3(3.5534, 1.2485352, 0.18946484)
 
-[node name="CSGBox3D13" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=305736724]
+[node name="CSGBox3D13" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=305736724]
 transform = Transform3D(1, 0, 0, 0, 0.53059936, 0, 0, 0, 1, 0.6738715, -0.84044623, 8.086016)
 use_collision = true
 size = Vector3(4.0651627, 0.21081543, 0.09106591)
 material = SubResource("StandardMaterial3D_fuf3a")
 
-[node name="CSGBox3D22" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=1198590241]
+[node name="CSGBox3D22" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=1198590241]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 0.53059936, 0, -1, 0, -4.371139e-08, 0.0650921, -0.84044623, 1.4822292)
 use_collision = true
 size = Vector3(3.5135384, 0.21081543, 0.09106591)
 material = SubResource("StandardMaterial3D_fuf3a")
 
-[node name="CSGBox3D25" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=664906408]
+[node name="CSGBox3D25" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=664906408]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 0.53059936, 0, -1, 0, -4.371139e-08, 6.0797586, -0.82433456, 4.2893915)
 use_collision = true
 size = Vector3(9.127863, 0.2715454, 0.09106591)
 material = SubResource("StandardMaterial3D_fuf3a")
 
-[node name="CSGBox3D26" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=1633002298]
+[node name="CSGBox3D26" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=1633002298]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 0.53059936, 0, -1, 0, -4.371139e-08, 6.0797586, -0.7820265, 9.922069)
 use_collision = true
 size = Vector3(3.7743826, 0.3357544, 0.09106591)
 material = SubResource("StandardMaterial3D_fuf3a")
 
-[node name="CSGBox3D23" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=41513012]
+[node name="CSGBox3D23" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=41513012]
 transform = Transform3D(1, 0, 0, 0, 0.53059936, 0, 0, 0, 1, 0.8811786, -0.84044623, -0.144719)
 use_collision = true
 size = Vector3(1.6337223, 0.21081543, 0.09106591)
 material = SubResource("StandardMaterial3D_fuf3a")
 
-[node name="CSGBox3D24" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=729830592]
+[node name="CSGBox3D24" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=729830592]
 transform = Transform3D(1, 0, 0, 0, 0.53059936, 0, 0, 0, 1, 5.276944, -0.84044623, -0.144719)
 use_collision = true
 size = Vector3(1.8931551, 0.21081543, 0.09106591)
 material = SubResource("StandardMaterial3D_fuf3a")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=151431954]
+[node name="CSGBox3D5" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=151431954]
 transform = Transform3D(1, 0, 0, 0, 0.53059936, 0, 0, 0, 1, -0.027856752, 0.40553975, 2.683284)
 use_collision = true
 size = Vector3(0.15333202, 8.293182, 10.759903)
 material = SubResource("StandardMaterial3D_pibwh")
 
-[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=987306513]
+[node name="CSGBox3D10" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=987306513]
 transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 0.53059936, 0, -0.99999994, 0, -4.3711385e-08, 0.7671039, 0.47630802, -0.2745616)
 use_collision = true
 size = Vector3(0.15333202, 8.49102, 1.7238941)
 material = SubResource("StandardMaterial3D_pibwh")
 
-[node name="CSGBox3D11" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=1641616563]
+[node name="CSGBox3D11" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=1641616563]
 transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 0.53059936, 0, -0.99999994, 0, -4.3711385e-08, 5.2026553, 0.45802608, -0.16603589)
 use_collision = true
 size = Vector3(0.077642575, 8.49102, 1.7238941)
 material = SubResource("StandardMaterial3D_pibwh")
 
-[node name="CSGBox3D14" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=1283030730]
+[node name="CSGBox3D14" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=1283030730]
 transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 0.53059936, 0, -0.99999994, 0, -4.3711385e-08, 2.9192104, 2.2210784, -0.2511292)
 use_collision = true
 size = Vector3(0.15333202, 1.7426281, 3.169499)
 material = SubResource("StandardMaterial3D_pibwh")
 
-[node name="CSGBox3D9" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=228693505]
+[node name="KitchenHeader" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=228693505]
 transform = Transform3D(-4.371139e-08, -0.53059936, 0, 1, -2.3193234e-08, 0, 0, 0, 1, 3.0536194, 2.442725, 5.4321947)
 use_collision = true
 size = Vector3(0.3828242, 11.528107, 16.033892)
 material = SubResource("StandardMaterial3D_pibwh")
 
-[node name="CSGBox3D15" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=29930791]
+[node name="CSGBox3D15" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=29930791]
 transform = Transform3D(-4.371139e-08, -0.53059936, 0, 1, -2.3193234e-08, 0, 0, 0, 1, 3.0613573, -1.1798635, -0.3230338)
 use_collision = true
 size = Vector3(0.3828242, 11.528107, 4.7345166)
 material = SubResource("StandardMaterial3D_pibwh")
 
-[node name="CSGBox3D17" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=748058941]
+[node name="CSGBox3D17" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=748058941]
 transform = Transform3D(-4.371139e-08, -0.53059936, 0, 1, -2.3193234e-08, 0, 0, 0, 1, 3.0613573, -0.40613168, -2.5738015)
 use_collision = true
 size = Vector3(1.62879, 11.528107, 0.23298097)
 material = SubResource("StandardMaterial3D_pibwh")
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=110085764]
+[node name="ShelfWall" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=110085764]
 transform = Transform3D(1, 0, 0, 0, 0.53059936, 0, 0, 0, 1.3668272, 6.1221423, 0.5586156, 6.5434284)
+layers = 2
 use_collision = true
 size = Vector3(0.15284374, 8.297913, 9.972794)
 material = SubResource("StandardMaterial3D_pibwh")
 
-[node name="CSGBox3D18" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=1525441786]
+[node name="CSGBox3D18" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=1525441786]
 transform = Transform3D(1, 0, 0, 0, 0.014657757, 0, 0, 0, 1.3668272, 4.377093, -0.91903716, 8.085575)
 use_collision = true
 size = Vector3(3.3707588, 8.297913, 0.071923256)
 material = SubResource("StandardMaterial3D_pibwh")
 
-[node name="CSGBox3D19" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=1703168733]
+[node name="CSGBox3D19" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=1703168733]
 transform = Transform3D(1, 0, 0, 0, 0.014657757, 0, 0, 0, 1.3668272, 2.8807993, -0.95794654, 11.754276)
 use_collision = true
 size = Vector3(2.4628608, 13.606964, 0.071923256)
 material = SubResource("StandardMaterial3D_pibwh")
 
-[node name="CSGBox3D20" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=587033433]
+[node name="CSGBox3D20" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=587033433]
 transform = Transform3D(-4.371139e-08, 0, 1.3668272, 0, 0.014657757, 0, -1, 0, -5.9745915e-08, 4.024797, -0.95794654, 12.944242)
 use_collision = true
 size = Vector3(2.4628608, 13.606964, 0.071923256)
 material = SubResource("StandardMaterial3D_pibwh")
 
-[node name="CSGBox3D16" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=123766400]
+[node name="CSGBox3D16" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=123766400]
 transform = Transform3D(1, 0, 0, 0, 0.53059936, 0, 0, 0, 1.3668272, 6.1221423, 0.54509985, -1.3431287)
 use_collision = true
 size = Vector3(0.15284374, 8.246967, 1.8679438)
 material = SubResource("StandardMaterial3D_pibwh")
 
-[node name="KitchenFloor" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=513173396]
+[node name="KitchenFloor" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=513173396]
 transform = Transform3D(-1.7276893e-08, 0, 1, 0, 1, 0, -0.39524925, 0, -4.371139e-08, 3.82544, -1.3650279, 9.906491)
 use_collision = true
 size = Vector3(9.200073, 1, 5.3114357)
 material = SubResource("StandardMaterial3D_5he1u")
 
-[node name="KitchenFloor2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=1209793709]
+[node name="KitchenFloor2" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=1209793709]
 transform = Transform3D(0.39524925, 0, 0, 0, 1, 0, 0, 0, 1, 2.7866142, -1.4883558, 12.479305)
 use_collision = true
 size = Vector3(6.392975, 0.9022217, 1.3672028)
 
-[node name="WardrobePlaceholder" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=1516199463]
+[node name="WardrobePlaceholder" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=1516199463]
 transform = Transform3D(0.39524925, 0, 0, 0, 1, 0, 0, 0, 1, 5.1893535, 0.26245296, 12.474391)
 visible = false
 use_collision = true
 size = Vector3(7.630562, 4.403839, 1.3672028)
 
-[node name="CSGBox3D12" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=748600638]
+[node name="CSGBox3D12" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=748600638]
 transform = Transform3D(0.39524925, 0, 0, 0, 1, 0, 0, 0, 1, 3.0388312, 0.18141872, 12.818591)
 use_collision = true
 size = Vector3(15.134766, 4.2442627, 0.001)
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Environment" unique_id=779130767]
+[node name="CSGBox3D7" type="CSGBox3D" parent="SubViewportContainer/SubViewport/Walls" unique_id=779130767]
 transform = Transform3D(0.39524925, 0, 0, 0, 0.53059936, 0, 0, 0, 1, 1.792908, 0.3371007, 10.868984)
 use_collision = true
 size = Vector3(0.001, 7.4629517, 5.395935)
-
-[node name="bottles-tidied" parent="SubViewportContainer/SubViewport/Environment" unique_id=1939078277 instance=ExtResource("37_o7ddy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.438108, -0.90262216, 6.5686483)
-
-[node name="power-plugs" parent="SubViewportContainer/SubViewport/Environment" unique_id=883040869 instance=ExtResource("38_0loja")]
-transform = Transform3D(0.27367386, 0, 0.96182257, 0, 1, 0, -0.96182257, 0, 0.27367386, 1.231342, -0.8526215, 0.6010275)
-
-[node name="power-plugs2" parent="SubViewportContainer/SubViewport/Environment" unique_id=814901722 instance=ExtResource("38_0loja")]
-transform = Transform3D(-3.1035086e-08, 0, -0.71, 0, 0.71, 0, 0.71, 0, -3.1035086e-08, 0.49265933, -0.7401621, 0.4600556)
-
-[node name="books-tidied" parent="SubViewportContainer/SubViewport/Environment" unique_id=64944330 instance=ExtResource("41_ids8r")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.5291395, -0.6719103, 3.9602394)
-
-[node name="books" parent="SubViewportContainer/SubViewport/Environment" unique_id=159690385 instance=ExtResource("42_dnhof")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.915392, -0.83706796, 4.4632473)
 
 [node name="GameManager" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=1404272880]
 script = ExtResource("5_tbgi4")
@@ -555,28 +498,115 @@ metadata/_custom_type_script = "uid://d3am6vmeye8lv"
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3999243, 0, 3.621666)
 
-[node name="Interactable" parent="SubViewportContainer/SubViewport/Interactables" unique_id=211024313 instance=ExtResource("6_tefeu")]
+[node name="Books" parent="SubViewportContainer/SubViewport/Interactables" unique_id=714796766 instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24653, -0.90262204, -0.48754406)
+
+[node name="ActiveModel" parent="SubViewportContainer/SubViewport/Interactables/Books" unique_id=159690385 instance=ExtResource("42_dnhof")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11547661, 0.06555408, 0.62646246)
+
+[node name="InactiveModel" parent="SubViewportContainer/SubViewport/Interactables/Books" unique_id=64944330 instance=ExtResource("41_ids8r")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.7217803, 0.88259953, -0.012631983)
+
+[node name="Plates" parent="SubViewportContainer/SubViewport/Interactables" unique_id=94768413 instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.659658, -1, -1.0802844)
+
+[node name="CollisionShape3D" parent="SubViewportContainer/SubViewport/Interactables/Plates" index="0" unique_id=1729118203]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.76655275, 0)
+
+[node name="Canvas" parent="SubViewportContainer/SubViewport/Interactables/Plates" index="2" unique_id=658624892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5327461, 0)
+texture = SubResource("ViewportTexture_0loja")
+
+[node name="ActiveModel" type="Node3D" parent="SubViewportContainer/SubViewport/Interactables/Plates" unique_id=1490849101]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020159721, 1.1303196, 0.049602985)
+
+[node name="bowl" parent="SubViewportContainer/SubViewport/Interactables/Plates/ActiveModel" unique_id=172443285 instance=ExtResource("27_bu4jf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1578269, -5.9604645e-08, 0.07876158)
+
+[node name="bowl2" parent="SubViewportContainer/SubViewport/Interactables/Plates/ActiveModel" unique_id=1213267188 instance=ExtResource("27_bu4jf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17457485, 0, 0.13951707)
+
+[node name="pink-mug" parent="SubViewportContainer/SubViewport/Interactables/Plates/ActiveModel" unique_id=1491165820 instance=ExtResource("28_5poiv")]
+transform = Transform3D(-0.89592123, 0, 0.44421294, 0, 1, 0, -0.44421294, 0, -0.89592123, 0.284451, 0.0083325505, -0.24923587)
+
+[node name="plate" parent="SubViewportContainer/SubViewport/Interactables/Plates/ActiveModel" unique_id=1270782701 instance=ExtResource("39_ids8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07675934, -0.0014821887, -0.25705743)
+
+[node name="blue-cup" parent="SubViewportContainer/SubViewport/Interactables/Plates/ActiveModel" unique_id=1036916219 instance=ExtResource("29_0loja")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.042267323, -0.07444674, 0.26733875)
+
+[node name="InactiveModel" type="Node3D" parent="SubViewportContainer/SubViewport/Interactables/Plates" unique_id=1606333132]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020159721, 1.1303196, 0.26826787)
+
+[node name="bowl" parent="SubViewportContainer/SubViewport/Interactables/Plates/InactiveModel" unique_id=173528730 instance=ExtResource("27_bu4jf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00876236, 0.065387964, -0.22900164)
+
+[node name="bowl2" parent="SubViewportContainer/SubViewport/Interactables/Plates/InactiveModel" unique_id=473597198 instance=ExtResource("27_bu4jf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0053801537, 0.011109769, -0.22789514)
+
+[node name="pink-mug" parent="SubViewportContainer/SubViewport/Interactables/Plates/InactiveModel" unique_id=1749525734 instance=ExtResource("28_5poiv")]
+transform = Transform3D(-0.47691342, 0, 0.8789503, 0, 1, 0, -0.8789503, 0, -0.47691342, -0.10622919, 0.0083325505, -0.38416225)
+
+[node name="plate" parent="SubViewportContainer/SubViewport/Interactables/Plates/InactiveModel" unique_id=1807633103 instance=ExtResource("39_ids8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07675934, -0.0014821887, -0.25705743)
+
+[node name="blue-cup" parent="SubViewportContainer/SubViewport/Interactables/Plates/InactiveModel" unique_id=1930040198 instance=ExtResource("29_0loja")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00089120865, 0.087650985, -0.22134781)
+
+[node name="PowerPlugs" parent="SubViewportContainer/SubViewport/Interactables" unique_id=286441042 instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4699144, -0.9026221, -3.125154)
+
+[node name="Canvas" parent="SubViewportContainer/SubViewport/Interactables/PowerPlugs" index="2" unique_id=658624892]
+texture = SubResource("ViewportTexture_ids8r")
+
+[node name="ActiveModel" parent="SubViewportContainer/SubViewport/Interactables/PowerPlugs" unique_id=883040869 instance=ExtResource("38_0loja")]
+transform = Transform3D(0.27367386, 0, 0.96182257, 0, 1, 0, -0.96182257, 0, 0.27367386, 0.30133212, 0.050000608, 0.10451555)
+
+[node name="InactiveModel" parent="SubViewportContainer/SubViewport/Interactables/PowerPlugs" unique_id=814901722 instance=ExtResource("38_0loja")]
+transform = Transform3D(-3.1035086e-08, 0, -0.71, 0, 0.71, 0, 0.71, 0, -3.1035086e-08, -0.4373505, 0.16246003, -0.036456347)
+
+[node name="Laundry" parent="SubViewportContainer/SubViewport/Interactables" unique_id=211024313 instance=ExtResource("6_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.67352366, -0.86821425, 3.2648182)
 
-[node name="Interactable2" parent="SubViewportContainer/SubViewport/Interactables" unique_id=1312227999 instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2572727, -0.86821425, 0.2648182)
-visible = false
+[node name="CollisionShape3D" parent="SubViewportContainer/SubViewport/Interactables/Laundry" index="0" unique_id=1729118203]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.036010742, 0, 0.6940918)
 
-[node name="Interactable3" parent="SubViewportContainer/SubViewport/Interactables" unique_id=1386759130 instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7427273, -0.86821425, -0.7351818)
-visible = false
+[node name="Canvas" parent="SubViewportContainer/SubViewport/Interactables/Laundry" index="2" unique_id=658624892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8155895, 0.65619993)
+texture = SubResource("ViewportTexture_dnhof")
 
-[node name="Interactable4" parent="SubViewportContainer/SubViewport/Interactables" unique_id=134619347 instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2572727, -0.86821425, 5.264818)
-visible = false
+[node name="ActiveModel" parent="SubViewportContainer/SubViewport/Interactables/Laundry" unique_id=400386096 instance=ExtResource("34_vchkt")]
+transform = Transform3D(0.55032045, 0, -0.83495355, 0, 1, 0, 0.83495355, 0, 0.55032045, -0.035713673, -0.016768038, 0.5207863)
 
-[node name="Interactable5" parent="SubViewportContainer/SubViewport/Interactables" unique_id=912050683 instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2572727, -0.86821425, 6.264818)
-visible = false
+[node name="InactiveModel" parent="SubViewportContainer/SubViewport/Interactables/Laundry" unique_id=722516938 instance=ExtResource("34_vchkt")]
+transform = Transform3D(0.73574126, 0, -0.014357574, 0, 1, 0, 0.01898335, 0, 0.5564593, 1.5034266, 0.69844747, 0.8133445)
 
-[node name="Interactable6" parent="SubViewportContainer/SubViewport/Interactables" unique_id=1121106628 instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2572727, -0.86821425, 3.2648182)
-visible = false
+[node name="Derek" parent="SubViewportContainer/SubViewport/Interactables" unique_id=2088530426 instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1022484, -0.9026221, 1.6267881)
+
+[node name="ActiveModel" parent="SubViewportContainer/SubViewport/Interactables/Derek" unique_id=343801456 instance=ExtResource("25_chjal")]
+transform = Transform3D(-0.7575233, -0.5755925, 0.3079803, 0.26830375, 0.155574, 0.95068914, -0.5951233, 0.8028014, 0.036582697, 0.39822817, 0.21862209, -0.4064541)
+
+[node name="InactiveModel" parent="SubViewportContainer/SubViewport/Interactables/Derek" unique_id=514675576 instance=ExtResource("25_chjal")]
+transform = Transform3D(-4.3711392e-08, 0, 1, 0, 1, 0, -1.0000001, 0, -4.371139e-08, -1.7267296, 0.98138237, -0.10461044)
+
+[node name="Ukelele" parent="SubViewportContainer/SubViewport/Interactables" unique_id=1140257413 instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0534914, -0.9026221, 3.3048792)
+
+[node name="ActiveModel" parent="SubViewportContainer/SubViewport/Interactables/Ukelele" unique_id=947039479 instance=ExtResource("13_tel4y")]
+transform = Transform3D(-0.56196797, 0, 0.827159, 0, 1, 0, -0.827159, 0, -0.56196797, 0.14451909, -0.00064754486, -0.13060045)
+
+[node name="InactiveModel" parent="SubViewportContainer/SubViewport/Interactables/Ukelele" unique_id=432813015 instance=ExtResource("13_tel4y")]
+transform = Transform3D(-0.5906056, 0.7757001, 0.22242844, 0, 0.2756374, -0.9612617, -0.80696034, -0.56772655, -0.162793, -0.343529, 0.3196221, 0.8884549)
+
+[node name="Bottles" parent="SubViewportContainer/SubViewport/Interactables" unique_id=615791197 instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5219841, -0.90262216, 1.979207)
+
+[node name="ActiveModel" parent="SubViewportContainer/SubViewport/Interactables/Bottles" unique_id=1094821278 instance=ExtResource("51_dnhof")]
+transform = Transform3D(-0.02687478, 0, -0.9996388, 0, 1, 0, 0.9996388, 0, -0.02687478, 0.09487295, -5.9604645e-08, 0.04688692)
+
+[node name="InactiveModel" parent="SubViewportContainer/SubViewport/Interactables/Bottles" unique_id=1939078277 instance=ExtResource("37_o7ddy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5161996, 0, 0.96777534)
 
 [node name="Placements" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=264128029]
 unique_name_in_owner = true
@@ -600,5 +630,6 @@ type = 2
 [node name="UI" parent="." unique_id=1811158779 instance=ExtResource("1_o5qli")]
 unique_name_in_owner = true
 
-[node name="bottles" parent="." unique_id=1094821278 instance=ExtResource("51_dnhof")]
-transform = Transform3D(-0.02687478, 0, -0.9996388, 0, 1, 0, 0.9996388, 0, -0.02687478, 5.0167813, -0.9026222, 5.64776)
+[editable path="SubViewportContainer/SubViewport/Interactables/Plates"]
+[editable path="SubViewportContainer/SubViewport/Interactables/PowerPlugs"]
+[editable path="SubViewportContainer/SubViewport/Interactables/Laundry"]

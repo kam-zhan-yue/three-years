@@ -9,17 +9,17 @@ var interactables: Array[Interactable] = []
 func _ready() -> void:
 	if !is_multiplayer_authority():
 		return
-	area.body_entered.connect(_on_body_entered)
-	area.body_exited.connect(_on_body_exited)
+	area.area_entered.connect(_on_area_entered)
+	area.area_exited.connect(_on_area_exited)
 
-func _on_body_entered(body: Node3D) -> void:
+func _on_area_entered(body: Node3D) -> void:
 	if body is not Interactable: return
 	var interactable := body as Interactable
 	interactables.append(interactable)
 	if interactable.can_interact():
 		interactable.hover_start()
 
-func _on_body_exited(body: Node3D) -> void:
+func _on_area_exited(body: Node3D) -> void:
 	if body is Interactable:
 		var interactable := body as Interactable
 		interactable.hover_stop()
@@ -31,18 +31,29 @@ func _remove_interactable(interactable: Interactable) -> void:
 			interactables.remove_at(i)
 			return
 
+
+func _get_valid_interactables() -> Array[Interactable]:
+	var valid: Array[Interactable] = []
+	for interactable in interactables:
+		if interactable.completed: continue
+		valid.append(interactable)
+	return valid
+
 func _get_closest() -> Interactable:
-	if len(interactables) == 0: return null
-	var min_distance := global_position.distance_to(interactables[0].global_position)
+	var valid = _get_valid_interactables()
+	if len(valid) == 0: return null
+	var min_distance := global_position.distance_to(valid[0].global_position)
 	var min_index := 0
 
-	for i in range(1, len(interactables)):
-		var distance := global_position.distance_to(interactables[0].global_position)
+	for i in range(1, len(valid)):
+		if valid[i].completed: continue
+		var distance := global_position.distance_to(valid[0].global_position)
 		if distance < min_distance:
 			min_distance = distance
 			min_index = i
 
-	return interactables[min_index]
+	Global.print("Interactables: %s, Selecting: %s" % [len(valid), min_index])
+	return valid[min_index]
 
 
 func _input(event: InputEvent) -> void:

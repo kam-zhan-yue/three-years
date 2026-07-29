@@ -2,7 +2,8 @@ class_name Interactable
 extends Node3D
 
 @onready var popup := %InteractablePopup as InteractablePopup
-@onready var model := %Model as CSGBox3D
+@onready var active_model := $ActiveModel as Node3D
+@onready var inactive_model := $InactiveModel as Node3D
 
 @export var activated := false
 @export var initial_progress := 2.0
@@ -13,7 +14,8 @@ extends Node3D
 signal on_completed
 
 func _ready() -> void:
-	model.material = model.material.duplicate()
+	Global.set_active(active_model)
+	Global.set_inactive(inactive_model)
 	popup.init(self)
 
 func server_activate() -> void:
@@ -56,4 +58,6 @@ func server_completed() -> void:
 func client_completed() -> void:
 	# Do effects here!
 	if multiplayer.is_server(): return
-	model.material.set_shader_parameter("completed", true)
+	completed = true
+	Global.set_active(inactive_model)
+	Global.set_inactive(active_model)
