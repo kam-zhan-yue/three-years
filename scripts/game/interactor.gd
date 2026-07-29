@@ -52,7 +52,6 @@ func _get_closest() -> Interactable:
 			min_distance = distance
 			min_index = i
 
-	Global.print("Interactables: %s, Selecting: %s" % [len(valid), min_index])
 	return valid[min_index]
 
 
