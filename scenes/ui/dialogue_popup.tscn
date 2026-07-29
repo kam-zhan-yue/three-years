@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://dmtyf5vo77vse"]
+
+[ext_resource type="Script" uid="uid://w8pw0m7628h0" path="res://scripts/ui/dialogue_popup.gd" id="1_fjwxh"]
+[ext_resource type="PackedScene" uid="uid://ccqil5wu2c1q" path="res://models/wato.blend" id="2_m2mfp"]
+[ext_resource type="PackedScene" uid="uid://yuv6n5pfqtmp" path="res://models/alex.blend" id="3_m2mfp"]
+
+[node name="DialoguePopup" type="Control" unique_id=851115404]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -650.0
+offset_top = -344.0
+offset_right = 650.0
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_fjwxh")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=521019299]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=163805281]
+layout_mode = 2
+
+[node name="AlexView" type="SubViewportContainer" parent="MarginContainer/HBoxContainer" unique_id=2055089695]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+stretch = true
+stretch_shrink = 6
+
+[node name="SubViewport" type="SubViewport" parent="MarginContainer/HBoxContainer/AlexView" unique_id=1403745229]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(50, 50)
+render_target_update_mode = 4
+
+[node name="AlexFace" type="Node3D" parent="MarginContainer/HBoxContainer/AlexView/SubViewport" unique_id=881261072]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
+
+[node name="alex" parent="MarginContainer/HBoxContainer/AlexView/SubViewport/AlexFace" unique_id=2017886100 instance=ExtResource("3_m2mfp")]
+unique_name_in_owner = true
+transform = Transform3D(0.8690463, 0, 0.49473077, 0, 1, 0, -0.49473077, 0, 0.8690463, 0, 0, 0)
+
+[node name="Camera3D2" type="Camera3D" parent="MarginContainer/HBoxContainer/AlexView/SubViewport/AlexFace" unique_id=1813683165]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21429, 0.92614806)
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=1365102211]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/MarginContainer" unique_id=337842312]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/MarginContainer/Panel" unique_id=1434230664]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer" unique_id=1361787266]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Speaker" type="RichTextLabel" parent="MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=1051297116]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Speaker"
+fit_content = true
+
+[node name="Dialogue" type="RichTextLabel" parent="MarginContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=2007139416]
+unique_name_in_owner = true
+layout_mode = 2
+text = "This is some dialogue"
+fit_content = true
+
+[node name="WatoView" type="SubViewportContainer" parent="MarginContainer/HBoxContainer" unique_id=1485816861]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+stretch = true
+stretch_shrink = 6
+
+[node name="SubViewport" type="SubViewport" parent="MarginContainer/HBoxContainer/WatoView" unique_id=1060137506]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(50, 50)
+render_target_update_mode = 4
+
+[node name="WatoFace" type="Node3D" parent="MarginContainer/HBoxContainer/WatoView/SubViewport" unique_id=481892182]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9964767, 100, 0)
+
+[node name="wato" parent="MarginContainer/HBoxContainer/WatoView/SubViewport/WatoFace" unique_id=2123482757 instance=ExtResource("2_m2mfp")]
+unique_name_in_owner = true
+transform = Transform3D(0.904254, 0, -0.42699492, 0, 1, 0, 0.42699492, 0, 0.904254, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="MarginContainer/HBoxContainer/WatoView/SubViewport/WatoFace" unique_id=579845337]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21429, 0.92614806)

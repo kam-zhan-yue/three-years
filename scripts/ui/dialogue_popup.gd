@@ -3,11 +3,17 @@ extends Control
 
 @onready var dialogue := %Dialogue as RichTextLabel
 @onready var speaker := %Speaker as RichTextLabel
+@onready var alex_view := %AlexView as SubViewportContainer
+@onready var wato_view := %WatoView as SubViewportContainer
+@onready var alex_animator := %alex/AnimationPlayer as AnimationPlayer
+@onready var wato_animator := %wato/AnimationPlayer as AnimationPlayer
 
 var current_line: Dialogue.Line
 var showing := false
 
 func _ready() -> void:
+	alex_animator.play("idle")
+	wato_animator.play("idle")
 	Global.set_inactive(self)
 
 func show_popup() -> void:
@@ -37,6 +43,8 @@ func set_line(line: Dialogue.Line) -> void:
 	current_line = line
 	speaker.text = Dialogue.SPEAKERS[line.speaker]
 	dialogue.text = line.body
+	Global._active(alex_view, line.speaker == Game.Character.Alex)
+	Global._active(wato_view, line.speaker == Game.Character.Wato)
 
 func end_dialogue() -> void:
 	hide_popup()
