@@ -63,18 +63,22 @@ func server_continue(line: Dialogue.Line) -> void:
 
 	_continue()
 
-func server_respond(character: Game.Character, respond_id: String) -> void:
+func server_can_respond(character: Game.Character, respond_id: String) -> bool:
 	var current := _get_current_line()
 	if current.response == null:
-		Global.error("Attempting to respond to a line with no response")
-		return
+		Global.debug("Attempting to respond to a line with no response")
+		return false
 	if current.response.from != character: 
-		Global.error("Response expecting %s, got %s" % [Global.SPEAKERS[current.response.from], Global.SPEAKERS[character]])
-		return
+		Global.debug("Response expecting %s, got %s" % [Global.SPEAKERS[current.response.from], Global.SPEAKERS[character]])
+		return false
 	if respond_id not in current.response.ids:
-		Global.error("%s not in response ids: %s" % [respond_id, current.response.ids])
-		return
-	_continue()
+		Global.debug("%s not in response ids: %s" % [respond_id, current.response.ids])
+		return false
+	return true
+
+func server_respond(character: Game.Character, respond_id: String) -> void:
+	if server_can_respond(character, respond_id):
+		_continue()
 
 func _continue() -> void:
 	current_line += 1

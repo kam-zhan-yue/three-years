@@ -3,14 +3,31 @@
 [ext_resource type="PackedScene" uid="uid://ddpiknbi24k6j" path="res://scenes/ingredients/sake.tscn" id="1_00mi8"]
 [ext_resource type="Script" uid="uid://cdqr6axtduifh" path="res://scripts/game/shelf_manager.gd" id="1_7q781"]
 [ext_resource type="PackedScene" uid="uid://b2dcecag3oyvq" path="res://scenes/ingredients/mirin.tscn" id="1_viw0s"]
+[ext_resource type="PackedScene" uid="uid://floe4tleksv" path="res://models/fridge.blend" id="2_7q781"]
 [ext_resource type="PackedScene" uid="uid://cwos48rvtrdv7" path="res://scenes/ingredients/soy_sauce.tscn" id="3_7q781"]
+[ext_resource type="PackedScene" uid="uid://vwkq65kp38r8" path="res://models/natto.blend" id="6_jrn4c"]
+[ext_resource type="PackedScene" uid="uid://6br1bpm2actl" path="res://models/broccoli.blend" id="7_n25ve"]
+[ext_resource type="PackedScene" uid="uid://2r7txci2ivg2" path="res://models/milk.blend" id="8_nl3ju"]
 
 [node name="ShelfManager" type="Node3D" unique_id=346781641]
 script = ExtResource("1_7q781")
 
+[node name="FridgeModel" parent="." unique_id=2020570125 instance=ExtResource("2_7q781")]
+unique_name_in_owner = true
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="natto" parent="." unique_id=77248389 instance=ExtResource("6_jrn4c")]
+transform = Transform3D(0.90109974, 0, 0.4336119, 0, 1, 0, -0.4336119, 0, 0.90109974, 0.15267724, 1.3876464, -0.060928583)
+
+[node name="broccoli" parent="." unique_id=1551497441 instance=ExtResource("7_n25ve")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15267724, 1.3876464, -0.060928583)
+
+[node name="milk" parent="." unique_id=405452032 instance=ExtResource("8_nl3ju")]
+transform = Transform3D(0.75319606, 0, 0.6577961, 0, 1, 0, -0.6577961, 0, 0.75319606, 0.15267724, 1.3876464, -0.060928583)
+
 [node name="Ingredients" type="Node3D" parent="." unique_id=1308658431]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30354452, -0.08415067, -0.5665158)
+transform = Transform3D(0.59, 0, 0, 0, 0.59, 0, 0, 0, 0.59, 0.15267724, 0.46656203, -0.060928583)
 
 [node name="Tomato" parent="Ingredients" unique_id=736880595 instance=ExtResource("1_viw0s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09229231, 0.21820995, -0.24514806)
@@ -20,17 +37,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014313221, 0.28069633, 0.3
 
 [node name="Natto" parent="Ingredients" unique_id=152051225 instance=ExtResource("3_7q781")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11938667, 0.15786044, 0.060354948)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=214097341]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30354452, -0.08415067, -0.5665158)
-size = Vector3(1, 1.5, 1)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D" unique_id=262392247]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.081917286, -0.34048137, 0)
-operation = 2
-size = Vector3(0.9, 0.7, 0.9)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" unique_id=724038209]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.081917286, 0.38725665, 0)
-operation = 2
-size = Vector3(0.9, 0.7, 0.9)

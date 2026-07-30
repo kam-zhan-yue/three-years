@@ -16,9 +16,11 @@
 - [x] Cleaning: Implement Dirty and Cleaned Models
 - [x] Cleaning: Implement circular progress bars
 - [x] Cleaning: Implement Dialogue Events
-- [ ] General: Add room collisions
+- [x] General: Add room collisions
+- [ ] Cooking: Implement fridge animation
 - [ ] Cooking: Implement ingredient models
 - [ ] Eating: Add cameras
+- [ ] Eating: Add food models
 
 ## Models
 
@@ -41,12 +43,9 @@
 - [x] Bathroom Door
 - [x] Wardrobe
 - [x] Main Door
-- [ ] Light
+- [x] Clean Items
+- [x] Light
 - [ ] Laptop
-- [ ] Clean Items
-    - [ ] Bottles on the Floor
-    - [x] Clothes on the Floor
-    - [ ] Mirror on the Floor
 
 
 ### Nice to Haves
@@ -59,8 +58,9 @@
 ## Polishing
 - [x] UI: Fix UI to be responsive
 - [x] UI: Add portraits to the dialogue box
-- [ ] Cleaning: Add clean together
 - [x] Graphics: Some sort of post processing filter (A Short Hike esq?)
+- [ ] Cleaning: Add clean particles
+- [ ] Cleaning: Add clean sound effects
 
 ## Infra
 I'm too lazy to setup CI/CD and proper infra, so we do this manually :)

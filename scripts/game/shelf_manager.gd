@@ -2,6 +2,8 @@ class_name ShelfManager
 extends Node3D
 
 @onready var ingredient_holder := %Ingredients as Node3D
+@onready var fridge_model := %FridgeModel as Node3D
+@onready var fridge_animator := %FridgeModel/AnimationPlayer as AnimationPlayer
 
 var ingredients: Array[Ingredient] = []
 
@@ -15,7 +17,6 @@ func _ready() -> void:
 		if child is Ingredient:
 			var ingredient := child as Ingredient
 			ingredients.append(ingredient)
-			ingredient.selected.connect(client_select)
 
 func server_activate(character: Game.Character) -> void:
 	Server.activate_shelf(character)
@@ -24,9 +25,11 @@ func server_deactivate(character: Game.Character) -> void:
 	Server.deactivate_shelf(character)
 
 func client_activate() -> void:
+	fridge_animator.play("door-open")
 	activated = true
 
 func client_deactivate() -> void:
+	fridge_animator.play("door-close")
 	activated = false
 
 func _input(event: InputEvent) -> void:
@@ -65,3 +68,12 @@ func client_select(type: String) -> void:
 
 func server_select(type: String) -> void:
 	server_ingredient_selected.emit(type)
+
+func server_consume(type: String) -> void:
+	Server.consume_ingredient(type)
+
+func client_consume(type: String) -> void:
+	for ingredient in ingredients:
+		if ingredient.get_type() == type:
+			ingredient.consume()
+			return

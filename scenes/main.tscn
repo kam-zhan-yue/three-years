@@ -71,6 +71,9 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_fv21b"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_tel4y"]
+viewport_path = NodePath("SubViewport")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_eb6dy"]
 size = Vector3(8.93544, 2.5722656, 4.5850244)
 
@@ -242,6 +245,10 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.32
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.2033296, 0, 10.627209)
 type = 1
 
+[node name="WorldPlacementPopup" parent="SubViewportContainer/SubViewport/Placements/Shelf" index="0" unique_id=198807948]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6477213, 0.94304913, 0.52020884)
+texture = SubResource("ViewportTexture_tel4y")
+
 [node name="FutonAlex" parent="SubViewportContainer/SubViewport/Placements" unique_id=15977365 instance=ExtResource("13_trceg")]
 transform = Transform3D(-0.99999994, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.99999994, 0.39449048, -2.3841858e-07, 1.8076578)
 type = 3
@@ -255,7 +262,8 @@ unique_name_in_owner = true
 
 [node name="ShelfCamera" type="Camera3D" parent="SubViewportContainer/SubViewport/Cameras" unique_id=1562081901]
 unique_name_in_owner = true
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.3427677, 0.305, 10.869588)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.3427677, -0.06555292, 10.071517)
+cull_mask = 1048559
 fov = 40.0
 
 [node name="DiningZone" type="Node3D" parent="SubViewportContainer/SubViewport/Cameras" unique_id=470995314]
@@ -335,7 +343,7 @@ script = ExtResource("10_eb6dy")
 
 [node name="ShelfManager" parent="GameManager" unique_id=346781641 instance=ExtResource("2_choun")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.645418, 0, 12.560196)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.582641, -0.8402867, 10.067959)
 
 [node name="PlacementManager" type="Node3D" parent="GameManager" unique_id=1786147982]
 unique_name_in_owner = true
@@ -353,3 +361,4 @@ unique_name_in_owner = true
 [editable path="SubViewportContainer/SubViewport/Interactables/Plates"]
 [editable path="SubViewportContainer/SubViewport/Interactables/PowerPlugs"]
 [editable path="SubViewportContainer/SubViewport/Interactables/Laundry"]
+[editable path="SubViewportContainer/SubViewport/Placements/Shelf"]

@@ -3,13 +3,17 @@ extends StaticBody3D
 
 @onready var model = $Model
 
-signal selected(type: String)
-
 func select() -> void:
-	selected.emit(name) # Fuck it, we ball
+	Services.shelf.client_select(get_type())
 
 func highlight() -> void:
 	model.material.next_pass.set_shader_parameter("active", true)
 
 func unhighlight() -> void:
 	model.material.next_pass.set_shader_parameter("active", false)
+
+func get_type() -> String:
+	return name
+
+func consume() -> void:
+	Global.set_inactive(self)

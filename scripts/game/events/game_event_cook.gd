@@ -26,5 +26,7 @@ func _event_triggered(event: Dialogue.Event) -> void:
 		Services.camera.server_switch_camera(Game.Character.Wato, CameraManager.Camera.Kitchen)
 
 func _ingredient_selected(type: String) -> void:
-	Services.dialogue.server_respond(Game.Character.Wato, type)
-	Global.print("Ingredient Selected: %s" % type)
+	if Services.dialogue.server_can_respond(Game.Character.Wato, type):
+		Global.print("Ingredient Selected: %s" % type)
+		Services.shelf.server_consume(type)
+		Services.dialogue.server_respond(Game.Character.Wato, type)

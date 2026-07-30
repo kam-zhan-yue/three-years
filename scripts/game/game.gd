@@ -43,8 +43,16 @@ var EVENTS: Dictionary[Event, GameEvent] = {
 	Event.Eat: GameEventEat.new(),
 }
 
+# var FLOW: Array[Event] = [
+# 	Event.Clean,
+# 	Event.Prep,
+# 	Event.Cook,
+# 	Event.Eat,
+# ]
+
+var play_dialogue := false
+
 var FLOW: Array[Event] = [
-	Event.Clean,
 	Event.Prep,
 	Event.Cook,
 	Event.Eat,

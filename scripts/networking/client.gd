@@ -122,6 +122,13 @@ func activate_shelf() -> void:
 func deactivate_shelf() -> void:
 	Services.shelf.client_deactivate()
 
+func consume_ingredient(type: String) -> void:
+	_consume_ingredient.rpc(type)
+
+@rpc("authority", "call_remote", "reliable")
+func _consume_ingredient(type: String) -> void:
+	Services.shelf.client_consume(type)
+
 #==================Cameras====================
 @rpc("authority", "call_remote", "reliable")
 func set_placement(placement: Placement.Type) -> void:

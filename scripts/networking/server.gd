@@ -122,12 +122,16 @@ func deactivate_shelf(character: Game.Character) -> void:
 	var id := game.get_player_id(character)
 	Client.deactivate_shelf.rpc_id(id)
 
+#==================Shelf====================
 func select_ingredient(type: String) -> void:
 	_select_ingredient.rpc_id(1, type)
 
 @rpc("any_peer", "call_remote", "reliable")
 func _select_ingredient(type: String) -> void:
 	game.select_ingredient(type)
+
+func consume_ingredient(type: String) -> void:
+	Client.consume_ingredient(type)
 
 #==================Placement====================
 func set_placement(character: Game.Character, placement: Placement.Type) -> void:

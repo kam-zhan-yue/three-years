@@ -11,13 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://b2ehwgyak2rox" path="res://models/shelf.blend" id="10_q4oe8"]
 [ext_resource type="PackedScene" uid="uid://jmntjjpbh5u5" path="res://models/bin.blend" id="11_svjb4"]
 [ext_resource type="PackedScene" uid="uid://dfd8ouv4wpg7k" path="res://models/snack-box.blend" id="12_c1pbi"]
-[ext_resource type="PackedScene" uid="uid://vwkq65kp38r8" path="res://models/natto.blend" id="13_535f6"]
 [ext_resource type="PackedScene" uid="uid://b05m60glyaai5" path="res://models/pantry.blend" id="14_50fbu"]
-[ext_resource type="PackedScene" uid="uid://floe4tleksv" path="res://models/fridge.blend" id="15_0fmhk"]
 [ext_resource type="PackedScene" uid="uid://5jf2tctx7870" path="res://models/kitchen-bin.blend" id="16_iafhg"]
 [ext_resource type="PackedScene" uid="uid://oujb6txod87h" path="res://models/stove.blend" id="17_cr74b"]
-[ext_resource type="PackedScene" uid="uid://6br1bpm2actl" path="res://models/broccoli.blend" id="18_uhfbm"]
-[ext_resource type="PackedScene" uid="uid://2r7txci2ivg2" path="res://models/milk.blend" id="19_lqb7q"]
 [ext_resource type="PackedScene" uid="uid://cu6pdcclugdtg" path="res://models/window-2.blend" id="20_ok3ci"]
 [ext_resource type="PackedScene" uid="uid://cd8r0iebiasch" path="res://models/dining-chair.blend" id="21_hv3ux"]
 [ext_resource type="PackedScene" uid="uid://qyclqivexb66" path="res://models/mirror.blend" id="22_j4eoh"]
@@ -62,7 +58,7 @@ size = Vector3(0.8552507, 1, 0.60915256)
 size = Vector3(0.68450046, 1, 1.0917261)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q4oe8"]
-size = Vector3(0.7459018, 1, 1.0917261)
+size = Vector3(0.7459018, 0.5067749, 1.0917261)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_svjb4"]
 size = Vector3(0.74614596, 1, 0.32346863)
@@ -140,7 +136,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.211229, 2.3841858e-07, 8.18
 shape = SubResource("BoxShape3D_2jdvr")
 
 [node name="Fridge" type="CollisionShape3D" parent="Collisions/StaticBody3D" unique_id=444632404]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.234117, 2.3841858e-07, 9.38695)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.234117, -0.24661231, 9.38695)
 shape = SubResource("BoxShape3D_q4oe8")
 
 [node name="KitchenBin" type="CollisionShape3D" parent="Collisions/StaticBody3D" unique_id=859423446]
@@ -201,26 +197,14 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.67
 [node name="box" parent="Models" unique_id=1808636379 instance=ExtResource("12_c1pbi")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5392737, -0.90346694, 0.5291155)
 
-[node name="natto" parent="Models" unique_id=77248389 instance=ExtResource("13_535f6")]
-transform = Transform3D(0.90109974, 0, 0.4336119, 0, 1, 0, -0.4336119, 0, 0.90109974, 3.7389317, -0.3620779, 9.485092)
-
 [node name="pantry" parent="Models" unique_id=747314183 instance=ExtResource("14_50fbu")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.7530432, -0.93571186, 8.850361)
-
-[node name="fridge" parent="Models" unique_id=32740293 instance=ExtResource("15_0fmhk")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.7483625, -0.9357121, 10.059133)
 
 [node name="kitchen-bin" parent="Models" unique_id=149801171 instance=ExtResource("16_iafhg")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.7825274, -0.9342515, 10.789321)
 
 [node name="stove" parent="Models" unique_id=47004378 instance=ExtResource("17_cr74b")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.3011024, -0.93571174, 8.981347)
-
-[node name="broccoli" parent="Models" unique_id=1551497441 instance=ExtResource("18_uhfbm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7269034, -0.36675072, 9.765093)
-
-[node name="milk" parent="Models" unique_id=405452032 instance=ExtResource("19_lqb7q")]
-transform = Transform3D(0.7531961, 0, 0.657796, 0, 1, 0, -0.657796, 0, 0.7531961, 3.8457937, -0.3474522, 9.646193)
 
 [node name="window-2" parent="Models" unique_id=1992315749 instance=ExtResource("20_ok3ci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.050096, -0.90960157, -0.18647909)
