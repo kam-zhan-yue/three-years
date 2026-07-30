@@ -1,43 +1,50 @@
 [gd_scene format=3 uid="uid://cfwway387imsv"]
 
 [ext_resource type="Script" uid="uid://ds7q35xd3j4e5" path="res://scripts/ui/interactable_popup.gd" id="1_8ujlq"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8o6w2"]
-bg_color = Color(1, 0.30545545, 0.48939055, 1)
+[ext_resource type="Texture2D" uid="uid://d4n4lt1x6f3ea" path="res://textures/progress_bar_white.png" id="2_i0ps2"]
+[ext_resource type="Texture2D" uid="uid://4gfey24mhuys" path="res://textures/progress_bar_fill.png" id="3_3e2e5"]
 
 [node name="InteractablePopup" type="Control" unique_id=123828460]
+clip_contents = true
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 100.0
-offset_bottom = 27.0
+offset_right = 80.0
+offset_bottom = 80.0
 script = ExtResource("1_8ujlq")
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=487954039]
+[node name="ProgressBar" type="TextureProgressBar" parent="." unique_id=2108563744]
 unique_name_in_owner = true
+texture_filter = 1
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/fill = SubResource("StyleBoxFlat_8o6w2")
+offset_right = 80.0
+offset_bottom = 80.0
+scale = Vector2(0.6, 0.6)
+max_value = 1.0
+step = 0.01
+fill_mode = 4
+texture_under = ExtResource("2_i0ps2")
+texture_progress = ExtResource("3_3e2e5")
 
 [node name="Tooltip" type="Control" parent="." unique_id=295356486]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 48.0
+offset_bottom = 48.0
 
 [node name="Panel" type="Panel" parent="Tooltip" unique_id=594140287]
-custom_minimum_size = Vector2(40, 0)
 layout_mode = 1
-anchors_preset = 13
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = -15.0
+offset_right = 19.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
 

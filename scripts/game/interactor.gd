@@ -57,7 +57,10 @@ func _get_closest() -> Interactable:
 
 func _input(event: InputEvent) -> void:
 	var current = _get_closest()
-	if current == null: return
+	if current == null:
+		interacting = false
+		return
+
 	if event.is_action_pressed("interact") and current.can_interact():
 		Server.start_interacting(current.id())
 		interacting = true

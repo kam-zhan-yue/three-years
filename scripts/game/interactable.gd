@@ -6,9 +6,9 @@ extends Node3D
 @onready var inactive_model := $InactiveModel as Node3D
 
 @export var activated := false
-@export var initial_progress := 2.0
+@export var initial_progress: float = 2.0
 @export var interacting := false
-@export var progress := initial_progress
+@export var progress: float = initial_progress
 @export var completed := false
 
 signal on_completed
@@ -61,3 +61,6 @@ func client_completed() -> void:
 	completed = true
 	Global.set_active(inactive_model)
 	Global.set_inactive(active_model)
+
+func get_progress_value() -> float:
+	return (initial_progress - progress) / initial_progress

@@ -2,7 +2,7 @@ class_name InteractablePopup
 extends Node
 
 @onready var synchronizer := %MultiplayerSynchronizer as MultiplayerSynchronizer
-@onready var progress_bar := %ProgressBar as ProgressBar
+@onready var progress_bar := %ProgressBar as TextureProgressBar
 @onready var tooltip := %Tooltip as Control
 
 var show_tooltip := false
@@ -44,4 +44,4 @@ func _synchronized() -> void:
 		if show_tooltip:
 			Global.set_active(tooltip)
 	
-	progress_bar.value = interactable.progress
+	progress_bar.value = interactable.get_progress_value() * 2 # TODO: idk what causes this bug
