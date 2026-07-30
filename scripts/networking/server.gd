@@ -70,6 +70,9 @@ func stop_interacting(interact_id: String) -> void:
 func _stop_interacting(interact_id: String) -> void:
 	game.stop_interacting(interact_id)
 
+func complete_interact(interact_id: String) -> void:
+	game.complete_interact(interact_id)
+
 #==================Dialogue====================
 func skip_dialogue_animation(line: Dialogue.Line) -> void:
 	_skip_dialogue_animation.rpc_id(1, Global.id(), inst_to_dict(line))

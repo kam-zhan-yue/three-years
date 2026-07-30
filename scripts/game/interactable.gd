@@ -52,8 +52,7 @@ func _process(delta: float) -> void:
 func server_completed() -> void:
 	if !multiplayer.is_server(): return
 	completed = true
-	on_completed.emit()
-	Client.complete_interaction(id())
+	Server.complete_interact(id())
 
 func client_completed() -> void:
 	# Do effects here!

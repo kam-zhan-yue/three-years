@@ -23,11 +23,17 @@ enum Event {
 }
 
 enum DialogueEvent {
-	Derek
+	Derek,
+	DerekCleaned,
+	Ukelele,
+	LaundryCleaned,
 }
 
 var DIALOGUE_EVENTS: Dictionary[DialogueEvent, DialogueScript] = {
-	DialogueEvent.Derek: DialogueEventDerek.new()
+	DialogueEvent.Derek: DialogueEventDerek.new(),
+	DialogueEvent.DerekCleaned: DialogueEventDerekCleaned.new(),
+	DialogueEvent.Ukelele: DialogueEventUkelele.new(),
+	DialogueEvent.LaundryCleaned: DialogueEventLaundryCleaned.new(),
 }
 
 var EVENTS: Dictionary[Event, GameEvent] = {

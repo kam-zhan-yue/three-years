@@ -7,6 +7,7 @@ var game := Game.new()
 var current_script: DialogueScript
 var current_line := 0
 var client_is_playing := false
+var server_is_playing = false
 
 signal event_triggered(event: Dialogue.Event)
 signal dialogue_ended()
@@ -26,6 +27,7 @@ func client_end() -> void:
 	Services.ui.dialogue_popup.end_dialogue()
 
 func server_start(dialogue: DialogueScript) -> void:
+	server_is_playing = true
 	current_script = dialogue
 	current_line = 0
 	var line := _get_current_line()
@@ -88,6 +90,7 @@ func server_trigger_event(line: Dialogue.Line) -> void:
 	event_triggered.emit(line.event)
 
 func server_end_dialogue() -> void:
+	server_is_playing = false
 	Global.debug("Ending Dialogue.")
 	Client.end_dialogue()
 	dialogue_ended.emit()

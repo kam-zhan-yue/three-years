@@ -77,8 +77,10 @@ func continue_dialogue(line: Dialogue.Line) -> void:
 
 # ============INTERACT HANDLING=================
 func start_interacting(interact_id: String) -> void:
-	# TOOD: This is a super hack :D
+	# TODO: This is a super hack :D
 	if interact_id.contains("Derek") and _try_play_dialogue_event(Game.DialogueEvent.Derek):
+		pass
+	elif interact_id.contains("Ukelele") and _try_play_dialogue_event(Game.DialogueEvent.Ukelele):
 		pass
 	else:
 		Global.print("Server Interact Start %s" % interact_id)
@@ -86,6 +88,15 @@ func start_interacting(interact_id: String) -> void:
 
 func stop_interacting(interact_id: String) -> void:
 	Services.interact.server_interact_stop(interact_id)
+
+func complete_interact(interact_id: String) -> void:
+	# TODO: Another super hack :D
+	if interact_id.contains("Derek"):
+		_try_play_dialogue_event(Game.DialogueEvent.DerekCleaned)
+	if interact_id.contains("Laundry"):
+		_try_play_dialogue_event(Game.DialogueEvent.LaundryCleaned)
+	Client.complete_interaction(interact_id)
+	Services.interact.server_check_all_completed()
 
 # ============SHELF HANDLING=================
 func select_ingredient(type: String) -> void:

@@ -11,4 +11,8 @@ func start() -> void:
 	Services.players.server_activate_all(true)
 	Services.camera.server_activate_zones()
 	await Services.interact.on_completed
+
+	# There is a chance that the final interact also plays dialogue
+	if Services.dialogue.server_is_playing:
+		await Services.dialogue.dialogue_ended
 	end()

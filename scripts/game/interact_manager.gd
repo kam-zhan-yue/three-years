@@ -13,7 +13,6 @@ func _ready() -> void:
 		if !child.visible: continue
 		if child is Interactable:
 			var interactable := child as Interactable
-			interactable.on_completed.connect(_on_completed)
 			interactables[interactable.id()] = interactable
 
 func server_activate() -> void:
@@ -35,7 +34,7 @@ func client_interact_complete(interact_id: String) -> void:
 	var interactable = interactables[interact_id]
 	interactable.client_completed()
 
-func _on_completed() -> void:
+func server_check_all_completed() -> void:
 	# Check if all the interactables are completed
 	for interactable in interactables.values():
 		if !interactable.completed: return
