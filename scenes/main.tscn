@@ -506,7 +506,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24653, -0.90262204, -0.487
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11547661, 0.06555408, 0.62646246)
 
 [node name="InactiveModel" parent="SubViewportContainer/SubViewport/Interactables/Books" unique_id=64944330 instance=ExtResource("41_ids8r")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.7217803, 0.88259953, -0.012631983)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.7217803, 0.79384875, -0.012631983)
 
 [node name="Plates" parent="SubViewportContainer/SubViewport/Interactables" unique_id=94768413 instance=ExtResource("6_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.659658, -1, -1.0802844)
