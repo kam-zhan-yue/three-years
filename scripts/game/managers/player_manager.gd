@@ -6,27 +6,23 @@ extends Node3D
 @onready var wato_spawn := %WatoSpawn as Marker3D
 
 signal server_players_loaded
-var server_players: Dictionary[int, Game.Character] = {}
-var server_loaded_players := []
 
 func _ready() -> void:
 	spawner.spawned.connect(_client_spawn_player)
 
-func reset_players() -> void:
-	server_players = {}
-	server_loaded_players = []
+func server_reset_players() -> void:
 	spawner.despawn_all()
 
 func server_init_player(id: int, character: Game.Character) -> void:
 	if !multiplayer.is_server(): return
 	var player := spawner.spawn_player(id, character)
 	Global.debug("Server spawning %s" % player.name)
-	server_players[id] = character
+	Server.game.server_players[id] = character
 
 func server_register_player(character: Game.Character) -> void:
 	Global.print("Character spawned: %s" % character)
-	server_loaded_players.append(character)
-	if len(server_loaded_players) == 2:
+	Server.game.server_loaded_players.append(character)
+	if len(Server.game.server_loaded_players) == 2:
 		server_players_loaded.emit()
 
 func server_activate_all(active: bool) -> void:

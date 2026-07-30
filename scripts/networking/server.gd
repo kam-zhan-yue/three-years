@@ -18,7 +18,7 @@ func start() -> void:
 	start_game()
 
 func start_game() -> void:
-	Services.players.reset_players()
+	Services.players.server_reset_players()
 	Global.print("Starting Server")
 	if game:
 		game.free()
@@ -32,7 +32,7 @@ func _on_connected(_id: int) -> void:
 	game.send_update()
 
 func _on_disconnect(id: int) -> void:
-	if id in Services.players.server_players:
+	if id in game.server_players:
 		Global.print("Player %s disconnected, restart game!" % id)
 		start_game()
 		Client.restart_game()
@@ -102,7 +102,6 @@ func _can_change_dialogue(client_id: int, line: Dialogue.Line) -> bool:
 	if line.speaker != Game.Character.None and character != line.speaker:
 		return false
 	return true
-
 
 #==================Camera====================
 func activate_camera_zones() -> void:

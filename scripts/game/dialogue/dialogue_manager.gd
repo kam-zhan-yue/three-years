@@ -6,11 +6,13 @@ var game := Game.new()
 # Server Side Stuffs
 var current_script: DialogueScript
 var current_line := 0
+var client_is_playing := false
 
 signal event_triggered(event: Dialogue.Event)
 signal dialogue_ended()
 
 func client_start(line: Dialogue.Line) -> void:
+	client_is_playing = true
 	Services.ui.dialogue_popup.start_dialogue(line)
 
 func client_skip_animation(line: Dialogue.Line) -> void:
@@ -20,6 +22,7 @@ func client_continue(line: Dialogue.Line) -> void:
 	Services.ui.dialogue_popup.continue_dialogue(line)
 
 func client_end() -> void:
+	client_is_playing = false
 	Services.ui.dialogue_popup.end_dialogue()
 
 func server_start(dialogue: DialogueScript) -> void:

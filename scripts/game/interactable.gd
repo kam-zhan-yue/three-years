@@ -31,7 +31,7 @@ func hover_stop() -> void:
 	popup.hover_stop()
 
 func can_interact() -> bool:
-	return activated && !completed && !interacting
+	return activated && !completed && !interacting && !Services.dialogue.client_is_playing
 
 func server_interact() -> void:
 	if !multiplayer.is_server(): return

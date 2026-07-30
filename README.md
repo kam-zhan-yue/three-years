@@ -11,10 +11,12 @@
 - [x] Prepping: Write Dialogue
 - [x] Cooking: Write Dialogue
 - [x] Eating: Write Dialogue
-- [ ] Implement Models and Animations
-- [ ] Implement Polishing
+- [x] Implement Models and Animations
+- [x] Implement Polishing
 - [ ] Cleaning: Implement Clean Together Event
-- [ ] Cleaning: Implement Dirty and Cleaned Models
+- [x] Cleaning: Implement Dirty and Cleaned Models
+- [x] Cleaning: Implement circular progress bars
+- [ ] Cooking: Implement ingredient models
 
 ## Models
 
@@ -52,12 +54,11 @@
 - [ ] Sharkie
 - [ ] Sky Shader
 
-
 ## Polishing
-- [ ] UI: Fix UI to be responsive
-- [ ] UI: Add portraits to the dialogue box
+- [x] UI: Fix UI to be responsive
+- [x] UI: Add portraits to the dialogue box
 - [ ] Cleaning: Add clean together
-- [ ] Graphics: Some sort of post processing filter (A Short Hike esq?)
+- [x] Graphics: Some sort of post processing filter (A Short Hike esq?)
 
 ## Infra
 I'm too lazy to setup CI/CD and proper infra, so we do this manually :)

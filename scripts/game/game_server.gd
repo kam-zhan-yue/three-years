@@ -3,10 +3,16 @@ extends Node
 
 var game := Game.new()
 
-# Synced Values
+# Synced Values / Game State
 var current_event: GameEvent
+var server_players: Dictionary[int, Game.Character] = {}
+var server_loaded_players := []
+var played_dialogue_events: Dictionary[Dialogue.Event, bool] = {}
 
 func _init() -> void:
+	server_players = {}
+	server_loaded_players = []
+	played_dialogue_events = {}
 	for event in game.EVENTS.values():
 		event.ended.connect(_end_event)
 
@@ -15,20 +21,20 @@ func add_player(id: int, character: Game.Character) -> void:
 	send_update()
 
 func get_player_id(character: Game.Character) -> int:
-	for id in Services.players.server_players:
-		if Services.players.server_players[id] == character:
+	for id in server_players:
+		if server_players[id] == character:
 			return id
 	return 1
 
 func get_character(id: int) -> Game.Character:
-	return Services.players.server_players[id]
+	return server_players[id]
 
 func send_update() -> void:
 	Client.update_game(get_state())
 
 func get_state() -> Game.GameState:
 	var state := Game.GameState.new()
-	state.players = Services.players.server_players
+	state.players = server_players
 	return state
 
 var flow := 0
@@ -71,7 +77,12 @@ func continue_dialogue(line: Dialogue.Line) -> void:
 
 # ============INTERACT HANDLING=================
 func start_interacting(interact_id: String) -> void:
-	Services.interact.server_interact_start(interact_id)
+	# TOOD: This is a super hack :D
+	if interact_id.contains("Derek") and _try_play_dialogue_event(Game.DialogueEvent.Derek):
+		pass
+	else:
+		Global.print("Server Interact Start %s" % interact_id)
+		Services.interact.server_interact_start(interact_id)
 
 func stop_interacting(interact_id: String) -> void:
 	Services.interact.server_interact_stop(interact_id)
@@ -83,3 +94,13 @@ func select_ingredient(type: String) -> void:
 # ============PLACEMENT HANDLING=================
 func confirm_placement(type: Placement.Type) -> void:
 	Services.placement.server_confirm(type)
+
+func _try_play_dialogue_event(event: Game.DialogueEvent) -> bool:
+	if event not in game.DIALOGUE_EVENTS:
+		Global.error("Couldn't find %s in DIALOGUE_EVENTS")
+		return false
+	if event in played_dialogue_events:
+		return false
+	played_dialogue_events[event] = true
+	Services.dialogue.server_start(game.DIALOGUE_EVENTS[event])
+	return true

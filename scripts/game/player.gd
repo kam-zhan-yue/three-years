@@ -32,7 +32,7 @@ func client_set_anim(state: AnimState) -> void:
 	anim_state = state
 
 func _can_move() -> bool:
-	return activated && !interactor.interacting && is_multiplayer_authority()
+	return activated && !interactor.interacting && is_multiplayer_authority() && !Services.dialogue.client_is_playing
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():

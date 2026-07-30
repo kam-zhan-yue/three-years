@@ -22,6 +22,14 @@ enum Event {
 	Prep,
 }
 
+enum DialogueEvent {
+	Derek
+}
+
+var DIALOGUE_EVENTS: Dictionary[DialogueEvent, DialogueScript] = {
+	DialogueEvent.Derek: DialogueEventDerek.new()
+}
+
 var EVENTS: Dictionary[Event, GameEvent] = {
 	Event.Clean: GameEventClean.new(),
 	Event.Prep: GameEventPrep.new(),
