@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://biy64px3suhnt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0loja"]
+size = Vector3(0.5463257, 1, 4.7793274)
+
+[node name="Collisions" type="Node3D" unique_id=694110952]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1065839915]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2129312100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5394855, 0.30809337, 1.8110142)
+shape = SubResource("BoxShape3D_0loja")
+debug_color = Color(0.81, 0.41849998, 0, 1)

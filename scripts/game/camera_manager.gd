@@ -26,6 +26,7 @@ func _ready() -> void:
 	CAMERAS[Camera.Shelf] = shelf_camera
 	CAMERAS[Camera.Kitchen] = kitchen_zone.camera
 	CAMERAS[Camera.Dining] = dining_zone.camera
+	Global.print("Dining zone camera is %s" % dining_zone.camera)
 	client_switch_camera(Camera.Dining)
 	for child in cameras.get_children():
 		if child is CameraZone:
@@ -53,9 +54,16 @@ func server_switch_camera(character: Game.Character, camera: Camera) -> void:
 func client_switch_camera(next: Camera) -> void:
 	if next == Camera.Zone and current_zone_camera:
 		current = current_zone_camera
+		if current == null:
+			Global.error("Camera | Zone Camera is null %s")
+			return
+
 		current.make_current()
 	elif next in CAMERAS:
 		current = CAMERAS[next]
+		if current == null:
+			Global.error("Camera | Target camera %s is null" % Camera.keys()[next])
+			return
 		CAMERAS[next].make_current()
 	else:
 		Global.error("Camera | Trying to switch to %s" % next)

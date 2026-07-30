@@ -13,10 +13,12 @@
 - [x] Eating: Write Dialogue
 - [x] Implement Models and Animations
 - [x] Implement Polishing
-- [ ] Cleaning: Implement Clean Together Event
 - [x] Cleaning: Implement Dirty and Cleaned Models
 - [x] Cleaning: Implement circular progress bars
+- [x] Cleaning: Implement Dialogue Events
+- [ ] General: Add room collisions
 - [ ] Cooking: Implement ingredient models
+- [ ] Eating: Add cameras
 
 ## Models
 

@@ -11,8 +11,6 @@ extends Node3D
 @export var progress: float = initial_progress
 @export var completed := false
 
-signal on_completed
-
 func _ready() -> void:
 	Global.set_active(active_model)
 	Global.set_inactive(inactive_model)
