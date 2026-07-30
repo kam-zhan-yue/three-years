@@ -2,6 +2,9 @@ class_name DialoguePopup
 extends Control
 
 @export var text_speed := 10
+## How long a character's scale animation lasts, as a multiple of the interval
+## between characters being revealed.
+@export var text_scale_intervals := 8.0
 @onready var dialogue := %Dialogue as RichTextLabel
 @onready var speaker := %Speaker as RichTextLabel
 @onready var alex_view := %AlexView as SubViewportContainer
@@ -84,9 +87,9 @@ func set_line(line: Dialogue.Line) -> void:
 	speaker.text = Dialogue.SPEAKERS[line.speaker]
 
 	dialogue.text = ""
-	dialogue.append_text("[dialogue]")
+	# dialogue.append_text("[dialogue speed=%f]" % text_speed)
 	dialogue.append_text(line.body)
-	dialogue.append_text("[/dialogue]")
+	# dialogue.append_text("[/dialogue]")
 
 	dialogue.visible_characters = 1
 	Global._active(alex_view, line.speaker == Game.Character.Alex)
