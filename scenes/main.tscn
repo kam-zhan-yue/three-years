@@ -74,6 +74,9 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_5q0nq"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_fuf3a"]
+viewport_path = NodePath("SubViewport")
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_dgi5k"]
 viewport_path = NodePath("SubViewport")
 
@@ -248,14 +251,18 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26858187, 0)
 
 [node name="Kitchen" parent="SubViewportContainer/SubViewport/Placements" unique_id=2039868235 instance=ExtResource("13_trceg")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.3298275, 0, 8.659744)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.3298275, -0.4519781, 8.659744)
+
+[node name="WorldPlacementPopup" parent="SubViewportContainer/SubViewport/Placements/Kitchen" index="0" unique_id=198807948]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1014385, 0)
+texture = SubResource("ViewportTexture_fuf3a")
 
 [node name="Shelf" parent="SubViewportContainer/SubViewport/Placements" unique_id=153822818 instance=ExtResource("13_trceg")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.2033296, 0, 10.627209)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.2033296, -0.55722433, 10.627209)
 type = 1
 
 [node name="WorldPlacementPopup" parent="SubViewportContainer/SubViewport/Placements/Shelf" index="0" unique_id=198807948]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6477213, 0.94304913, 0.52020884)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6477213, 1.1405896, 0.52020884)
 texture = SubResource("ViewportTexture_dgi5k")
 
 [node name="FutonAlex" parent="SubViewportContainer/SubViewport/Placements" unique_id=15977365 instance=ExtResource("13_trceg")]
@@ -411,6 +418,7 @@ unique_name_in_owner = true
 [editable path="SubViewportContainer/SubViewport/Interactables/Plates"]
 [editable path="SubViewportContainer/SubViewport/Interactables/PowerPlugs"]
 [editable path="SubViewportContainer/SubViewport/Interactables/Laundry"]
+[editable path="SubViewportContainer/SubViewport/Placements/Kitchen"]
 [editable path="SubViewportContainer/SubViewport/Placements/Shelf"]
 [editable path="SubViewportContainer/SubViewport/Placements/FutonAlex"]
 [editable path="SubViewportContainer/SubViewport/Placements/FutonWato"]

@@ -1,6 +1,7 @@
 class_name GameEventEat extends GameEvent
 
 func start() -> void:
+	Services.camera.server_activate_zones()
 	Services.players.server_activate_all(true)
 	Services.placement.server_set(Game.Character.Alex, Placement.Type.FutonAlex)
 	Services.placement.server_set(Game.Character.Wato, Placement.Type.FutonWato)

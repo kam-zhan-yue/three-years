@@ -3,8 +3,7 @@ class_name DialogueCookLunch extends DialogueScript
 func get_dialogue() -> Array[Dialogue.Line]:
 	return [
 		Dialogue.Line.new(Game.Character.Alex, "All right! Let's get started!"),
-		Dialogue.Line.new(Game.Character.Wato, "Let's have a look at what we have.")
-			.with_event(Dialogue.Event.Ingredients),
+		Dialogue.Line.new(Game.Character.Wato, "Let's have a look at what we have."),
 		Dialogue.Line.new(Game.Character.Wato, "Wow! There's really not much in here!"),
 		Dialogue.Line.new(Game.Character.Alex, "Hahaha, I know right. I didn't do groceries this week."),
 		Dialogue.Line.new(Game.Character.Wato, "Thanks for always getting them."),
@@ -15,12 +14,18 @@ func get_dialogue() -> Array[Dialogue.Line]:
 		Dialogue.Line.new(Game.Character.Wato, "Natto pasta."),
 		Dialogue.Line.new(Game.Character.Alex, "Natto pasta."),
 		Dialogue.Line.new(Game.Character.Alex, "Enough jabbering! Could you pass me something?")
+			.with_event(Dialogue.Event.Ingredients),
+		Dialogue.Line.new(Game.Character.Wato, "How do I do that?"),
+		Dialogue.Line.new(Game.Character.Alex, "Just point and click at one of the ingredients!")
 			.with_response(Dialogue.Response.new(Game.Character.Wato, ["Natto", "Pasta", "Milk"])),
 		Dialogue.Line.new(Game.Character.Wato, "Here you go!"),
+		Dialogue.Line.new(Game.Character.Alex, "Oh yeah, this is going to be fire."),
 		Dialogue.Line.new(Game.Character.Alex, "Give me something else!")
 			.with_response(Dialogue.Response.new(Game.Character.Wato, ["Natto", "Pasta", "Milk"])),
 		Dialogue.Line.new(Game.Character.Wato, "Would this work?"),
-		Dialogue.Line.new(Game.Character.Alex, "This'll be perfect. I can already smell how good it'll be."),
+		Dialogue.Line.new(Game.Character.Alex, "This'll be perfect. The texture is amazingly weird now."),
+		Dialogue.Line.new(Game.Character.Alex, "Like a bunch of things swimming in a pool of mucus."),
+		Dialogue.Line.new(Game.Character.Wato, "So appetising."),
 		Dialogue.Line.new(Game.Character.Alex, "Alright! One more thing!")
 			.with_response(Dialogue.Response.new(Game.Character.Wato, ["Natto", "Pasta", "Milk"])),
 		Dialogue.Line.new(Game.Character.Wato, "I think this'll go along perfectly"),

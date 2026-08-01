@@ -47,9 +47,9 @@ script = ExtResource("4_nl3ju")
 
 [node name="Model" parent="Ingredients/Milk" unique_id=690319195 instance=ExtResource("8_nl3ju")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Ingredients/Milk" unique_id=1976920621]
+[node name="Body" type="StaticBody3D" parent="Ingredients/Milk" unique_id=1976920621]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ingredients/Milk/StaticBody3D" unique_id=1723315665]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ingredients/Milk/Body" unique_id=1723315665]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0052948, 0.055664063, 0.0019226074)
 shape = SubResource("BoxShape3D_oyalq")
 
@@ -59,9 +59,9 @@ script = ExtResource("4_nl3ju")
 
 [node name="Model" parent="Ingredients/Pasta" unique_id=758631020 instance=ExtResource("12_h1dwa")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Ingredients/Pasta" unique_id=199192051]
+[node name="Body" type="StaticBody3D" parent="Ingredients/Pasta" unique_id=199192051]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ingredients/Pasta/StaticBody3D" unique_id=634209179]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ingredients/Pasta/Body" unique_id=634209179]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1035156e-05, 0.029052734, -0.0019226074)
 shape = SubResource("BoxShape3D_jrn4c")
 

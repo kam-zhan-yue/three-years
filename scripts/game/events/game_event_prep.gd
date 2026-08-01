@@ -6,8 +6,8 @@ func start() -> void:
 	placements = 0
 	Services.players.server_activate_all(false)
 	Services.camera.server_activate_zones()
-	# Services.dialogue.server_start(DialoguePrep.new())
-	# await Services.dialogue.dialogue_ended
+	Services.dialogue.server_start(DialoguePrep.new())
+	await Services.dialogue.dialogue_ended
 
 	Services.players.server_activate_all(true)
 	Services.placement.server_set(Game.Character.Alex, Placement.Type.Kitchen)

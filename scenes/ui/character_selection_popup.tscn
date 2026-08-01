@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dtaafxtc3bx6o"]
 
 [ext_resource type="Script" uid="uid://2f3smna3y2t2" path="res://scripts/ui/character_selection_popup.gd" id="1_kmxxh"]
+[ext_resource type="Texture2D" uid="uid://8okv3r4r6dyt" path="res://textures/title.png" id="2_cln88"]
 
 [node name="CharacterSelectionPopup" type="Control" unique_id=582069835]
 layout_mode = 3
@@ -11,24 +12,50 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kmxxh")
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=506793811]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1557688432]
+texture_filter = 1
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -121.0
+offset_right = 75.0
+offset_bottom = -57.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(4, 4)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("2_cln88")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1550054808]
-layout_mode = 2
+[node name="VBoxContainer" type="HBoxContainer" parent="." unique_id=1555442816]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = 71.0
+offset_right = 155.0
+offset_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 10
+alignment = 1
 
-[node name="Alex" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2138826765]
+[node name="Alex" type="Button" parent="VBoxContainer" unique_id=2138826765]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
+theme_override_font_sizes/font_size = 36
 text = "Alex"
 
-[node name="Wato" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2096207293]
+[node name="Wato" type="Button" parent="VBoxContainer" unique_id=2096207293]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
+theme_override_font_sizes/font_size = 36
 text = "Wato"

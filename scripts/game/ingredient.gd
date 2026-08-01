@@ -2,6 +2,7 @@ class_name Ingredient
 extends Node3D
 
 @onready var model = $Model
+@onready var collision_shape := $Body/CollisionShape3D as CollisionShape3D
 
 var tween: Tween
 
@@ -29,3 +30,4 @@ func get_type() -> String:
 
 func consume() -> void:
 	Global.set_inactive(self)
+	collision_shape.disabled = true

@@ -20,9 +20,9 @@
 - [x] Cooking: Implement fridge animation
 - [x] Cooking: Implement ingredient models
 - [x] Eating: Add food models
-- [ ] Eating: Add cameras
-- [ ] Add Title Screen
-- [ ] Add Game End Screen
+- [x] Eating: Add cameras
+- [x] Add Title Screen
+- [x] Add Game End Screen
 - [ ] Polish Dialogue and Everything
 - [ ] Deploy and Test!
 
