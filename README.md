@@ -16,4 +16,9 @@ sudo systemctl daemon-reload
 sudo systemctl start game.service
 sudo systemctl enable game.service
 sudo systemctl status game.service # check status
+
+# if you are re-deploying, you need to stop the running server first
+mise run shell
+sudo systemctl stop game.service
+# or just nuke everything with rm -rf
 ```
