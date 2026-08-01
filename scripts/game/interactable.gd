@@ -18,6 +18,9 @@ func _ready() -> void:
 
 func server_activate() -> void:
 	activated = true
+	progress = initial_progress
+	completed = false
+	interacting = false
 
 func id() -> String:
 	return str(get_path())
