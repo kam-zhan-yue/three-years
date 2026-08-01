@@ -8,6 +8,16 @@ func start() -> void:
 		await Services.placement.server_placement_completed
 
 	Services.players.server_activate_all(false)
+
+	Services.dialogue.event_triggered.connect(_event_triggered)
 	Services.dialogue.server_start(DialogueEatLunch.new())
 	await Services.dialogue.dialogue_ended
+
+	Services.dialogue.event_triggered.disconnect(_event_triggered)
 	end()
+
+func _event_triggered(event: Dialogue.Event) -> void:
+	if event == Dialogue.Event.ShowPasta:
+		Services.kotatsu.server_show_pasta()
+	elif event == Dialogue.Event.HidePasta:
+		Services.kotatsu.server_hide_pasta()

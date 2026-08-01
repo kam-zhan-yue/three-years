@@ -18,11 +18,13 @@
 - [x] Cleaning: Implement Dialogue Events
 - [x] General: Add room collisions
 - [x] Cooking: Implement fridge animation
-- [ ] Cooking: Implement ingredient models
+- [x] Cooking: Implement ingredient models
+- [x] Eating: Add food models
 - [ ] Eating: Add cameras
-- [ ] Eating: Add food models
 - [ ] Add Title Screen
 - [ ] Add Game End Screen
+- [ ] Polish Dialogue and Everything
+- [ ] Deploy and Test!
 
 ## Models
 

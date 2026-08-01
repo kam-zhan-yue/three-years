@@ -7,12 +7,22 @@ extends Node3D
 @onready var cameras := %Cameras as Node3D
 @onready var dining_zone := %DiningZone as CameraZone
 
+@onready var kotatsu_camera := %KotatsuCamera as Camera3D
+@onready var kotatsu_alex_camera := %KotatsuAlex as Camera3D
+@onready var kotatsu_wato_camera := %KotatsuWato as Camera3D
+@onready var kotatsu_pasta_camera := %KotatsuPasta as Camera3D
+
 enum Camera {
+	None,
 	Main,
 	Shelf,
 	Kitchen,
 	Dining,
 	Zone,
+	Kotatsu,
+	PastaZoom,
+	KotatsuAlex,
+	KotatsuWato,
 }
 
 var CAMERAS: Dictionary[Camera, Camera3D] = {}
@@ -26,7 +36,10 @@ func _ready() -> void:
 	CAMERAS[Camera.Shelf] = shelf_camera
 	CAMERAS[Camera.Kitchen] = kitchen_zone.camera
 	CAMERAS[Camera.Dining] = dining_zone.camera
-	Global.print("Dining zone camera is %s" % dining_zone.camera)
+	CAMERAS[Camera.Kotatsu] = kotatsu_camera
+	CAMERAS[Camera.KotatsuAlex] = kotatsu_alex_camera
+	CAMERAS[Camera.KotatsuWato] = kotatsu_wato_camera
+	CAMERAS[Camera.PastaZoom] = kotatsu_pasta_camera
 	client_switch_camera(Camera.Dining)
 	for child in cameras.get_children():
 		if child is CameraZone:
@@ -47,6 +60,9 @@ func client_activate_zones() -> void:
 	Global.print("CAMERA | Activating zones")
 	zones_activated = true
 	pass
+
+func server_switch_camera_all(camera: Camera) -> void:
+	Client.switch_camera_all(camera)
 
 func server_switch_camera(character: Game.Character, camera: Camera) -> void:
 	Server.switch_camera(character, camera)

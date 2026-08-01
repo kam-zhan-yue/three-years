@@ -32,6 +32,7 @@ func server_start(dialogue: DialogueScript) -> void:
 	current_line = 0
 	var line := _get_current_line()
 	if !line: return
+	server_check_dialogue_camera(line)
 	server_trigger_event(line)
 	Client.start_dialogue(line)
 
@@ -53,9 +54,9 @@ func server_skip_dialogue_animation(line: Dialogue.Line) -> void:
 	Client.skip_dialogue_animation(line)
 
 func server_continue(line: Dialogue.Line) -> void:
-	var current := _get_current_line()
+	# var current := _get_current_line()
 	if not is_equal(_get_current_line(), line):
-		Global.error("Line expecting %s, got %s" % [Global.SPEAKERS[current.speaker], Global.SPEAKERS[line.speaker]])
+		# Global.error("Line expecting %s, got %s" % [Global.SPEAKERS[current.speaker], Global.SPEAKERS[line.speaker]])
 		return
 	if line.response != null: 
 		Global.error("Line Expecting a response")
@@ -86,6 +87,7 @@ func _continue() -> void:
 	if !next_line:
 		server_end_dialogue()
 	else:
+		server_check_dialogue_camera(next_line)
 		server_trigger_event(next_line)
 		Client.continue_dialogue(next_line)
 
@@ -98,6 +100,10 @@ func server_end_dialogue() -> void:
 	Global.debug("Ending Dialogue.")
 	Client.end_dialogue()
 	dialogue_ended.emit()
+
+func server_check_dialogue_camera(line: Dialogue.Line) -> void:
+	if line.camera == CameraManager.Camera.None: return
+	Services.camera.server_switch_camera_all(line.camera)
 
 
 func _get_current_line() -> Dialogue.Line:

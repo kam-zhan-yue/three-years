@@ -37,6 +37,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 24.0
+offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 20
@@ -50,7 +52,7 @@ layout_mode = 2
 [node name="AlexView" type="SubViewportContainer" parent="MarginContainer/HBoxContainer" unique_id=2055089695]
 unique_name_in_owner = true
 texture_filter = 1
-custom_minimum_size = Vector2(300, 300)
+custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
 stretch = true
 stretch_shrink = 3
@@ -58,7 +60,7 @@ stretch_shrink = 3
 [node name="SubViewport" type="SubViewport" parent="MarginContainer/HBoxContainer/AlexView" unique_id=1403745229]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(100, 100)
+size = Vector2i(83, 83)
 render_target_update_mode = 4
 
 [node name="AlexFace" type="Node3D" parent="MarginContainer/HBoxContainer/AlexView/SubViewport" unique_id=881261072]
@@ -111,7 +113,7 @@ custom_effects = [SubResource("RichTextEffect_130f7")]
 [node name="WatoView" type="SubViewportContainer" parent="MarginContainer/HBoxContainer" unique_id=1485816861]
 unique_name_in_owner = true
 texture_filter = 1
-custom_minimum_size = Vector2(300, 300)
+custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
 stretch = true
 stretch_shrink = 3
@@ -119,7 +121,7 @@ stretch_shrink = 3
 [node name="SubViewport" type="SubViewport" parent="MarginContainer/HBoxContainer/WatoView" unique_id=1060137506]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(100, 100)
+size = Vector2i(83, 83)
 render_target_update_mode = 4
 
 [node name="WatoFace" type="Node3D" parent="MarginContainer/HBoxContainer/WatoView/SubViewport" unique_id=481892182]

@@ -15,8 +15,6 @@ func highlight() -> void:
 	tween.tween_property(model, "scale", Vector3(1.1, 1.1, 1.1), 0.15)
 	tween.set_trans(Tween.TRANS_ELASTIC)
 	tween.set_ease(Tween.EASE_OUT_IN)
-	Global.print("Highlighting %s" % name)
-	pass
 
 func unhighlight() -> void:
 	if tween:
@@ -25,8 +23,6 @@ func unhighlight() -> void:
 	tween.tween_property(model, "scale", Vector3(1, 1, 1), 0.15)
 	tween.set_trans(Tween.TRANS_ELASTIC)
 	tween.set_ease(Tween.EASE_OUT_IN)
-	Global.print("Unhighlighting %s" % name)
-	pass
 
 func get_type() -> String:
 	return name

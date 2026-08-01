@@ -115,6 +115,3 @@ func _try_play_dialogue_event(event: Game.DialogueEvent) -> bool:
 	played_dialogue_events[event] = true
 	Services.dialogue.server_start(game.DIALOGUE_EVENTS[event])
 	return true
-
-func can_play_dialogue() -> bool:
-	return game.play_dialogue

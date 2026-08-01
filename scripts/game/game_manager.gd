@@ -10,6 +10,7 @@ var timer := 0
 @onready var shelf_manager = %ShelfManager as ShelfManager
 @onready var placement_manager = %PlacementManager as PlacementManager
 @onready var player_manager = %PlayerManager as PlayerManager
+@onready var kotatsu_manager = %KotatsuManager as KotatsuManager
 @onready var ui = %UI as UI
 
 func _ready() -> void:
@@ -20,3 +21,4 @@ func _ready() -> void:
 	Services.shelf = shelf_manager
 	Services.placement = placement_manager
 	Services.players = player_manager
+	Services.kotatsu = kotatsu_manager

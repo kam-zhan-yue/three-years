@@ -7,3 +7,4 @@ var shelf: ShelfManager
 var camera: CameraManager
 var placement: PlacementManager
 var players: PlayerManager
+var kotatsu: KotatsuManager

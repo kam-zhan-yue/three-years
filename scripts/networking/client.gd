@@ -109,6 +109,14 @@ func activate_camera_zones() -> void:
 func _activate_camera_zones() -> void:
 	Services.camera.client_activate_zones()
 
+func switch_camera_all(camera: CameraManager.Camera) -> void:
+	_switch_camera_all.rpc(camera)
+
+@rpc("authority", "call_remote", "reliable")
+func _switch_camera_all(camera: CameraManager.Camera) -> void:
+	Services.camera.client_switch_camera(camera)
+
+
 @rpc("authority", "call_remote", "reliable")
 func switch_camera(camera: CameraManager.Camera) -> void:
 	Services.camera.client_switch_camera(camera)
@@ -149,3 +157,18 @@ func set_anim(anim: Player.AnimState) -> void:
 @rpc("authority", "call_remote", "reliable")
 func _set_anim(anim: Player.AnimState) -> void:
 	Services.players.client_set_anim(anim)
+
+#==================Kotatsu====================
+func kotatsu_show_pasta() -> void:
+	_kotatsu_show_pasta.rpc()
+
+@rpc("authority", "call_remote", "reliable")
+func _kotatsu_show_pasta() -> void:
+	Services.kotatsu.client_show_pasta()
+
+func kotatsu_hide_pasta() -> void:
+	_kotatsu_hide_pasta.rpc()
+
+@rpc("authority", "call_remote", "reliable")
+func _kotatsu_hide_pasta() -> void:
+	Services.kotatsu.client_hide_pasta()

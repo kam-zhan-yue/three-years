@@ -10,7 +10,8 @@ enum Event {
 	None,
 	Ingredients,
 	KitchenTalk,
-	DeepTalk,
+	ShowPasta,
+	HidePasta,
 }
 
 class Response:
@@ -26,6 +27,7 @@ class Line:
 	var speaker := Game.Character.None
 	var body := ""
 	var response: Response
+	var camera: CameraManager.Camera
 
 	func _init(s: Game.Character, b: String) -> void:
 		speaker = s
@@ -37,4 +39,8 @@ class Line:
 
 	func with_event(e: Event) -> Line:
 		event = e
+		return self
+
+	func with_camera(c: CameraManager.Camera) -> Line:
+		camera = c
 		return self
