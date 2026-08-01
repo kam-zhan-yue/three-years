@@ -26,6 +26,7 @@ func activate() -> void:
 	activated = true
 
 func deactivate() -> void:
+	velocity = Vector3.ZERO
 	activated = false
 
 func client_set_anim(state: AnimState) -> void:

@@ -5,6 +5,6 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_povrl")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/size = 1.1
-shader_parameter/active = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_width = 0.010000000475
+shader_parameter/active = true

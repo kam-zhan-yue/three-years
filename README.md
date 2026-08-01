@@ -17,10 +17,12 @@
 - [x] Cleaning: Implement circular progress bars
 - [x] Cleaning: Implement Dialogue Events
 - [x] General: Add room collisions
-- [ ] Cooking: Implement fridge animation
+- [x] Cooking: Implement fridge animation
 - [ ] Cooking: Implement ingredient models
 - [ ] Eating: Add cameras
 - [ ] Eating: Add food models
+- [ ] Add Title Screen
+- [ ] Add Game End Screen
 
 ## Models
 

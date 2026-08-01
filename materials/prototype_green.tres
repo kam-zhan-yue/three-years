@@ -5,8 +5,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jmwbn"]
 render_priority = 0
 shader = ExtResource("1_jmwbn")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/size = 1.1
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_width = 0.02
 shader_parameter/active = false
 
 [resource]

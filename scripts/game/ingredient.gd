@@ -1,16 +1,32 @@
 class_name Ingredient
-extends StaticBody3D
+extends Node3D
 
 @onready var model = $Model
+
+var tween: Tween
 
 func select() -> void:
 	Services.shelf.client_select(get_type())
 
 func highlight() -> void:
-	model.material.next_pass.set_shader_parameter("active", true)
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	tween.tween_property(model, "scale", Vector3(1.1, 1.1, 1.1), 0.15)
+	tween.set_trans(Tween.TRANS_ELASTIC)
+	tween.set_ease(Tween.EASE_OUT_IN)
+	Global.print("Highlighting %s" % name)
+	pass
 
 func unhighlight() -> void:
-	model.material.next_pass.set_shader_parameter("active", false)
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	tween.tween_property(model, "scale", Vector3(1, 1, 1), 0.15)
+	tween.set_trans(Tween.TRANS_ELASTIC)
+	tween.set_ease(Tween.EASE_OUT_IN)
+	Global.print("Unhighlighting %s" % name)
+	pass
 
 func get_type() -> String:
 	return name

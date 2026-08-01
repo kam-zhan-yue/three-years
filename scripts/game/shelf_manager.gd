@@ -38,7 +38,8 @@ func _input(event: InputEvent) -> void:
 		var mouse_pos := (event as InputEventMouseMotion).position
 		var ingredient = _ingredient_under_mouse(mouse_pos)
 		if ingredient:
-			ingredient.highlight()
+			if current != ingredient:
+				ingredient.highlight()
 			if current and current != ingredient:
 				current.unhighlight()
 			current = ingredient
@@ -56,11 +57,16 @@ func _ingredient_under_mouse(mouse: Vector2) -> Ingredient:
 	var end := camera.project_position(mouse, 1000)
 	var params := PhysicsRayQueryParameters3D.create(start, end)
 	var result: Dictionary = world_space.intersect_ray(params)
-	if "collider" not in result: return
+	if "collider" not in result: 
+		return null
 	
-	var object := result["collider"] as PhysicsBody3D
-	if object is Ingredient:
-		return object as Ingredient
+	var collider := result["collider"] as PhysicsBody3D
+	if not collider:
+		return null
+
+	var collider_parent := collider.get_parent()
+	if collider_parent and collider_parent is Ingredient:
+		return collider_parent as Ingredient
 	return null
 
 func client_select(type: String) -> void:

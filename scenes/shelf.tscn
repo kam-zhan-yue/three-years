@@ -1,13 +1,20 @@
 [gd_scene format=3 uid="uid://c6hnu3e567lrx"]
 
-[ext_resource type="PackedScene" uid="uid://ddpiknbi24k6j" path="res://scenes/ingredients/sake.tscn" id="1_00mi8"]
 [ext_resource type="Script" uid="uid://cdqr6axtduifh" path="res://scripts/game/shelf_manager.gd" id="1_7q781"]
-[ext_resource type="PackedScene" uid="uid://b2dcecag3oyvq" path="res://scenes/ingredients/mirin.tscn" id="1_viw0s"]
 [ext_resource type="PackedScene" uid="uid://floe4tleksv" path="res://models/fridge.blend" id="2_7q781"]
-[ext_resource type="PackedScene" uid="uid://cwos48rvtrdv7" path="res://scenes/ingredients/soy_sauce.tscn" id="3_7q781"]
+[ext_resource type="Script" uid="uid://6bo3rbawkvjv" path="res://scripts/game/ingredient.gd" id="4_nl3ju"]
 [ext_resource type="PackedScene" uid="uid://vwkq65kp38r8" path="res://models/natto.blend" id="6_jrn4c"]
-[ext_resource type="PackedScene" uid="uid://6br1bpm2actl" path="res://models/broccoli.blend" id="7_n25ve"]
 [ext_resource type="PackedScene" uid="uid://2r7txci2ivg2" path="res://models/milk.blend" id="8_nl3ju"]
+[ext_resource type="PackedScene" uid="uid://eyc0p0a3qgei" path="res://models/pasta.blend" id="12_h1dwa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pb500"]
+size = Vector3(0.086624146, 0.06647873, 0.15057373)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oyalq"]
+size = Vector3(0.12277222, 0.20703125, 0.117004395)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jrn4c"]
+size = Vector3(0.61486816, 0.06201172, 0.291687)
 
 [node name="ShelfManager" type="Node3D" unique_id=346781641]
 script = ExtResource("1_7q781")
@@ -16,24 +23,47 @@ script = ExtResource("1_7q781")
 unique_name_in_owner = true
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 
-[node name="natto" parent="." unique_id=77248389 instance=ExtResource("6_jrn4c")]
-transform = Transform3D(0.90109974, 0, 0.4336119, 0, 1, 0, -0.4336119, 0, 0.90109974, 0.15267724, 1.3876464, -0.060928583)
-
-[node name="broccoli" parent="." unique_id=1551497441 instance=ExtResource("7_n25ve")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15267724, 1.3876464, -0.060928583)
-
-[node name="milk" parent="." unique_id=405452032 instance=ExtResource("8_nl3ju")]
-transform = Transform3D(0.75319606, 0, 0.6577961, 0, 1, 0, -0.6577961, 0, 0.75319606, 0.15267724, 1.3876464, -0.060928583)
-
 [node name="Ingredients" type="Node3D" parent="." unique_id=1308658431]
 unique_name_in_owner = true
-transform = Transform3D(0.59, 0, 0, 0, 0.59, 0, 0, 0, 0.59, 0.15267724, 0.46656203, -0.060928583)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14966631, 0.5409457, 0.18184692)
 
-[node name="Tomato" parent="Ingredients" unique_id=736880595 instance=ExtResource("1_viw0s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09229231, 0.21820995, -0.24514806)
+[node name="Natto" type="Node3D" parent="Ingredients" unique_id=822049410]
+transform = Transform3D(0.18081097, 0, -0.98351794, 0, 1, 0, 0.98351794, 0, 0.18081097, -0.079, -0.045822203, -0.409)
+script = ExtResource("4_nl3ju")
 
-[node name="Pasta" parent="Ingredients" unique_id=710074819 instance=ExtResource("1_00mi8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014313221, 0.28069633, 0.34281933)
+[node name="Model" parent="Ingredients/Natto" unique_id=2051544558 instance=ExtResource("6_jrn4c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0512416e-08, 0, 0)
 
-[node name="Natto" parent="Ingredients" unique_id=152051225 instance=ExtResource("3_7q781")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11938667, 0.15786044, 0.060354948)
+[node name="Body" type="StaticBody3D" parent="Ingredients/Natto" unique_id=1734624796]
+transform = Transform3D(1.6949154, 0, 0, 0, 1.6949154, 0, 0, 0, 1.6949154, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ingredients/Natto/Body" unique_id=1278617203]
+transform = Transform3D(0.9999994, 0, 7.4505806e-08, 0, 0.99999976, 0, -7.4505806e-08, 0, 0.9999994, -0.0013197958, 0.03109169, 0)
+shape = SubResource("BoxShape3D_pb500")
+
+[node name="Milk" type="Node3D" parent="Ingredients" unique_id=1017821226]
+transform = Transform3D(-0.31243443, 0, -0.9499393, 0, 1, 0, 0.9499393, 0, -0.31243443, -0.1664232, 0, -0.06475337)
+script = ExtResource("4_nl3ju")
+
+[node name="Model" parent="Ingredients/Milk" unique_id=690319195 instance=ExtResource("8_nl3ju")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ingredients/Milk" unique_id=1976920621]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ingredients/Milk/StaticBody3D" unique_id=1723315665]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0052948, 0.055664063, 0.0019226074)
+shape = SubResource("BoxShape3D_oyalq")
+
+[node name="Pasta" type="Node3D" parent="Ingredients" unique_id=1657745144]
+transform = Transform3D(0.22228026, -0.97498274, -4.261785e-08, -1.4488733e-15, -4.371139e-08, 1, -0.97498274, -0.22228026, -9.71618e-09, 0.055912286, 0.099265754, -0.21394956)
+script = ExtResource("4_nl3ju")
+
+[node name="Model" parent="Ingredients/Pasta" unique_id=758631020 instance=ExtResource("12_h1dwa")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ingredients/Pasta" unique_id=199192051]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ingredients/Pasta/StaticBody3D" unique_id=634209179]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1035156e-05, 0.029052734, -0.0019226074)
+shape = SubResource("BoxShape3D_jrn4c")
+
+[editable path="Ingredients/Natto/Model"]
+[editable path="Ingredients/Milk/Model"]

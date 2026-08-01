@@ -53,7 +53,6 @@ var EVENTS: Dictionary[Event, GameEvent] = {
 var play_dialogue := false
 
 var FLOW: Array[Event] = [
-	Event.Prep,
 	Event.Cook,
 	Event.Eat,
 ]
