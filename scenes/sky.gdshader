@@ -1,10 +1,11 @@
 shader_type sky;
-uniform sampler2D sky_texture;
+render_mode use_half_res_pass;
+
+uniform vec3 sky_top : source_color;
+uniform vec3 sky_horizon : source_color;
 
 void sky() {
-	vec2 n_out2p0 = UV2;
-
-	vec4 n_out3p0;
-	n_out3p0 = texture(tex, n_out2p0);
-	COLOR.rgb = vec3(n_out3p0.xyz);
+  float colour_gradient = clamp(EYEDIR.y, 0.0, 1.0);
+  vec3 sky_colour = mix(sky_horizon, sky_top, colour_gradient);
+  COLOR = sky_colour;
 }

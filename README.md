@@ -23,8 +23,8 @@
 - [x] Eating: Add cameras
 - [x] Add Title Screen
 - [x] Add Game End Screen
-- [ ] Polish Dialogue and Everything
-- [ ] Deploy and Test!
+- [x] Polish Dialogue and Everything
+- [x] Deploy and Test!
 
 ## Models
 
