@@ -77,10 +77,10 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_dgi5k"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_fv21b"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_j8jky"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_j8jky"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_kmb1v"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eb6dy"]
@@ -264,7 +264,7 @@ type = 3
 
 [node name="WorldPlacementPopup" parent="SubViewportContainer/SubViewport/Placements/FutonAlex" index="0" unique_id=198807948]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64079434, 0)
-texture = SubResource("ViewportTexture_fv21b")
+texture = SubResource("ViewportTexture_j8jky")
 
 [node name="FutonWato" parent="SubViewportContainer/SubViewport/Placements" unique_id=123379710 instance=ExtResource("13_trceg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4573038, -0.5191456, 1.5550715)
@@ -272,7 +272,7 @@ type = 2
 
 [node name="WorldPlacementPopup" parent="SubViewportContainer/SubViewport/Placements/FutonWato" index="0" unique_id=198807948]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6952379, 0)
-texture = SubResource("ViewportTexture_j8jky")
+texture = SubResource("ViewportTexture_kmb1v")
 
 [node name="Cameras" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=594748807]
 unique_name_in_owner = true

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dtaafxtc3bx6o" path="res://scenes/ui/character_selection_popup.tscn" id="1_nt7q6"]
 [ext_resource type="PackedScene" uid="uid://dmtyf5vo77vse" path="res://scenes/ui/dialogue_popup.tscn" id="3_gdt2y"]
 [ext_resource type="Script" uid="uid://8cw6liuay0db" path="res://scripts/ui/debug_popup.gd" id="3_yev5y"]
+[ext_resource type="PackedScene" uid="uid://c3pl2yo6fbviw" path="res://scenes/game_end_popup.tscn" id="5_wm3ai"]
 
 [node name="UI" type="Control" unique_id=1811158779]
 layout_mode = 3
@@ -65,3 +66,7 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "12355"
 fit_content = true
+
+[node name="GameEndPopup" parent="." unique_id=1175045607 instance=ExtResource("5_wm3ai")]
+unique_name_in_owner = true
+layout_mode = 1

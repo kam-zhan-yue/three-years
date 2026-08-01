@@ -21,3 +21,6 @@ func server_hide_pasta() -> void:
 func client_hide_pasta() -> void:
 	Global.set_inactive(pasta)
 	Global.set_active(pasta_gone)
+
+func server_end_screen() -> void:
+	Client.show_game_end_popup()

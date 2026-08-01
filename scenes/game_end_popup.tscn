@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://c3pl2yo6fbviw"]
+
+[ext_resource type="Script" uid="uid://ghyom3mcy5dq" path="res://scripts/ui/game_end_popup.gd" id="1_8i11d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8i11d"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="GameEndPopup" type="Control" unique_id=1175045607]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8i11d")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1391485749]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8i11d")
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer" unique_id=1674802709]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/CenterContainer" unique_id=265037860]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer2" unique_id=608117389]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/CenterContainer/VBoxContainer2/VBoxContainer" unique_id=1366853824]
+custom_minimum_size = Vector2(1100, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "[center]Happy 3 Year Anniversary"
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="PanelContainer/CenterContainer/VBoxContainer2/VBoxContainer" unique_id=165133941]
+custom_minimum_size = Vector2(1100, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]here's to 100 more"
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="PanelContainer/CenterContainer/VBoxContainer2/VBoxContainer" unique_id=1402727381]
+custom_minimum_size = Vector2(1100, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[center]then after 103 idk we'll see lmao"
+fit_content = true
+
+[node name="RestartButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer2" unique_id=1658676714]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Click to Restart"

@@ -172,3 +172,10 @@ func kotatsu_hide_pasta() -> void:
 @rpc("authority", "call_remote", "reliable")
 func _kotatsu_hide_pasta() -> void:
 	Services.kotatsu.client_hide_pasta()
+
+func show_game_end_popup() -> void:
+	_show_game_end_popup.rpc()
+
+@rpc("authority", "call_remote", "reliable")
+func _show_game_end_popup() -> void:
+	Services.ui.client_show_game_end()

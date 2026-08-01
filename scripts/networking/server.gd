@@ -34,8 +34,22 @@ func _on_connected(_id: int) -> void:
 func _on_disconnect(id: int) -> void:
 	if id in game.server_players:
 		Global.print("Player %s disconnected, restart game!" % id)
+		_restart_game()
 		start_game()
 		Client.restart_game()
+
+func _restart_game() -> void:
+	Global.print("Restarting Game")
+	start_game()
+	Client.restart_game()
+
+
+func restart_game_request() -> void:
+	_restart_game_request.rpc_id(1)
+
+@rpc("any_peer", "call_remote", "reliable")
+func _restart_game_request() -> void:
+	_restart_game()
 
 # Broadcasts a message to all clients
 func broadcast(message: String) -> void:

@@ -14,6 +14,7 @@ func start() -> void:
 	await Services.dialogue.dialogue_ended
 
 	Services.dialogue.event_triggered.disconnect(_event_triggered)
+	Services.kotatsu.server_end_screen()
 	end()
 
 func _event_triggered(event: Dialogue.Event) -> void:
