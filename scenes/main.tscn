@@ -69,9 +69,6 @@ sky = SubResource("Sky_txyw0")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_tel4y"]
-viewport_path = NodePath("SubViewport")
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_qkpxi"]
 viewport_path = NodePath("SubViewport")
 
@@ -88,6 +85,9 @@ viewport_path = NodePath("SubViewport")
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_fuf3a"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pibwh"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eb6dy"]
@@ -135,6 +135,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="Level" parent="SubViewportContainer/SubViewport" unique_id=2053901129 instance=ExtResource("12_2f3dj")]
+metadata/_edit_lock_ = true
 
 [node name="Interactables" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=245774459]
 unique_name_in_owner = true
@@ -157,7 +158,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.76655275, 0)
 
 [node name="Canvas" parent="SubViewportContainer/SubViewport/Interactables/Plates" index="2" unique_id=658624892]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5327461, 0)
-texture = SubResource("ViewportTexture_tel4y")
+texture = SubResource("ViewportTexture_qkpxi")
 
 [node name="ActiveModel" type="Node3D" parent="SubViewportContainer/SubViewport/Interactables/Plates" unique_id=1490849101]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020159721, 1.1303196, 0.049602985)
@@ -199,7 +200,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00089120865, 0.087650985, -
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4699144, -0.9026221, -3.125154)
 
 [node name="Canvas" parent="SubViewportContainer/SubViewport/Interactables/PowerPlugs" index="2" unique_id=658624892]
-texture = SubResource("ViewportTexture_qkpxi")
+texture = SubResource("ViewportTexture_5q0nq")
 
 [node name="ActiveModel" parent="SubViewportContainer/SubViewport/Interactables/PowerPlugs" unique_id=883040869 instance=ExtResource("38_0loja")]
 transform = Transform3D(0.27367386, 0, 0.96182257, 0, 1, 0, -0.96182257, 0, 0.27367386, 0.30133212, 0.050000608, 0.10451555)
@@ -215,7 +216,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.036010742, 0, 0.6940918)
 
 [node name="Canvas" parent="SubViewportContainer/SubViewport/Interactables/Laundry" index="2" unique_id=658624892]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8155895, 0.65619993)
-texture = SubResource("ViewportTexture_5q0nq")
+texture = SubResource("ViewportTexture_dgi5k")
 
 [node name="ActiveModel" parent="SubViewportContainer/SubViewport/Interactables/Laundry" unique_id=400386096 instance=ExtResource("34_vchkt")]
 transform = Transform3D(0.55032045, 0, -0.83495355, 0, 1, 0, 0.83495355, 0, 0.55032045, -0.035713673, -0.016768038, 0.5207863)
@@ -259,7 +260,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.32
 
 [node name="WorldPlacementPopup" parent="SubViewportContainer/SubViewport/Placements/Kitchen" index="0" unique_id=198807948]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1014385, 0)
-texture = SubResource("ViewportTexture_dgi5k")
+texture = SubResource("ViewportTexture_j8jky")
 
 [node name="Shelf" parent="SubViewportContainer/SubViewport/Placements" unique_id=153822818 instance=ExtResource("13_trceg")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.2033296, -0.55722433, 10.627209)
@@ -267,7 +268,7 @@ type = 1
 
 [node name="WorldPlacementPopup" parent="SubViewportContainer/SubViewport/Placements/Shelf" index="0" unique_id=198807948]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6477213, 1.1405896, 0.52020884)
-texture = SubResource("ViewportTexture_j8jky")
+texture = SubResource("ViewportTexture_kmb1v")
 
 [node name="FutonAlex" parent="SubViewportContainer/SubViewport/Placements" unique_id=15977365 instance=ExtResource("13_trceg")]
 transform = Transform3D(-0.99999994, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -0.99999994, 2.428236, -0.5317053, 3.4098256)
@@ -275,7 +276,7 @@ type = 3
 
 [node name="WorldPlacementPopup" parent="SubViewportContainer/SubViewport/Placements/FutonAlex" index="0" unique_id=198807948]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64079434, 0)
-texture = SubResource("ViewportTexture_kmb1v")
+texture = SubResource("ViewportTexture_fuf3a")
 
 [node name="FutonWato" parent="SubViewportContainer/SubViewport/Placements" unique_id=123379710 instance=ExtResource("13_trceg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4573038, -0.5191456, 1.5550715)
@@ -283,7 +284,7 @@ type = 2
 
 [node name="WorldPlacementPopup" parent="SubViewportContainer/SubViewport/Placements/FutonWato" index="0" unique_id=198807948]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6952379, 0)
-texture = SubResource("ViewportTexture_fuf3a")
+texture = SubResource("ViewportTexture_pibwh")
 
 [node name="Cameras" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=594748807]
 unique_name_in_owner = true
@@ -418,6 +419,8 @@ metadata/_custom_type_script = "uid://htb30kl27n04"
 
 [node name="UI" parent="." unique_id=1811158779 instance=ExtResource("1_o5qli")]
 unique_name_in_owner = true
+offset_top = -1.0
+offset_bottom = -1.0
 
 [editable path="SubViewportContainer/SubViewport/Interactables/Plates"]
 [editable path="SubViewportContainer/SubViewport/Interactables/PowerPlugs"]

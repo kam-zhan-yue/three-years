@@ -16,6 +16,7 @@ grow_vertical = 2
 script = ExtResource("1_gdt2y")
 
 [node name="CharacterSelectionPopup" parent="." unique_id=1002664778 instance=ExtResource("1_nt7q6")]
+unique_name_in_owner = true
 layout_mode = 1
 
 [node name="DialoguePopup" parent="." unique_id=851115404 instance=ExtResource("3_gdt2y")]
@@ -24,6 +25,7 @@ layout_mode = 1
 
 [node name="DebugPopup" type="Control" parent="." unique_id=1802740079]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 0
 offset_left = 10.0

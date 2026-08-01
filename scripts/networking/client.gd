@@ -6,13 +6,22 @@ var game: GameClient
 signal game_updated(state: Game.GameState)
 
 func start() -> void:
+	start_game()
+	multiplayer.connected_to_server.connect(_on_connected_ok)
+	multiplayer.connection_failed.connect(_on_connected_fail)
+
 	peer = ENetMultiplayerPeer.new()
 	if OS.has_feature("localhost"):
 		peer.create_client(Global.LOCALHOST, Global.PORT)
 	else:
 		peer.create_client(Global.IP_ADDRESS, Global.PORT)
 	multiplayer.multiplayer_peer = peer
-	start_game()
+
+func _on_connected_ok() -> void:
+	Services.ui.character_selection_popup.show_selection()
+
+func _on_connected_fail() -> void:
+	Services.ui.character_selection_popup.show_failure()
 
 func start_game() -> void:
 	Global.print("Starting Client")
